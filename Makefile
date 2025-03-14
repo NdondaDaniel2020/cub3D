@@ -78,7 +78,7 @@ push: fclean
 	git status
 	git add .
 	git status
-	git commit -m "done"
+	git commit -m "in proccess"
 	git push
 
 norm:
