@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:00:21 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 13:58:56 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:31:58 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,21 @@ t_vector	rotate_vector(t_vector v, double angle)
 
 void	msg_error_image_not_found(int i, void *mlx, t_data *img)
 {
-	if (i == 0)
-		printerror(CONCAT("Incorrect texture ", "NO"));
-	if (i == 1)
-		printerror(CONCAT("Incorrect texture ", "SO"));
-	if (i == 2)
-		printerror(CONCAT("Incorrect texture ", "WE"));
-	if (i == 3)
-		printerror(CONCAT("Incorrect texture ", "EA"));
+	char	*tmp;
+
+	if (i >= 0 && i < 4)
+	{
+		if (i == 0)
+			tmp = ft_strjoin("Incorrect texture ", "NO, it must be xpm type");
+		if (i == 1)
+			tmp = ft_strjoin("Incorrect texture ", "SO, it must be xpm type");
+		if (i == 2)
+			tmp = ft_strjoin("Incorrect texture ", "WE, it must be xpm type");
+		if (i == 3)
+			tmp = ft_strjoin("Incorrect texture ", "EA, it must be xpm type");
+		printerror(tmp);
+		free(tmp);
+	}
 	while ((i - 1 >= 0) && img->textures[i - 1])
 	{
 		mlx_destroy_image(mlx, img->textures[i - 1]);
