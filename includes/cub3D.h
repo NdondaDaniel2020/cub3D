@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/14 22:06:35 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/17 12:57:26 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "get_next_line.h"
-# include <math.h>
-# include <string.h>
 # include <errno.h>
+# include <math.h>
 # include <stdbool.h>
+# include <string.h>
 
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 600
@@ -192,6 +192,12 @@ void				draw_ceiling(int drawStart, t_intvector *pos, t_data *img,
 						t_master *master);
 int					get_x_coordinate_texture(int index_img, int hitSide,
 						t_master *master, t_data *img);
+int					wait_hooks(t_master *master);
+
+// HOOKS
+int					key_release(int keycode, t_master *master);
+int					key_hook(int keycode, t_master *master);
+int					key_exit(t_master *master);
 
 // FREEZE
 void				ft_free_stack(t_map *map);
