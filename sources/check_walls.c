@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 17:00:18 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/15 07:10:33 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:25:47 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	around_character(char **tab, t_master *master)
 			if (tab[x][y] == 'W' || tab[x][y] == 'N' || tab[x][y] == 'E'
 				|| tab[x][y] == 'S')
 			{
-				// if ((y - 1) < 0 || (y + 1) > (int)ft_strlen(tab[x]))
-				// 	return (master->wrongmap = 1, 1);
 				if (check_around(tab, x, y) == 0)
 					return (master->wrongmap = 1, 1);
 			}
