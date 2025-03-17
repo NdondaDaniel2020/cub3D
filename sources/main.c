@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:29:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 13:32:35 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/17 21:42:48 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ int	ft_game(t_master *master)
 	render.pos = (t_vector){render.pos.x + 0.5, render.pos.y + 0.5};
 	render.mlx = mlx_init();
 	if (!render.mlx)
-		return (ft_free_master(master), printerror("Display property no set"));
+		return (ft_free_master(master), printerror("Display property no set"),
+			1);
 	if (load_textures(render.mlx, &img, master))
 		return (mlx_destroy_display(render.mlx), free(render.mlx),
 			ft_free_master(master), exit(1), 1);
@@ -133,7 +134,7 @@ int	main(int ac, char *av[])
 		ft_free_stack(map);
 		if (master->wrongmap == 0)
 		{
-			ft_game(master);
+			return (ft_game(master));
 		}
 		else
 		{
