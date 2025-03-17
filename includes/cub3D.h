@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 13:49:00 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:25:48 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 600
 # define PI 3.14
-#define CONCAT(a, b) a b
 # define SPEED 0.010
 # define ESC 65307
 # define RRIGHT 65363
