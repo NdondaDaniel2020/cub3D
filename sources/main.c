@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:29:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/14 11:19:52 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:29:14 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,10 @@ int	main(int ac, char *av[])
 		else
 		{
 			ft_free_master(master);
+			return (1);
 		}
 	}
 	else
-		printerror("Usage: ./<executable> <map_way>");
+		return (printerror("Usage: ./<executable> <map_way>"), 1);
 	return (0);
 }

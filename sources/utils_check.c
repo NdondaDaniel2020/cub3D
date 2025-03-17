@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 11:47:15 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/15 06:58:47 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ int	check_filename(char *filename)
 
 	i = ft_strlen(filename);
 	if (i <= 4)
+	{
+		tmp = ft_strjoin(filename, " is not a file with a valid map name");
+		printerror(tmp);
+		free(tmp);
 		return (-1);
+	}
 	substr = ft_substr(filename, (i - 4), i);
 	if (ft_strcmp(substr, ".cub") != 0)
 	{
@@ -78,13 +83,15 @@ int	is_there_something_wrong(t_master *master, t_map *map)
 		master->wrongmap = 1;
 	while (map && is_voidline(map->line) == 0)
 		map = map->next;
-	if (!map)
-		return (master->wrongmap = 1, printerror("Expected map"), 0);
-	if (master->campus == NULL)
+	while (map && is_voidline(map->line))
+		map = map->next;
+	if (map)
 	{
 		master->wrongmap = 1;
-		printerror("Invalid map");
+		return (printerror("Invalid map"));
 	}
+	if (!master->campus)
+		return (master->wrongmap = 1, printerror("Expected a valid map"), 0);
 	return (0);
 }
 

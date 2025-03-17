@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:00:21 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 11:46:55 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:01:55 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	printerror(char *str)
 
 	if (str)
 	{
+		ft_putstr_fd("\033[31mError\n\033[0m", 2);
 		tmp1 = ft_strjoin(RED, "|-------| ");
 		tmp2 = ft_strjoin(tmp1, str);
 		free(tmp1);

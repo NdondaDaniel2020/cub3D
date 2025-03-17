@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 11:46:21 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:06:35 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include "../minilibx-linux/mlx.h"
 # include "get_next_line.h"
 # include <math.h>
+# include <string.h>
+# include <errno.h>
 # include <stdbool.h>
 
 # define SCREEN_WIDTH 800
