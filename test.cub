@@ -4,8 +4,8 @@
 
 NO ./textures/comb1/tatame_north_texture.xpm
 SO ./textures/comb1/tatame_south_texture.xpm
+EA ./textures/comb1/tatame_east_texture.xp
 WE ./textures/comb1/tatame_west_texture.xpm
-EA ./textures/comb1/tatame_east_texture.xpm
 
 F 33,47,61
 C 179,182,183

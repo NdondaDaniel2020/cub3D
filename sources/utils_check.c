@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/15 06:58:47 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:38:43 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_elements(t_master *master)
 	if (!master->so || !master->no || !master->we || !master->ea)
 		printerror("Expected correct values ​​for SO, NO, WE and EA fields");
 	else if (master->c == -1 || master->f == -1)
-		printerror("A valid color was expected for ceil and floor");
+		printerror("A valid color was expected for ceil(C) and floor(F)");
 	return (0);
 }
 
@@ -88,7 +88,7 @@ int	is_there_something_wrong(t_master *master, t_map *map)
 	if (map)
 	{
 		master->wrongmap = 1;
-		return (printerror("Invalid map"));
+		return (0);
 	}
 	if (!master->campus)
 		return (master->wrongmap = 1, printerror("Expected a valid map"), 0);

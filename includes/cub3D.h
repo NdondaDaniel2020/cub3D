@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 12:57:26 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:49:00 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 600
 # define PI 3.14
-// # define ROTATE_SPEED 0.008
+#define CONCAT(a, b) a b
 # define SPEED 0.010
 # define ESC 65307
 # define RRIGHT 65363
@@ -154,7 +154,6 @@ void				setwallheight(t_minilib *render, int hitside,
 void				rotate(t_master *master);
 void				move_x(t_master *master);
 void				move_y(t_master *master);
-void				move(t_master *master);
 int					controls(void *vars);
 t_vector			rotate_vector(t_vector v, double angle);
 t_vector			get_player_pos(char **campus);
