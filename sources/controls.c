@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 22:52:38 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/18 08:19:02 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	move_y(t_master *master)
 			rd->pos.x += dir.x * SPEED;
 		if (master->campus[(int)(rd->pos.x)][(int)(rd->pos.y + dir.y * (SPEED
 					+ 0.1))] != '1')
-			rd->pos.y += dir.y * SPEED;
+			rd->pos.y += dir.y * SPEED + 0.1;
 	}
 	if (master->keyboard.down)
 	{
@@ -78,7 +78,7 @@ void	move_y(t_master *master)
 			rd->pos.x += dir.x * SPEED;
 		if (master->campus[(int)(rd->pos.x)][(int)(rd->pos.y + dir.y * (SPEED
 					+ 0.1))] != '1')
-			rd->pos.y += dir.y * SPEED;
+			rd->pos.y += dir.y * SPEED + 0.1;
 	}
 }
 
