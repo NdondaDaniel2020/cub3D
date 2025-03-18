@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:29:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/18 09:57:49 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:37:21 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,20 +127,21 @@ int	main(int ac, char *av[])
 
 	if (ac == 2 && av)
 	{
+		if (SCREEN_WIDTH < 150)
+			return (printerror("Window width too small"), 1);
+		if (SCREEN_HEIGHT < 150)
+			return (printerror("Window height too small"), 1);
+		if (SPEED <= 0)
+			return (printerror("The player speed must be bigger than 0"), 1);
 		map = ft_read_file(av[1]);
 		if (!map)
 			return (1);
 		master = get_master(map);
 		ft_free_stack(map);
 		if (master->wrongmap == 0)
-		{
 			return (ft_game(master));
-		}
 		else
-		{
-			ft_free_master(master);
-			return (1);
-		}
+			return (ft_free_master(master), 1);
 	}
 	else
 		return (printerror("Usage: ./<executable> <map_way>"), 1);
