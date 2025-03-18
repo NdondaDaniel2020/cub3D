@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/18 07:56:27 by aquissan         ###   ########.fr        #
+#    Updated: 2025/03/18 08:15:47 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=cub3D
 
 W ?= 1200
 H ?= 800
-S ?= 0.05
+S ?= 0.02
 M ?= "Done"
 GAMESET= -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED=$(S)
 FLAGS= -Wall -Wextra -Werror  -g
