@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/18 07:37:37 by aquissan         ###   ########.fr        #
+#    Updated: 2025/03/18 07:41:55 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ push: fclean
 	git status
 	git add .
 	git status
-	git commit -m "$(M)"
+	git commit -m"$(M)"
 	git push
 
 norm:
