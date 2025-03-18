@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:51:02 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/17 21:39:45 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:10:23 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ int	ft_countchar(char *str, char ch)
 	return (len);
 }
 
+int	correct_color(char *str)
+{
+	if (ft_countchar(str, ',') > 2 || ft_strchr(str, '\"') || ft_strchr(str,
+			'\''))
+		return (-1);
+	return (0);
+}
+
 int	getcolor(char *str, t_master *master)
 {
 	int		r;
@@ -38,7 +46,7 @@ int	getcolor(char *str, t_master *master)
 	int		b;
 	char	**rgb;
 
-	if (ft_countchar(str, ',') > 2)
+	if (correct_color(str) != 0)
 		return (-1);
 	if (str)
 	{
