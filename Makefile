@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME=cub3D
+BNAME=cub3D_bonus
 
 W ?= 1200
 H ?= 800
@@ -25,6 +26,7 @@ INC_D = includes
 LIBFTPATH = libft
 MLXPATH = minilibx-linux
 SRC_D=sources
+BSRC_D=bonus
 OBJ_D=objects
 
 RM=rm -rf 
@@ -35,6 +37,16 @@ FILES= main.c get_next_line.c get_next_line_utils.c check_map.c freeze.c gets.c\
 		extra.c draw.c
 SRC=$(addprefix $(SRC_D)/, $(FILES))
 OBJ=$(addprefix $(OBJ_D)/, $(FILES:.c=.o))
+
+
+
+BFILES= check_map_bonus.c get_next_line_utils_bonus.c check_walls_bonus.c gets_bonus.c \
+controls_bonus.c main_bonus.c dda_bonus.c render_bonus.c draw_bonus.c utils2_bonus.c \
+extra_bonus.c utils_bonus.c freeze_bonus.c utils_check.c get_next_line_bonus.c
+BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
+BOBJ=$(addprefix $(OBJ_D)/, $(BFILES:.c=.o))
+
+
 
 all: MLX LIBFT $(NAME)
 
@@ -49,6 +61,18 @@ $(NAME): $(OBJ)
 $(OBJ_D)/%.o:$(SRC_D)/%.c
 	@$(Mk) $(OBJ_D)
 	$(COMPILE) $(FLAGS) $(GAMESET) -c $< -o $@ 
+
+
+bonus: MLX LIBFT $(BNAME)
+
+$(BNAME): $(BOBJ)
+	$(COMPILE) $(FLAGS)  -Iincludes -Imimilibx-linux $(BOBJ) -L./$(MLXPATH) -lmlx -L./$(LIBFTPATH) -lft -I$(MLXPATH) -lXext -lX11 -lm -lz -o $(BNAME)
+
+$(OBJ_D)/%.o:$(BSRC_D)/%.c
+	@$(Mk) $(OBJ_D)
+	$(COMPILE) $(FLAGS) $(GAMESET) -c $< -o $@ 
+
+
 clean: 
 	make clean -C $(LIBFTPATH)
 	make clean -C $(MLXPATH)
@@ -59,8 +83,16 @@ fclean: clean
 	make fclean -C $(LIBFTPATH)
 	# make fclean -C $(MLXPATH)
 	$(RM) $(NAME)
+	$(RM) $(BNAME)
 
 re: fclean all
+brun: MLX LIBFT
+	$(RM) $(OBJ)
+	$(RM) $(OBJ_D)
+	$(RM) $(NAME)
+	make bonus
+	clear
+	./$(BNAME) "test.cub"
 
 run: MLX LIBFT
 	$(RM) $(OBJ)
