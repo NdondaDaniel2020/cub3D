@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gets.c                                             :+:      :+:    :+:   */
+/*   gets_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:45:57 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/14 11:47:31 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/20 11:47:45 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 static unsigned int	darken_color(unsigned int color, int percentage)
 {
