@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/20 11:46:44 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:12:42 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	check_campus(t_master *master)
 {
 	int	indent;
 
-	indent = check_variables(" 10WENS", master);
+	indent = check_variables(" 10WENSDd", master);
 	if (indent == -1)
 		return (printerror("A different character on the map"));
 	else if (indent == 1)
