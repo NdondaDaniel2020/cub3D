@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:51:14 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/14 12:05:04 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/20 11:47:06 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 void	draw_texture(int hitSide, t_intvector *pos, t_data *img,
 		t_master *master)

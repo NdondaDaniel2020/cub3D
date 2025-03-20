@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/18 08:15:47 by aquissan         ###   ########.fr        #
+#    Updated: 2025/03/20 11:55:02 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,9 @@ INC_D = includes
 LIBFTPATH = libft
 MLXPATH = minilibx-linux
 SRC_D=sources
-BSRC_D=bonus
+BSRC_D=source_bonus
 OBJ_D=objects
+BOBJ_D=object_bonus
 
 RM=rm -rf 
 Mk=mkdir -p 
@@ -44,7 +45,7 @@ BFILES= check_map_bonus.c get_next_line_utils_bonus.c check_walls_bonus.c gets_b
 controls_bonus.c main_bonus.c dda_bonus.c render_bonus.c draw_bonus.c utils2_bonus.c \
 extra_bonus.c utils_bonus.c freeze_bonus.c utils_check.c get_next_line_bonus.c
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
-BOBJ=$(addprefix $(OBJ_D)/, $(BFILES:.c=.o))
+BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
 
 
 
@@ -68,8 +69,8 @@ bonus: MLX LIBFT $(BNAME)
 $(BNAME): $(BOBJ)
 	$(COMPILE) $(FLAGS)  -Iincludes -Imimilibx-linux $(BOBJ) -L./$(MLXPATH) -lmlx -L./$(LIBFTPATH) -lft -I$(MLXPATH) -lXext -lX11 -lm -lz -o $(BNAME)
 
-$(OBJ_D)/%.o:$(BSRC_D)/%.c
-	@$(Mk) $(OBJ_D)
+$(BOBJ_D)/%.o:$(BSRC_D)/%.c
+	@$(Mk) $(BOBJ_D)
 	$(COMPILE) $(FLAGS) $(GAMESET) -c $< -o $@ 
 
 
@@ -77,7 +78,9 @@ clean:
 	make clean -C $(LIBFTPATH)
 	make clean -C $(MLXPATH)
 	$(RM) $(OBJ)
+	$(RM) $(BOBJ)
 	$(RM) $(OBJ_D)
+	$(RM) $(BOBJ_D)
 
 fclean: clean
 	make fclean -C $(LIBFTPATH)
@@ -102,6 +105,14 @@ run: MLX LIBFT
 	clear
 	./$(NAME) "test.cub"
 
+brun: MLX LIBFT
+	$(RM) $(BOBJ)
+	$(RM) $(BOBJ_D)
+	$(RM) $(BNAME)
+	make bonus
+	clear
+	./$(BNAME) "test.cub"
+
 leak: MLX LIBFT
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_D)
@@ -119,7 +130,7 @@ push: fclean
 	git push
 
 norm:
-	norminette $(LIBFTPATH) $(SRC_D) $(INC_D)
+	norminette $(LIBFTPATH) $(SRC_D) $(BSRC_D) $(INC_D)
 
 .PHONY: all re clean fclean
 
