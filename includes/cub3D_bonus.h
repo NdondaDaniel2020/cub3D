@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/20 11:50:56 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:34:24 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ void				draw_ceiling(int drawStart, t_intvector *pos, t_data *img,
 int					get_x_coordinate_texture(int index_img, int hitSide,
 						t_master *master, t_data *img);
 int					wait_hooks(t_master *master);
+int					check_door(char **campus);
 
 // HOOKS
 int					key_release(int keycode, t_master *master);
