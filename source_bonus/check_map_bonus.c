@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/20 14:12:42 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:46:12 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,35 @@ int	check_campus(t_master *master)
 	return (0);
 }
 
+int	check_door(char** campus)
+{
+	int	correct_door;
+	int	x;
+	int	y;
+
+	y = -1;
+	correct_door = 1;
+	while (campus && campus[++y])
+	{
+		x = -1;
+		while (campus[y] && campus[y][++x])
+		{
+			if (campus[y][x] == 'D' || campus[y][x] == 'd')
+			{
+				if ((x > 0 && campus[y][x - 1] == '1') && (campus[y][x + 1] && campus[y][x + 1] == '1'))
+					correct_door = 1;
+				else if ((y > 0 && campus[y - 1][x] == '1') && (campus[y + 1][x] && campus[y + 1][x] == '1'))
+					correct_door = 1;
+				else
+					correct_door = 0;
+			}
+			if (correct_door == 0)
+				return ( printerror("Incorrect door position on the map"),1);
+		}
+	}
+	return (0);
+}
+
 t_master	*get_master(t_map *map)
 {
 	t_master	*master;
@@ -145,5 +174,7 @@ t_master	*get_master(t_map *map)
 	is_there_something_wrong(master, tmp);
 	if (master->campus && master->wrongmap == 0)
 		check_campus(master);
+	if (check_door(master->campus))
+		master->wrongmap = 1;
 	return (master);
 }
