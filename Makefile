@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/20 11:55:02 by aquissan         ###   ########.fr        #
+#    Updated: 2025/03/20 12:09:24 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,13 +89,6 @@ fclean: clean
 	$(RM) $(BNAME)
 
 re: fclean all
-brun: MLX LIBFT
-	$(RM) $(OBJ)
-	$(RM) $(OBJ_D)
-	$(RM) $(NAME)
-	make bonus
-	clear
-	./$(BNAME) "test.cub"
 
 run: MLX LIBFT
 	$(RM) $(OBJ)
