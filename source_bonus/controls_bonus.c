@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/20 11:46:50 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/21 12:13:23 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ int	wait_hooks(t_master *master)
 	mlx_hook(master->render.win, 2, 1L << 0, key_hook, master);
 	mlx_hook(master->render.win, 3, 1L << 1, key_release, master);
 	mlx_hook(master->render.win, 17, 1L << 1, key_exit, master);
+	mlx_hook(master->render.win, 6, 1L << 6, mousemove, master);
 	return (0);
 }
