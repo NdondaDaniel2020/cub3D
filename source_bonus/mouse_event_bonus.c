@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_event.c                                      :+:      :+:    :+:   */
+/*   mouse_event_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:13:43 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/21 12:14:26 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:43:27 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	mousemove(int x, int y, t_master *master)
 	int			div;
 	static int	posx;
 
-	div = 6;
+	div = 4;
 	(void)y;
 	if (posx < x)
 	{
