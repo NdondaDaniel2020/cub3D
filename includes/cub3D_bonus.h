@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/20 15:34:24 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/21 12:14:22 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ int					check_door(char **campus);
 int					key_release(int keycode, t_master *master);
 int					key_hook(int keycode, t_master *master);
 int					key_exit(t_master *master);
+int					mousemove(int x, int y, t_master *master);
 
 // FREEZE
 void				ft_free_stack(t_map *map);
