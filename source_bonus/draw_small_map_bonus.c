@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   draw_small_map_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          #+#  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-03-20 12:10:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2025-03-20 12:10:04 by nmatondo         ###   ########.fr       */
+/*   Created: 2025/03/20 12:10:04 by nmatondo          #+#    #+#             */
+/*   Updated: 2025/03/24 12:42:12 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
-#define PIXEL_SIZE 50
+#define PIXEL_SIZE 10
 
 void	draw_map(t_master *master, t_area *area)
 {
-	int i;
-	int x;
-	int y;
+	int	i;
+	int	x;
+	int	y;
 
 	i = 0;
 	y = 1;
@@ -28,14 +28,21 @@ void	draw_map(t_master *master, t_area *area)
 		while (i <= area->end_y)
 		{
 			if (master->campus[area->ini_x][i] == '1')
-			{draw_big_pixel(master, PIXEL_SIZE, x * PIXEL_SIZE, y * PIXEL_SIZE, 0x52be80);}
-
+			{
+				draw_big_pixel(master, PIXEL_SIZE, (t_intvector){x * PIXEL_SIZE,
+					y * PIXEL_SIZE}, 0x52be80);
+			}
 			else if (master->campus[area->ini_x][i] != '1')
-			{draw_big_pixel(master, PIXEL_SIZE, x * PIXEL_SIZE, y * PIXEL_SIZE, 0x3c3c3c);}
-
-			if ((int)master->render.pos.x == area->ini_x && (int)master->render.pos.y == i)
-			{draw_big_pixel(master, PIXEL_SIZE, x * PIXEL_SIZE, y * PIXEL_SIZE, 0xFF0000);}
-
+			{
+				draw_big_pixel(master, PIXEL_SIZE, (t_intvector){x * PIXEL_SIZE,
+					y * PIXEL_SIZE}, 0x3c3c3c);
+			}
+			if ((int)master->render.pos.x == area->ini_x
+				&& (int)master->render.pos.y == i)
+			{
+				draw_big_pixel(master, PIXEL_SIZE, (t_intvector){x * PIXEL_SIZE,
+					y * PIXEL_SIZE}, 0xFF0000);
+			}
 			i++;
 			x++;
 		}
@@ -53,16 +60,10 @@ void	draw_small_map(t_master *master)
 
 	size.height = get_height_player_line(master) - 1;
 	size.width = get_width_player_line(master) - 1;
-
-	////////////////////////////////////////////////////////////// set area ==
 	area = (t_area){0, 0, 0, 0};
 	extra = (t_area){0, 0, 0, 0};
 	set_area_value(master, &size, &area, &extra);
-
-	////////////////////////////////////////////////////////////// adjust area
 	adjust_initial_area_values(master, &area, &extra);
 	adjust_final_area_values(master, &area, &extra);
-
-	////////////////////////////////////////////////////////////// draw map
 	draw_map(master, &area);
 }
