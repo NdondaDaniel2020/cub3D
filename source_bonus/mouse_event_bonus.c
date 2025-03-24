@@ -19,13 +19,13 @@ int	mousemove(int x, int y, t_master *master)
 
 	div = 4;
 	(void)y;
-	if (posx < x)
+	if (posx > x)
 	{
 		master->render.dir = rotate_vector(master->render.dir, (SPEED / div));
 		master->render.plane = rotate_vector(master->render.plane, (SPEED
 					/ div));
 	}
-	else if (posx > x)
+	else if (posx < x)
 	{
 		master->render.dir = rotate_vector(master->render.dir, -(SPEED / div));
 		master->render.plane = rotate_vector(master->render.plane, -(SPEED

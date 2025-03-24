@@ -139,6 +139,34 @@ typedef struct s_texture
 	unsigned int	color;
 }					t_texture;
 
+typedef struct s_area
+{
+	int	ini_x;
+	int	ini_y;
+	int	end_x;
+	int	end_y;
+}		t_area;
+
+typedef struct s_size
+{
+	int	width;
+	int	height;
+}		t_size;
+
+typedef struct s_bresenham
+{
+	int	x_ini;
+	int	y_ini;
+	int	x_end;
+	int	y_end;
+	int	inc_x;
+	int	inc_y;
+    int	dx;
+	int	dy;
+	int	x;
+	int	y;
+}		t_bresenham;
+
 // FUNCTIONS
 t_map				*ft_read_file(char *filepath);
 t_master			*get_master(t_map *map);
@@ -211,5 +239,23 @@ void				ft_free_master(t_master *master);
 int					ft_freematriz(char **mat);
 void				clear(t_data *data);
 void				free_textures(t_master *master);
+
+// set small area value
+int					get_height_player_line(t_master *master);
+int					get_width_player_line(t_master *master);
+void				draw_small_map(t_master *master);
+void				set_area_value(t_master *master,
+						t_size	*size, t_area *area, t_area *extra);
+void				adjust_initial_area_values(t_master *master,
+						t_area *area, t_area *extra);
+void				adjust_final_area_values(t_master *master,
+						t_area *area, t_area *extra);
+
+//
+void				init_bresenham(t_bresenham *bresenham);
+void				draw_big_pixel(t_master *master, int size, int x, int y, int color); /* falha */
+void				draw_positive_straight_line(t_master *master, t_bresenham *bresenham, int size, int color);
+void				draw_negative_straight_line(t_master *master, t_bresenham *bresenham, int size, int color);
+void				draw_straight_line(t_master *master, t_bresenham *line, int size, int color);
 
 #endif
