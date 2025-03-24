@@ -2,12 +2,9 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   set_small_map_area_value_bouns.c                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          #+#  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmatondo <nmatondo@student.42.fr>          #+#  +:+        +#+       */
+/*                                                +#+#+#+#+#+	+#+           */
 /*   Created: 2025-03-20 12:10:04 by nmatondo          #+#    #+#             */
 /*   Updated: 2025-03-20 12:10:04 by nmatondo         ###   ########.fr       */
 /*                                                                            */
