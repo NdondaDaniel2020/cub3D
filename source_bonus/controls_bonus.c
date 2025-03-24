@@ -91,6 +91,7 @@ int	controls(void *vars)
 	move_y(master);
 	move_x(master);
 	renderization(&master->render, master, &master->img);
+	draw_small_map(master);
 	mlx_put_image_to_window(master->render.mlx, master->render.win,
 		master->img.img, 0, 0);
 	return (0);
