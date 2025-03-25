@@ -253,7 +253,7 @@ void				adjust_final_area_values(t_master *master,
 
 //
 void				init_bresenham(t_bresenham *bresenham);
-void				draw_big_pixel(t_master *master, int size, int x, int y, int color); /* falha */
+void				draw_big_pixel(t_master *master, int size, t_vector pos, int color);
 void				draw_positive_straight_line(t_master *master, t_bresenham *bresenham, int size, int color);
 void				draw_negative_straight_line(t_master *master, t_bresenham *bresenham, int size, int color);
 void				draw_straight_line(t_master *master, t_bresenham *line, int size, int color);
