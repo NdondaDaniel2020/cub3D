@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/24 12:35:05 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:04:33 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ int	rotate_y(t_master *master)
 		master->view_high += SPEED * ROTATE_SPEED;
 	if (master->keyboard.r_down)
 		master->view_high -= SPEED * ROTATE_SPEED;
-	if (master->view_high > LIMIT_HIGH_VIEW)
-		master->view_high = LIMIT_HIGH_VIEW;
-	if (master->view_high < -LIMIT_HIGH_VIEW)
-		master->view_high = -LIMIT_HIGH_VIEW;
+	if (master->view_high > SCREEN_HEIGHT / 3)
+		master->view_high = SCREEN_HEIGHT / 3;
+	if (master->view_high < -SCREEN_HEIGHT / 3)
+		master->view_high = -SCREEN_HEIGHT / 3;
 	return (0);
 }
 

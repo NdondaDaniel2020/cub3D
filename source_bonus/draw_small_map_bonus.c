@@ -6,12 +6,12 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:10:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/24 12:42:12 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:42:28 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
-#define PIXEL_SIZE 10
+#define PIXEL_SIZE 5
 
 void	draw_map(t_master *master, t_area *area)
 {
