@@ -12,7 +12,7 @@
 
 #include "../includes/cub3D_bonus.h"
 
-void	draw_map_border(t_master *master, t_area *area)
+static void	draw_map_border(t_master *master, t_area *area)
 {
 	t_vector	pos;
 	t_bresenham	line;
@@ -41,7 +41,7 @@ void	draw_map_border(t_master *master, t_area *area)
 	draw_straight_line(master, &line, 3, 0x2471a3);
 }
 
-void	draw_map(t_master *master, t_area *area)
+static void	draw_map(t_master *master, t_area *area)
 {
 	int			i1;
 	int			i2;
@@ -70,7 +70,7 @@ void	draw_map(t_master *master, t_area *area)
 	}
 }
 
-void	draw_player_util(t_master *master, int x, int y)
+static void	draw_player_util(t_master *master, int x, int y)
 {
 	t_vector	pos;
 	t_bresenham	line;
@@ -91,7 +91,7 @@ void	draw_player_util(t_master *master, int x, int y)
 	draw_straight_line(master, &line, PIXEL_SIZE / 10, 0x00ff00);
 }
 
-void	draw_player(t_master *master, t_area *area)
+static void	draw_player(t_master *master, t_area *area)
 {
 	int	x;
 	int	y;
