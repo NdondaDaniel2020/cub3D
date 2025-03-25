@@ -13,6 +13,35 @@
 #include "../includes/cub3D_bonus.h"
 #define PIXEL_SIZE 15
 
+void	draw_map_border(t_master *master, t_area *area)
+{
+	t_vector	pos;
+	t_bresenham	line;
+
+	pos.x = 1 * PIXEL_SIZE;
+	pos.y = 1 * PIXEL_SIZE;
+	line.y_ini = pos.y - 3;
+	line.x_ini = pos.x - 3;
+	line.y_end = pos.y - 3;
+	line.x_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	draw_straight_line(master, &line, 3, 0x2471a3);
+	line.y_ini = pos.y - 3;
+	line.x_ini = pos.x - 3;
+	line.y_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
+	line.x_end = pos.x - 3;
+	draw_straight_line(master, &line, 3, 0x2471a3);
+	line.y_ini = pos.y - 3;
+	line.x_ini = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	line.y_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
+	line.x_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	draw_straight_line(master, &line, 3, 0x2471a3);
+	line.y_ini = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
+	line.x_ini = pos.x - 3;
+	line.y_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
+	line.x_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	draw_straight_line(master, &line, 3, 0x2471a3);
+}
+
 void	draw_map(t_master *master, t_area *area)
 {
 	int i1;
@@ -56,6 +85,7 @@ void	draw_small_map(t_master *master)
 	adjust_initial_area_values(master, &area, &extra);
 	adjust_final_area_values(master, &area, &extra);
 
+	draw_map_border(master, &area);
 	draw_map(master, &area);
 
 }
