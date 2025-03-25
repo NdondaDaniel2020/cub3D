@@ -44,8 +44,8 @@ void	draw_map_border(t_master *master, t_area *area)
 
 void	draw_map(t_master *master, t_area *area)
 {
-	int i1;
-	int i2;
+	int			i1;
+	int			i2;
 	t_vector	aux;
 	t_vector	pos;
 
@@ -73,32 +73,31 @@ void	draw_map(t_master *master, t_area *area)
 
 void	draw_player_util(t_master *master, int x, int y)
 {
-	t_vector 	pos;
+	t_vector	pos;
 	t_bresenham	line;
-	int 		rest_x;
-	int 		rest_y;
+	int			rest_x;
+	int			rest_y;
 
 	rest_x = ((master->render.pos.y - (int)master->render.pos.y) * 10);
 	rest_y = ((master->render.pos.x - (int)master->render.pos.x) * 10);
 	pos.x = (x * PIXEL_SIZE) + rest_x;
 	pos.y = (y * PIXEL_SIZE) + rest_y;
-
 	draw_big_pixel(master, PIXEL_SIZE - 10, pos, 0xFF0000);
 	line.x_ini = (x * PIXEL_SIZE) + ((PIXEL_SIZE - 11) / 2) + rest_x;
 	line.y_ini = (y * PIXEL_SIZE) + ((PIXEL_SIZE - 11) / 2) + rest_y;
-	line.x_end = (x * PIXEL_SIZE) + ((PIXEL_SIZE - 11) / 2) + rest_x +
-	 (master->render.dir.y * (PIXEL_SIZE / 2 + 4));
-	line.y_end = (y * PIXEL_SIZE) + ((PIXEL_SIZE - 11) / 2) + rest_y +
-	 (master->render.dir.x * (PIXEL_SIZE / 2 + 4));
+	line.x_end = (x * PIXEL_SIZE) + ((PIXEL_SIZE - 11) / 2) + rest_x
+		+ (master->render.dir.y * (PIXEL_SIZE / 2 + 4));
+	line.y_end = (y * PIXEL_SIZE) + ((PIXEL_SIZE - 11) / 2) + rest_y
+		+ (master->render.dir.x * (PIXEL_SIZE / 2 + 4));
 	draw_straight_line(master, &line, PIXEL_SIZE / 10, 0x00ff00);
 }
 
 void	draw_player(t_master *master, t_area *area)
 {
-	int x;
-	int y;
-	int i1;
-	int i2;
+	int	x;
+	int	y;
+	int	i1;
+	int	i2;
 
 	y = 1;
 	i1 = area->ini_x;
@@ -108,7 +107,8 @@ void	draw_player(t_master *master, t_area *area)
 		i2 = area->ini_y;
 		while (i2 <= area->end_y)
 		{
-			if ((int)master->render.pos.x == i1 && (int)master->render.pos.y == i2)
+			if ((int)master->render.pos.x == i1
+				&& (int)master->render.pos.y == i2)
 				draw_player_util(master, x, y);
 			i2++;
 			x++;
@@ -131,7 +131,6 @@ void	draw_small_map(t_master *master)
 	set_area_value(master, &size, &area, &extra);
 	adjust_initial_area_values(master, &area, &extra);
 	adjust_final_area_values(master, &area, &extra);
-	
 	draw_map_border(master, &area);
 	draw_map(master, &area);
 	draw_player(master, &area);

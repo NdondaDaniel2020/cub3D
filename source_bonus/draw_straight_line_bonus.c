@@ -14,36 +14,36 @@
 
 void	draw_big_pixel(t_master *master, int size, t_vector pos, int color)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
-    while (i < size)
-    {
+	while (i < size)
+	{
 		j = 0;
-        while (j < size)
-        {
+		while (j < size)
+		{
 			my_mlx_pixel_put(&master->img, pos.x + i, pos.y + j, color);
 			j++;
-        }
+		}
 		i++;
-    }
+	}
 }
 
 void	init_bresenham(t_bresenham *bresenham)
 {
-    bresenham->dx = bresenham->x_end - bresenham->x_ini;
-    bresenham->dy = bresenham->y_end - bresenham->y_ini;
-    bresenham->x = bresenham->x_ini;
-    bresenham->y = bresenham->y_ini;
+	bresenham->dx = bresenham->x_end - bresenham->x_ini;
+	bresenham->dy = bresenham->y_end - bresenham->y_ini;
+	bresenham->x = bresenham->x_ini;
+	bresenham->y = bresenham->y_ini;
 	bresenham->inc_x = -1;
 	bresenham->inc_y = -1;
 	if (bresenham->dx > 0)
-    	bresenham->inc_x = 1;
+		bresenham->inc_x = 1;
 	if (bresenham->dy > 0)
-    	bresenham->inc_y = 1;
-    bresenham->dx = abs(bresenham->dx);
-    bresenham->dy = abs(bresenham->dy);
+		bresenham->inc_y = 1;
+	bresenham->dx = abs(bresenham->dx);
+	bresenham->dy = abs(bresenham->dy);
 }
 
 void	draw_positive_straight_line(t_master *master,
@@ -54,7 +54,8 @@ void	draw_positive_straight_line(t_master *master,
 
 	p = 2 * bresenham->dy - bresenham->dx;
 	while (bresenham->x != bresenham->x_end)
-{		pos.x = bresenham->x;
+	{
+		pos.x = bresenham->x;
 		pos.y = bresenham->y;
 		draw_big_pixel(master, size, pos, color);
 		bresenham->x += bresenham->inc_x;
@@ -71,7 +72,7 @@ void	draw_negative_straight_line(t_master *master,
 	t_bresenham *bresenham, int size, int color)
 {
 	int			p;
-	t_vector 	pos;
+	t_vector	pos;
 
 	p = 2 * bresenham->dx - bresenham->dy;
 	while (bresenham->y != bresenham->y_end)
@@ -92,7 +93,7 @@ void	draw_negative_straight_line(t_master *master,
 void	draw_straight_line(t_master *master,
 	t_bresenham *line, int size, int color)
 {
-	t_vector 	pos;
+	t_vector	pos;
 
 	init_bresenham(line);
 	if (line->dx > line->dy)
