@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:13:43 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/24 12:18:39 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:48:47 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,27 @@
 
 int	rotate_up(t_master *master, int div)
 {
-	master->view_high += (SPEED * ROTATE_SPEED) / div;
+	if (SPEED < 0.01)
+		master->view_high += ((SPEED * SCREEN_HEIGHT));
+	else
+		master->view_high += ((SPEED * SCREEN_HEIGHT) / div);
+	if (master->view_high == 0)
+		master->view_high += 1;
+	if (master->view_high > (SCREEN_HEIGHT / 3))
+		master->view_high = (SCREEN_HEIGHT / 3);
 	return (0);
 }
 
 int	rotate_down(t_master *master, int div)
 {
-	master->view_high -= (SPEED * ROTATE_SPEED) / div;
+	if (SPEED < 0.01)
+		master->view_high -= (SPEED * SCREEN_HEIGHT);
+	else
+		master->view_high -= (SPEED * SCREEN_HEIGHT) / div;
+	if (master->view_high == 0)
+		master->view_high -= 1;
+	if (master->view_high < -(SCREEN_HEIGHT / 3))
+		master->view_high = -(SCREEN_HEIGHT / 3);
 	return (0);
 }
 

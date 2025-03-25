@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/24 12:40:00 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:15:09 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ typedef struct s_master
 	t_data			img;
 	t_keyboard		keyboard;
 	t_intvector		wallmappos;
-	double			view_high;
+	int			view_high;
 }					t_master;
 
 typedef struct s_texture
