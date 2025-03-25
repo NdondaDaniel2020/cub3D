@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
-#define PIXEL_SIZE 15
 
 void	draw_map_border(t_master *master, t_area *area)
 {
