@@ -47,6 +47,7 @@
 # define LEFT 97
 # define RIGHT 100
 # define DOWN 115
+# define PIXEL_SIZE 20
 
 typedef struct s_map
 {
