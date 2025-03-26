@@ -10,16 +10,18 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME=cub3D
-BNAME=cub3D_bonus
+NAME = cub3D
+BNAME = cub3D_bonus
 
 W ?= 1200
 H ?= 800
 S ?= 0.02
 M ?= "Done"
-GAMESET= -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED=$(S)
-FLAGS= -Wall -Wextra -Werror  -g
-COMPILE= cc
+PX ?= $(shell echo "$(W) * 0.2 / 11" | bc)
+
+GAMESET = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)"
+FLAGS = -Wall -Wextra -Werror -g
+COMPILE = cc
 
 # DIRS
 INC_D = includes

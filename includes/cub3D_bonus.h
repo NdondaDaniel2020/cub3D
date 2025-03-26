@@ -37,6 +37,9 @@
 # if !defined SPEED
 #  define SPEED 0.010
 # endif
+# if !defined PIXEL_SIZE
+	# define PIXEL_SIZE 20
+# endif
 # define PI 3.14
 # define ESC 65307
 # define RRIGHT 65363
@@ -47,7 +50,6 @@
 # define LEFT 97
 # define RIGHT 100
 # define DOWN 115
-# define PIXEL_SIZE 20
 
 typedef struct s_map
 {
