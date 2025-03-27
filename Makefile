@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
+#    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/24 12:35:45 by aquissan         ###   ########.fr        #
+#    Updated: 2025/03/27 10:49:24 by nmatondo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ W ?= 1200
 H ?= 800
 S ?= 0.02
 M ?= "Done"
-PX ?= $(shell echo "$(W) * 0.2 / 11" | bc)
+PX ?= 21
+# PX ?= $(shell echo "$(W) * 0.2 / 11" | bc)
 
 GAMESET = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)"
 FLAGS = -Wall -Wextra -Werror -g
