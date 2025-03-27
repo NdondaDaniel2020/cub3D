@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/27 10:11:39 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/27 10:47:32 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 #  define SPEED 0.010
 # endif
 # if !defined PIXEL_SIZE
-	# define PIXEL_SIZE 20
+#  define PIXEL_SIZE 20
 # endif
 # define PI 3.14
 # define ROTATE_SPEED 500
@@ -132,7 +132,7 @@ typedef struct s_master
 	t_data			img;
 	t_keyboard		keyboard;
 	t_intvector		wallmappos;
-	int			view_high;
+	int				view_high;
 }					t_master;
 
 typedef struct s_texture
@@ -259,8 +259,12 @@ void				adjust_final_area_values(t_master *master, t_area *area,
 
 //
 void				init_bresenham(t_bresenham *bresenham);
-void				draw_big_pixel(t_master *master, int size, t_vector pos, int color);
-void				draw_positive_straight_line(t_master *master, t_bresenham *bresenham, int size, int color);
-void				draw_negative_straight_line(t_master *master, t_bresenham *bresenham, int size, int color);
-void				draw_straight_line(t_master *master, t_bresenham *line, int size, int color);
+void				draw_big_pixel(t_master *master, int size,
+						t_vector pos, int color);
+void				draw_positive_straight_line(t_master *master,
+						t_bresenham *bresenham, int size, int color);
+void				draw_negative_straight_line(t_master *master,
+						t_bresenham *bresenham, int size, int color);
+void				draw_straight_line(t_master *master, t_bresenham *line,
+						int size, int color);
 #endif
