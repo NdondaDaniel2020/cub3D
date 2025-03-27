@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_straight_line_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          #+#  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-03-20 12:10:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2025-03-20 12:10:04 by nmatondo         ###   ########.fr       */
+/*   Created: 2025/03/20 12:10:04 by nmatondo          #+#    #+#             */
+/*   Updated: 2025/03/27 10:13:22 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@ void	draw_big_pixel(t_master *master, int size, t_vector pos, int color)
 {
 	int	i;
 	int	j;
+	int	i;
+	int	j;
 
 	i = 0;
+	while (i < size)
+	{
 	while (i < size)
 	{
 		j = 0;
@@ -26,7 +30,9 @@ void	draw_big_pixel(t_master *master, int size, t_vector pos, int color)
 			my_mlx_pixel_put(&master->img, pos.x + i, pos.y + j, color);
 			j++;
 		}
+		}
 		i++;
+	}
 	}
 }
 
@@ -36,11 +42,19 @@ void	init_bresenham(t_bresenham *bresenham)
 	bresenham->dy = bresenham->y_end - bresenham->y_ini;
 	bresenham->x = bresenham->x_ini;
 	bresenham->y = bresenham->y_ini;
+	bresenham->dx = bresenham->x_end - bresenham->x_ini;
+	bresenham->dy = bresenham->y_end - bresenham->y_ini;
+	bresenham->x = bresenham->x_ini;
+	bresenham->y = bresenham->y_ini;
 	bresenham->inc_x = -1;
 	bresenham->inc_y = -1;
 	if (bresenham->dx > 0)
 		bresenham->inc_x = 1;
+		bresenham->inc_x = 1;
 	if (bresenham->dy > 0)
+		bresenham->inc_y = 1;
+	bresenham->dx = abs(bresenham->dx);
+	bresenham->dy = abs(bresenham->dy);
 		bresenham->inc_y = 1;
 	bresenham->dx = abs(bresenham->dx);
 	bresenham->dy = abs(bresenham->dy);
@@ -97,7 +111,9 @@ void	draw_straight_line(t_master *master,
 
 	init_bresenham(line);
 	if (line->dx > line->dy)
+	if (line->dx > line->dy)
 		draw_positive_straight_line(master, line, size, color);
+	else
 	else
 		draw_negative_straight_line(master, line, size, color);
 	pos.x = line->x;

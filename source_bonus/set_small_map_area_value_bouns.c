@@ -3,8 +3,8 @@
 /*                                                        :::      ::::::::   */
 /*   set_small_map_area_value_bouns.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          #+#  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*   By: nmatondo <nmatondo@student.42.fr>          #+#  +:+        +#+       */
+/*                                                +#+#+#+#+#+	+#+           */
 /*   Created: 2025-03-20 12:10:04 by nmatondo          #+#    #+#             */
 /*   Updated: 2025-03-20 12:10:04 by nmatondo         ###   ########.fr       */
 /*                                                                            */
@@ -25,6 +25,7 @@ int	get_height_player_line(t_master *master)
 int	get_width_player_line(t_master *master)
 {
 	int	i;
+	int	i;
 
 	i = 0;
 	while (master->campus[
@@ -33,8 +34,8 @@ int	get_width_player_line(t_master *master)
 	return (i);
 }
 
-void	set_area_value(t_master *master,
-	t_size	*size, t_area *area, t_area *extra)
+void	set_area_value(t_master *master, t_size *size, t_area *area,
+		t_area *extra)
 {
 	area->ini_x = (int)master->render.pos.x - 5;
 	if (area->ini_x < 0)
@@ -62,9 +63,10 @@ void	set_area_value(t_master *master,
 	}
 }
 
-void	adjust_initial_area_values(t_master *master,
-	t_area *area, t_area *extra)
+void	adjust_initial_area_values(t_master *master, t_area *area,
+		t_area *extra)
 {
+	int	i;
 	int	i;
 
 	if (extra->ini_x > 0)
@@ -83,9 +85,9 @@ void	adjust_initial_area_values(t_master *master,
 	}
 }
 
-void	adjust_final_area_values(t_master *master,
-	t_area *area, t_area *extra)
+void	adjust_final_area_values(t_master *master, t_area *area, t_area *extra)
 {
+	int	i;
 	int	i;
 
 	if (extra->end_x > 0)
