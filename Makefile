@@ -6,7 +6,7 @@
 #    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/27 10:49:24 by nmatondo         ###   ########.fr        #
+#    Updated: 2025/03/27 11:25:38 by nmatondo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,14 +35,11 @@ BOBJ_D=object_bonus
 
 RM=rm -rf 
 Mk=mkdir -p 
-
 FILES= main.c get_next_line.c get_next_line_utils.c check_map.c freeze.c gets.c\
 		utils_check.c utils.c check_walls.c utils2.c render.c controls.c dda.c\
 		extra.c draw.c
 SRC=$(addprefix $(SRC_D)/, $(FILES))
 OBJ=$(addprefix $(OBJ_D)/, $(FILES:.c=.o))
-
-
 
 BFILES= check_map_bonus.c get_next_line_utils_bonus.c check_walls_bonus.c gets_bonus.c \
 controls_bonus.c main_bonus.c dda_bonus.c render_bonus.c draw_bonus.c utils2_bonus.c \
@@ -51,8 +48,6 @@ mouse_event_bonus.c set_small_map_area_value_bouns.c draw_straight_line_bonus.c 
 draw_small_map_bonus.c hooks_bonus.c
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
-
-
 
 all: MLX LIBFT $(NAME)
 
