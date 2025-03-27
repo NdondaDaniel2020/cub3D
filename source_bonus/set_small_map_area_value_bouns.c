@@ -25,7 +25,6 @@ int	get_height_player_line(t_master *master)
 int	get_width_player_line(t_master *master)
 {
 	int	i;
-	int	i;
 
 	i = 0;
 	while (master->campus[
@@ -67,7 +66,6 @@ void	adjust_initial_area_values(t_master *master, t_area *area,
 		t_area *extra)
 {
 	int	i;
-	int	i;
 
 	if (extra->ini_x > 0)
 	{
@@ -87,7 +85,6 @@ void	adjust_initial_area_values(t_master *master, t_area *area,
 
 void	adjust_final_area_values(t_master *master, t_area *area, t_area *extra)
 {
-	int	i;
 	int	i;
 
 	if (extra->end_x > 0)
