@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/21 12:14:22 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/27 10:11:39 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 	# define PIXEL_SIZE 20
 # endif
 # define PI 3.14
+# define ROTATE_SPEED 500
+# define LIMIT_HIGH_VIEW 400
 # define ESC 65307
 # define RRIGHT 65363
 # define RUP 65362
@@ -130,6 +132,7 @@ typedef struct s_master
 	t_data			img;
 	t_keyboard		keyboard;
 	t_intvector		wallmappos;
+	int			view_high;
 }					t_master;
 
 typedef struct s_texture
@@ -144,31 +147,31 @@ typedef struct s_texture
 
 typedef struct s_area
 {
-	int	ini_x;
-	int	ini_y;
-	int	end_x;
-	int	end_y;
-}		t_area;
+	int				ini_x;
+	int				ini_y;
+	int				end_x;
+	int				end_y;
+}					t_area;
 
 typedef struct s_size
 {
-	int	width;
-	int	height;
-}		t_size;
+	int				width;
+	int				height;
+}					t_size;
 
 typedef struct s_bresenham
 {
-	int	x_ini;
-	int	y_ini;
-	int	x_end;
-	int	y_end;
-	int	inc_x;
-	int	inc_y;
-    int	dx;
-	int	dy;
-	int	x;
-	int	y;
-}		t_bresenham;
+	int				x_ini;
+	int				y_ini;
+	int				x_end;
+	int				y_end;
+	int				inc_x;
+	int				inc_y;
+	int				dx;
+	int				dy;
+	int				x;
+	int				y;
+}					t_bresenham;
 
 // FUNCTIONS
 t_map				*ft_read_file(char *filepath);
@@ -220,8 +223,8 @@ void				msg_error_image_not_found(int i, void *mlx, t_data *img);
 int					load_textures(void *mlx, t_data *img, t_master *master);
 unsigned int		get_color(int hitSide, t_texture *texture, t_data *img);
 int					get_texture_index(int hitSide, t_vector rayDir);
-int					get_draw_start_position(int lineHeight);
-int					get_draw_end_position(int lineHeight);
+int					get_draw_end_position(int wallheight, t_master *master);
+int					get_draw_start_position(int wallheight, t_master *master);
 void				draw_floor(t_intvector *pos, t_data *img, t_master *master);
 void				draw_ceiling(int drawStart, t_intvector *pos, t_data *img,
 						t_master *master);
@@ -247,12 +250,12 @@ void				free_textures(t_master *master);
 int					get_height_player_line(t_master *master);
 int					get_width_player_line(t_master *master);
 void				draw_small_map(t_master *master);
-void				set_area_value(t_master *master,
-						t_size	*size, t_area *area, t_area *extra);
-void				adjust_initial_area_values(t_master *master,
-						t_area *area, t_area *extra);
-void				adjust_final_area_values(t_master *master,
-						t_area *area, t_area *extra);
+void				set_area_value(t_master *master, t_size *size, t_area *area,
+						t_area *extra);
+void				adjust_initial_area_values(t_master *master, t_area *area,
+						t_area *extra);
+void				adjust_final_area_values(t_master *master, t_area *area,
+						t_area *extra);
 
 //
 void				init_bresenham(t_bresenham *bresenham);
@@ -260,5 +263,4 @@ void				draw_big_pixel(t_master *master, int size, t_vector pos, int color);
 void				draw_positive_straight_line(t_master *master, t_bresenham *bresenham, int size, int color);
 void				draw_negative_straight_line(t_master *master, t_bresenham *bresenham, int size, int color);
 void				draw_straight_line(t_master *master, t_bresenham *line, int size, int color);
-
 #endif

@@ -6,13 +6,13 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/21 12:13:23 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:04:33 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
 
-void	rotate(t_master *master)
+void	rotate_x(t_master *master)
 {
 	if (master->keyboard.r_right)
 	{
@@ -82,26 +82,31 @@ void	move_y(t_master *master)
 	}
 }
 
+int	rotate_y(t_master *master)
+{
+	if (master->keyboard.r_up)
+		master->view_high += SPEED * ROTATE_SPEED;
+	if (master->keyboard.r_down)
+		master->view_high -= SPEED * ROTATE_SPEED;
+	if (master->view_high > SCREEN_HEIGHT / 3)
+		master->view_high = SCREEN_HEIGHT / 3;
+	if (master->view_high < -SCREEN_HEIGHT / 3)
+		master->view_high = -SCREEN_HEIGHT / 3;
+	return (0);
+}
+
 int	controls(void *vars)
 {
 	t_master	*master;
 
 	master = (t_master *)vars;
-	rotate(master);
 	move_y(master);
 	move_x(master);
+	rotate_x(master);
+	rotate_y(master);
 	renderization(&master->render, master, &master->img);
 	draw_small_map(master);
 	mlx_put_image_to_window(master->render.mlx, master->render.win,
 		master->img.img, 0, 0);
-	return (0);
-}
-
-int	wait_hooks(t_master *master)
-{
-	mlx_hook(master->render.win, 2, 1L << 0, key_hook, master);
-	mlx_hook(master->render.win, 3, 1L << 1, key_release, master);
-	mlx_hook(master->render.win, 17, 1L << 1, key_exit, master);
-	mlx_hook(master->render.win, 6, 1L << 6, mousemove, master);
 	return (0);
 }

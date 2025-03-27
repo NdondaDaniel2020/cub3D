@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:45:57 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/20 11:47:45 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:00:39 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,21 @@ unsigned int	get_color(int hitSide, t_texture *texture, t_data *img)
 	return (color);
 }
 
-int	get_draw_start_position(int lineHeight)
+int	get_draw_start_position(int wallheight, t_master *master)
 {
 	int	drawstart;
 
-	drawstart = (SCREEN_HEIGHT / 2) - (lineHeight / 2);
+	drawstart = -wallheight / 2 + (SCREEN_HEIGHT / 2) + master->view_high;
 	if (drawstart < 0)
 		drawstart = 0;
 	return (drawstart);
 }
 
-int	get_draw_end_position(int lineHeight)
+int	get_draw_end_position(int wallheight, t_master *master)
 {
 	int	draw_end;
 
-	draw_end = (SCREEN_HEIGHT / 2) + (lineHeight / 2);
+	draw_end = wallheight / 2 + (SCREEN_HEIGHT / 2) + master->view_high;
 	if (draw_end > SCREEN_HEIGHT)
 		draw_end = SCREEN_HEIGHT;
 	return (draw_end);

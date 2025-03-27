@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/21 12:15:17 by aquissan         ###   ########.fr        #
+#    Updated: 2025/03/24 12:35:45 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ BFILES= check_map_bonus.c get_next_line_utils_bonus.c check_walls_bonus.c gets_b
 controls_bonus.c main_bonus.c dda_bonus.c render_bonus.c draw_bonus.c utils2_bonus.c \
 extra_bonus.c utils_bonus.c freeze_bonus.c utils_check.c get_next_line_bonus.c door_bonus.c \
 mouse_event_bonus.c set_small_map_area_value_bouns.c draw_straight_line_bonus.c \
-draw_small_map_bonus.c
+draw_small_map_bonus.c hooks_bonus.c
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
 
