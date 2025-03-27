@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:10:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/27 10:13:10 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:22:11 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	draw_map(t_master *master, t_area *area)
 	}
 }
 
-static void	draw_player_util(t_master *master, int x, int y)
+static void	draw_small_player_util(t_master *master, int x, int y)
 {
 	t_vector	pos;
 	t_bresenham	line;
@@ -91,7 +91,7 @@ static void	draw_player_util(t_master *master, int x, int y)
 	draw_straight_line(master, &line, PIXEL_SIZE / 10, 0x00ff00);
 }
 
-static void	draw_player(t_master *master, t_area *area)
+static void	draw_small_player(t_master *master, t_area *area)
 {
 	int	x;
 	int	y;
@@ -108,7 +108,7 @@ static void	draw_player(t_master *master, t_area *area)
 		{
 			if ((int)master->render.pos.x == i1
 				&& (int)master->render.pos.y == i2)
-				draw_player_util(master, x, y);
+				draw_small_player_util(master, x, y);
 			i2++;
 			x++;
 		}
@@ -132,5 +132,5 @@ void	draw_small_map(t_master *master)
 	adjust_final_area_values(master, &area, &extra);
 	draw_map_border(master, &area);
 	draw_map(master, &area);
-	draw_player(master, &area);
+	draw_small_player(master, &area);
 }
