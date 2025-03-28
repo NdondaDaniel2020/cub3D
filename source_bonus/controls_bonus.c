@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/24 19:04:33 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:30:06 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int	controls(void *vars)
 	rotate_y(master);
 	renderization(&master->render, master, &master->img);
 	draw_small_map(master);
+	draw_player(master);
 	mlx_put_image_to_window(master->render.mlx, master->render.win,
 		master->img.img, 0, 0);
 	return (0);

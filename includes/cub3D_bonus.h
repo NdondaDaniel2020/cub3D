@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/27 10:47:32 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:22:58 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@
 # define LEFT 97
 # define RIGHT 100
 # define DOWN 115
+# define WEAPON_TYPES 6
+# define ACTION_TYPES 3
+# define IMAGE_COUNT 14
 
 typedef struct s_map
 {
@@ -96,10 +99,18 @@ typedef struct s_data
 	char			*tex_paths[4];
 	int				tex_width[4];
 	int				tex_height[4];
-
 	int				tex_endian[4];
 	int				tex_line_length[4];
 	int				tex_bits_per_pixel[4];
+
+	void			*player_texture[5][3][13];
+	char			*player_texture_addr[5][3][13];
+	char			*player_texture_paths[5][3][13];
+	int				player_texture_width[5][3][13];
+	int				player_texture_height[5][3][13];
+	int				player_texture_endian[5][3][13];
+	int				player_texture_line_length[5][3][13];
+	int				player_texture_bits_per_pixel[5][3][13];
 }					t_data;
 
 typedef struct s_minilib
@@ -172,6 +183,15 @@ typedef struct s_bresenham
 	int				x;
 	int				y;
 }					t_bresenham;
+
+typedef struct s_3d
+{
+	int	m;
+	int	l;
+	int	c;
+}		t_3d;
+
+typedef char	*t_texture_paths[6][3][14];
 
 // FUNCTIONS
 t_map				*ft_read_file(char *filepath);
@@ -257,7 +277,7 @@ void				adjust_initial_area_values(t_master *master, t_area *area,
 void				adjust_final_area_values(t_master *master, t_area *area,
 						t_area *extra);
 
-//
+// draw small map
 void				init_bresenham(t_bresenham *bresenham);
 void				draw_big_pixel(t_master *master, int size,
 						t_vector pos, int color);
@@ -267,4 +287,15 @@ void				draw_negative_straight_line(t_master *master,
 						t_bresenham *bresenham, int size, int color);
 void				draw_straight_line(t_master *master, t_bresenham *line,
 						int size, int color);
+
+// draw player
+char				**escopeta_dupla(void);
+char				**escopeta(void);
+char				**pistola(void);
+char				**lupara(void);
+char				**mgun(void);
+int					load_player_texture(void *mlx, t_data *img);
+
+void				draw_player(t_master *master);
+
 #endif
