@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_path_bonus.c                                 :+:      :+:    :+:   */
+/*   player_image_path_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/28 20:03:50 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/28 20:34:09 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ char	**lupara(void)
 char	**mgun(void)
 {
 	static char	*mgun_path[][14] = {
-	{"mgun/disparar/mgun_1.png", "mgun/disparar/mgun_2.png",
-		"mgun/disparar/mgun_3.png", "mgun/disparar/mgun_4.png",
-		"mgun/disparar/mgun_5.png", "mgun/disparar/mgun_6.png",
+	{"mgun/disparar/mgun_1.xpm", "mgun/disparar/mgun_2.xpm",
+		"mgun/disparar/mgun_3.xpm", "mgun/disparar/mgun_4.xpm",
+		"mgun/disparar/mgun_5.xpm", "mgun/disparar/mgun_6.xpm",
 		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"mgun/move/mgun_1.png", "mgun/move/mgun_2.png",
-		"mgun/move/mgun_3.png", "mgun/move/mgun_4.png",
-		"mgun/move/mgun_5.png", "mgun/move/mgun_6.png",
+	{"mgun/move/mgun_1.xpm", "mgun/move/mgun_2.xpm",
+		"mgun/move/mgun_3.xpm", "mgun/move/mgun_4.xpm",
+		"mgun/move/mgun_5.xpm", "mgun/move/mgun_6.xpm",
 		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-	{"mgun/parado/mgun_1.png", "mgun/parado/mgun_2.png",
-		"mgun/parado/mgun_3.png", "mgun/parado/mgun_4.png",
-		"mgun/parado/mgun_5.png", "mgun/parado/mgun_6.png",
+	{"mgun/parado/mgun_1.xpm", "mgun/parado/mgun_2.xpm",
+		"mgun/parado/mgun_3.xpm", "mgun/parado/mgun_4.xpm",
+		"mgun/parado/mgun_5.xpm", "mgun/parado/mgun_6.xpm",
 		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}
 	};
 

@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/28 20:08:12 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/28 20:28:24 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,24 @@
 
 static int	load_player_texture_util(void *mlx, t_data *img, t_3d dim)
 {
-	// (void)mlx;
-	printf("%s\n", img->player_texture_paths[dim.m][dim.l][dim.c]);
+	char	*path;
+	
+	path = ft_strjoin("textures/player/", img->player_texture_paths[dim.m][dim.l][dim.c]);
 	img->player_texture[dim.m][dim.l][dim.c] = mlx_xpm_file_to_image(mlx,
-			img->player_texture_paths[dim.m][dim.l][dim.c],
+			path,
 			&img->player_texture_width[dim.m][dim.l][dim.c],
 			&img->player_texture_height[dim.m][dim.l][dim.c]);
 	if (!img->player_texture[dim.m][dim.l][dim.c])
 	{
-		printf("Error loading texture\n");
-		return (1);
+		printf("Error loading texture [%s]\n", path);
+		return (free(path), 1);
 	}
 	img->player_texture_addr[dim.m][dim.l][dim.c] = mlx_get_data_addr(
 			img->player_texture[dim.m][dim.l][dim.c],
 			&img->player_texture_bits_per_pixel[dim.m][dim.l][dim.c],
 			&img->player_texture_line_length[dim.m][dim.l][dim.c],
 			&img->player_texture_endian[dim.m][dim.l][dim.c]);
-	return (0);
+	return (free(path), 0);
 }
 
 static t_texture_paths	*path_player_images(void)
