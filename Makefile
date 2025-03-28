@@ -6,7 +6,7 @@
 #    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/28 18:20:07 by nmatondo         ###   ########.fr        #
+#    Updated: 2025/03/28 20:23:22 by nmatondo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ controls_bonus.c main_bonus.c dda_bonus.c render_bonus.c draw_bonus.c utils2_bon
 extra_bonus.c utils_bonus.c freeze_bonus.c utils_check.c get_next_line_bonus.c door_bonus.c \
 mouse_event_bonus.c set_small_map_area_value_bouns.c draw_straight_line_bonus.c \
 draw_small_map_bonus.c hooks_bonus.c draw_player_bonus.c load_player_texture_bonus.c \
-image_path_bonus.c
+player_image_path_bonus.c 
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
 
