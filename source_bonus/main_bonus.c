@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:29:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/20 11:47:56 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/28 12:47:39 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ int	ft_game(t_master *master)
 	if (!render.mlx)
 		return (ft_free_master(master), printerror("Display property no set"),
 			1);
+
+	load_player_texture(render.mlx, &img);
+
 	if (load_textures(render.mlx, &img, master))
 		return (mlx_destroy_display(render.mlx), free(render.mlx),
 			ft_free_master(master), exit(1), 1);
