@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/29 17:08:39 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:34:05 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,5 +300,5 @@ int					load_player_texture(void *mlx, t_data *img);
 void				init_data_struct(t_data *data);
 void				draw_player(t_master *master);
 int					get_image_quantity_by_weapon_type(int index);
-
+int					load_all_texteres(void *mlx, t_data *img, t_master *master);
 #endif

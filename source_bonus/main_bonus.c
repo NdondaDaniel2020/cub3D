@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:29:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/29 16:55:31 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:38:47 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,15 @@ int	ft_game(t_master *master)
 	render.pos = (t_vector){render.pos.x + 0.5, render.pos.y + 0.5};
 	render.mlx = mlx_init();
 	if (!render.mlx)
-		return (ft_free_master(master), printerror("Display property no set"),
-			1);
-
-			
-	if (load_textures(render.mlx, &img, master) || load_player_texture(render.mlx, &img))
+		return (ft_free_master(master), printerror("Connection failed mlx"), 1);
+	if (load_all_texteres(render.mlx, &img, master))
 		return (mlx_destroy_display(render.mlx), free(render.mlx),
 			ft_free_master(master), exit(1), 1);
-
-			
 	render.win = mlx_new_window(render.mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"ODYSSEY 2.0");
 	img.img = mlx_new_image(render.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
+			&img.line_length, &img.endian);
 	master->render = render;
 	master->img = img;
 	wait_hooks(master);

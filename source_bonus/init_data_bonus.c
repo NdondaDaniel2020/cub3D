@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:47:07 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/29 15:50:37 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:17:58 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	init_texture(t_data *data)
 {
-	int i;	
+	int	i;
 
 	i = 0;
 	while (i < 4)

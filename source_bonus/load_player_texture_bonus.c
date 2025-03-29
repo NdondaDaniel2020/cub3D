@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/29 17:10:17 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:17:11 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	load_player_texture_util(void *mlx, t_data *img, t_3d dim)
 	if (!img->player_texture[dim.m][dim.l][dim.c])
 	{
 		error_message_player_image_not_found(mlx, img, dim,
-				img->player_texture_paths[dim.m][dim.l][dim.c]);
+			img->player_texture_paths[dim.m][dim.l][dim.c]);
 		return (printerror(path), free(path), 1);
 	}
 	img->player_texture_addr[dim.m][dim.l][dim.c] = mlx_get_data_addr(
