@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freeze_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:20:22 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/20 11:47:24 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:08:07 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_freematriz(char **mat)
 	return (i);
 }
 
-void	free_textures(t_master *master)
+int	free_textures(t_master *master)
 {
 	int	i;
 
@@ -64,4 +64,32 @@ void	free_textures(t_master *master)
 		mlx_destroy_image(master->render.mlx, master->img.textures[i]);
 		i++;
 	}
+	return (0);
+}
+
+int	free_player_texture(t_master *master)
+{
+	int		len;
+	t_3d	dim;
+
+	dim.m = 0;
+	while (dim.m < 5)
+	{
+		dim.l = 0;
+		len = get_image_quantity_by_weapon_type(dim.m);
+		while (dim.l < 3)
+		{
+			dim.c = 0;
+			while (dim.c < len)
+			{
+				if (master->img.player_texture[dim.m][dim.l][dim.c])
+					mlx_destroy_image(master->render.mlx,
+						master->img.player_texture[dim.m][dim.l][dim.c]);
+				dim.c++;
+			}
+			dim.l++;
+		}
+		dim.m++;
+	}
+	return (0);
 }
