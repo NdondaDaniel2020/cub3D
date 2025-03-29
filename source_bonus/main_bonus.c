@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:29:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/28 12:47:39 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/29 16:55:31 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	key_hook(int keycode, t_master *master)
 {
 	if (keycode == ESC)
 	{
-		free_textures(master);
-		mlx_destroy_image(master->render.mlx, master->img.img);
-		mlx_destroy_window(master->render.mlx, master->render.win);
-		mlx_destroy_display(master->render.mlx);
-		return (free(master->render.mlx), ft_free_master(master), exit(0), 0);
+		return (free_textures(master), free_player_texture(master),
+			mlx_destroy_image(master->render.mlx, master->img.img),
+			mlx_destroy_window(master->render.mlx, master->render.win),
+			mlx_destroy_display(master->render.mlx), free(master->render.mlx),
+			ft_free_master(master), exit(0), 0);
 	}
 	if (keycode == RRIGHT)
 		master->keyboard.r_right = true;
@@ -96,6 +96,7 @@ int	ft_game(t_master *master)
 	t_minilib	render;
 	t_data		img;
 
+	init_data_struct(&img);
 	render = set_cardial(master);
 	render.pos = get_player_pos(master->campus);
 	render.pos = (t_vector){render.pos.x + 0.5, render.pos.y + 0.5};
@@ -104,11 +105,12 @@ int	ft_game(t_master *master)
 		return (ft_free_master(master), printerror("Display property no set"),
 			1);
 
-	load_player_texture(render.mlx, &img);
-
-	if (load_textures(render.mlx, &img, master))
+			
+	if (load_textures(render.mlx, &img, master) || load_player_texture(render.mlx, &img))
 		return (mlx_destroy_display(render.mlx), free(render.mlx),
 			ft_free_master(master), exit(1), 1);
+
+			
 	render.win = mlx_new_window(render.mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"ODYSSEY 2.0");
 	img.img = mlx_new_image(render.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);

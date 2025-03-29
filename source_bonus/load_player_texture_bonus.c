@@ -6,25 +6,55 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/28 20:28:24 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:10:17 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
 
-static int	load_player_texture_util(void *mlx, t_data *img, t_3d dim)
+void	error_message_player_image_not_found(void *mlx,
+	t_data *img, t_3d dim, char *path)
+{
+	while (dim.m >= 0)
+	{
+		if (dim.l < 0)
+			dim.l = get_image_quantity_by_weapon_type(dim.m);
+		while (dim.l >= 0)
+		{
+			if (dim.c < 0)
+				dim.c = 12;
+			while (dim.c >= 0)
+			{
+				if (ft_strcmp(path, img->player_texture_paths[dim.m][dim.l]
+					[dim.c]) != 0 && ft_strlen(path) != ft_strlen(
+						img->player_texture_paths[dim.m][dim.l][dim.c]))
+					mlx_destroy_image(mlx,
+						img->player_texture[dim.m][dim.l][dim.c]);
+				dim.c--;
+			}
+			dim.l--;
+		}
+		dim.m--;
+	}
+	dim.c = 0;
+	while (dim.c < 4)
+		mlx_destroy_image(mlx, img->textures[dim.c++]);
+}
+
+int	load_player_texture_util(void *mlx, t_data *img, t_3d dim)
 {
 	char	*path;
-	
-	path = ft_strjoin("textures/player/", img->player_texture_paths[dim.m][dim.l][dim.c]);
-	img->player_texture[dim.m][dim.l][dim.c] = mlx_xpm_file_to_image(mlx,
-			path,
+
+	path = ft_strjoin("textures/player/",
+			img->player_texture_paths[dim.m][dim.l][dim.c]);
+	img->player_texture[dim.m][dim.l][dim.c] = mlx_xpm_file_to_image(mlx, path,
 			&img->player_texture_width[dim.m][dim.l][dim.c],
 			&img->player_texture_height[dim.m][dim.l][dim.c]);
 	if (!img->player_texture[dim.m][dim.l][dim.c])
 	{
-		printf("Error loading texture [%s]\n", path);
-		return (free(path), 1);
+		error_message_player_image_not_found(mlx, img, dim,
+				img->player_texture_paths[dim.m][dim.l][dim.c]);
+		return (printerror(path), free(path), 1);
 	}
 	img->player_texture_addr[dim.m][dim.l][dim.c] = mlx_get_data_addr(
 			img->player_texture[dim.m][dim.l][dim.c],
@@ -83,19 +113,6 @@ static void	set_path_of_player_images(t_data *img)
 	}
 }
 
-static int	get_image_quantity(int index)
-{
-	if (index == 0)
-		return (13);
-	if (index == 1)
-		return (5);
-	if (index == 2 || index == 4)
-		return (6);
-	if (index == 3)
-		return (12);
-	return (6);
-}
-
 int	load_player_texture(void *mlx, t_data *img)
 {
 	int		len;
@@ -106,7 +123,7 @@ int	load_player_texture(void *mlx, t_data *img)
 	while (dim.m < 5)
 	{
 		dim.l = 0;
-		len = get_image_quantity(dim.m);
+		len = get_image_quantity_by_weapon_type(dim.m);
 		while (dim.l < 3)
 		{
 			dim.c = 0;

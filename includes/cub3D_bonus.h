@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/28 18:22:58 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/29 17:08:39 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,7 +264,8 @@ void				ft_free_stack(t_map *map);
 void				ft_free_master(t_master *master);
 int					ft_freematriz(char **mat);
 void				clear(t_data *data);
-void				free_textures(t_master *master);
+int					free_textures(t_master *master);
+int					free_player_texture(t_master *master);
 
 // set small area value
 int					get_height_player_line(t_master *master);
@@ -296,6 +297,8 @@ char				**lupara(void);
 char				**mgun(void);
 int					load_player_texture(void *mlx, t_data *img);
 
+void				init_data_struct(t_data *data);
 void				draw_player(t_master *master);
+int					get_image_quantity_by_weapon_type(int index);
 
 #endif
