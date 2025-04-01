@@ -6,7 +6,7 @@
 #    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/03/29 17:10:56 by nmatondo         ###   ########.fr        #
+#    Updated: 2025/04/01 15:46:40 by nmatondo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ W ?= 1200
 H ?= 800
 S ?= 0.02
 M ?= "Done"
-PX ?= 21
+PX ?= 18
 # PX ?= $(shell echo "$(W) * 0.2 / 11" | bc)
 
 GAMESET = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)"
@@ -46,7 +46,8 @@ controls_bonus.c main_bonus.c dda_bonus.c render_bonus.c draw_bonus.c utils2_bon
 extra_bonus.c utils_bonus.c freeze_bonus.c utils_check.c get_next_line_bonus.c door_bonus.c \
 mouse_event_bonus.c set_small_map_area_value_bouns.c draw_straight_line_bonus.c \
 draw_small_map_bonus.c hooks_bonus.c draw_player_bonus.c load_player_texture_bonus.c \
-player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c 
+player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c draw_crosshair.c \
+player_animation.c player_texture_configuration.c
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
 
