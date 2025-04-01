@@ -6,61 +6,11 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:29:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/29 17:38:47 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:50:09 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
-
-int	key_hook(int keycode, t_master *master)
-{
-	if (keycode == ESC)
-	{
-		return (free_textures(master), free_player_texture(master),
-			mlx_destroy_image(master->render.mlx, master->img.img),
-			mlx_destroy_window(master->render.mlx, master->render.win),
-			mlx_destroy_display(master->render.mlx), free(master->render.mlx),
-			ft_free_master(master), exit(0), 0);
-	}
-	if (keycode == RRIGHT)
-		master->keyboard.r_right = true;
-	if (keycode == RUP)
-		master->keyboard.r_up = true;
-	if (keycode == RDOWN)
-		master->keyboard.r_down = true;
-	if (keycode == RLEFT)
-		master->keyboard.r_left = true;
-	if (keycode == RIGHT)
-		master->keyboard.right = true;
-	if (keycode == DOWN)
-		master->keyboard.down = true;
-	if (keycode == UP)
-		master->keyboard.up = true;
-	if (keycode == LEFT)
-		master->keyboard.left = true;
-	return (0);
-}
-
-int	key_release(int keycode, t_master *master)
-{
-	if (keycode == RRIGHT)
-		master->keyboard.r_right = false;
-	if (keycode == RUP)
-		master->keyboard.r_up = false;
-	if (keycode == RDOWN)
-		master->keyboard.r_down = false;
-	if (keycode == RLEFT)
-		master->keyboard.r_left = false;
-	if (keycode == RIGHT)
-		master->keyboard.right = false;
-	if (keycode == DOWN)
-		master->keyboard.down = false;
-	if (keycode == UP)
-		master->keyboard.up = false;
-	if (keycode == LEFT)
-		master->keyboard.left = false;
-	return (0);
-}
 
 t_minilib	set_cardial(t_master *master)
 {
@@ -102,7 +52,7 @@ int	ft_game(t_master *master)
 	render.pos = (t_vector){render.pos.x + 0.5, render.pos.y + 0.5};
 	render.mlx = mlx_init();
 	if (!render.mlx)
-		return (ft_free_master(master), printerror("Connection failed mlx"), 1);
+		return (ft_free_master(master), printerror("Connection mlx failed"), 1);
 	if (load_all_texteres(render.mlx, &img, master))
 		return (mlx_destroy_display(render.mlx), free(render.mlx),
 			ft_free_master(master), exit(1), 1);

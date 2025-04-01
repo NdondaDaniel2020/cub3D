@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/27 11:30:06 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:01:04 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	controls(void *vars)
 	t_master	*master;
 
 	master = (t_master *)vars;
+	player_animation(master);
 	move_y(master);
 	move_x(master);
 	rotate_x(master);
@@ -107,6 +108,7 @@ int	controls(void *vars)
 	renderization(&master->render, master, &master->img);
 	draw_small_map(master);
 	draw_player(master);
+	draw_crosshair(master);
 	mlx_put_image_to_window(master->render.mlx, master->render.win,
 		master->img.img, 0, 0);
 	return (0);

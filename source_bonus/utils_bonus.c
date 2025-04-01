@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/24 10:49:15 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:26:22 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ int	initializedefault(t_master *master)
 	master->no = NULL;
 	master->campus = NULL;
 	master->keyboard = (t_keyboard){false, false, false, false, false, false,
-		false, false};
+		false, false, false, false};
 	master->view_high = 0;
+	master->dimension = (t_3d){0, 2, 0};
+	master->time_animation = 0;
+	master->limit_time_animation = 10;
 	return (0);
 }

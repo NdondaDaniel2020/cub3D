@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/29 17:34:05 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:48:35 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@
 # define WEAPON_TYPES 6
 # define ACTION_TYPES 3
 # define IMAGE_COUNT 14
+# define ONE 49
+# define TWO 50 
+# define THREE 51
+# define FOUR 52
+# define FIVE 53
+# define SIX 54
+# define SEVEN 55
+# define EIGHT 56
+# define SZERO 65438
+# define LCTRL 65508
 
 typedef struct s_map
 {
@@ -84,6 +94,8 @@ typedef struct s_keyboard
 	bool			r_left;
 	bool			r_down;
 	bool			r_up;
+	bool			mouse_left;
+	bool			mouse_right;
 }					t_keyboard;
 
 typedef struct s_data
@@ -129,6 +141,13 @@ typedef struct s_minilib
 	t_vector		raydir;
 }					t_minilib;
 
+typedef struct s_3d
+{
+	int	m;
+	int	l;
+	int	c;
+}		t_3d;
+
 typedef struct s_master
 {
 	int				wrongmap;
@@ -144,6 +163,9 @@ typedef struct s_master
 	t_keyboard		keyboard;
 	t_intvector		wallmappos;
 	int				view_high;
+	t_3d			dimension;
+	int				time_animation;
+	int				limit_time_animation;
 }					t_master;
 
 typedef struct s_texture
@@ -184,12 +206,19 @@ typedef struct s_bresenham
 	int				y;
 }					t_bresenham;
 
-typedef struct s_3d
+typedef struct s_texture_player
 {
-	int	m;
-	int	l;
-	int	c;
-}		t_3d;
+	float	scale;
+	int		color;
+	int		orig_width;
+	int		orig_height;
+	int		new_width;
+	int		new_height;
+	int		start_x;
+	int		start_y;
+	int		src_x;
+	int		src_y;
+}			t_texture_player;
 
 typedef char	*t_texture_paths[6][3][14];
 
@@ -301,4 +330,12 @@ void				init_data_struct(t_data *data);
 void				draw_player(t_master *master);
 int					get_image_quantity_by_weapon_type(int index);
 int					load_all_texteres(void *mlx, t_data *img, t_master *master);
+void				draw_crosshair(t_master *master);
+void				player_animation(t_master *master);
+
+void				escopeta_texture_setting(t_texture_player *texture_player, t_master *master);
+void				lupara_texture_setting(t_texture_player *texture_player, t_master *master);
+void				mgun_texture_setting(t_texture_player *texture_player, t_master *master);
+void				escopeta_dupla_texture_setting(t_texture_player *texture_player, t_master *master);
+void				pistola_texture_setting(t_texture_player *texture_player, t_master *master);
 #endif
