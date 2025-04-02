@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/01 15:48:35 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/02 08:49:22 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,9 +333,15 @@ int					load_all_texteres(void *mlx, t_data *img, t_master *master);
 void				draw_crosshair(t_master *master);
 void				player_animation(t_master *master);
 
-void				escopeta_texture_setting(t_texture_player *texture_player, t_master *master);
-void				lupara_texture_setting(t_texture_player *texture_player, t_master *master);
-void				mgun_texture_setting(t_texture_player *texture_player, t_master *master);
-void				escopeta_dupla_texture_setting(t_texture_player *texture_player, t_master *master);
-void				pistola_texture_setting(t_texture_player *texture_player, t_master *master);
+void				escopeta_texture_setting(t_texture_player *texture_player,
+						t_master *master);
+void				lupara_texture_setting(t_texture_player *texture_player,
+						t_master *master);
+void				mgun_texture_setting(t_texture_player *texture_player,
+						t_master *master);
+void				escopeta_dupla_texture_setting(
+						t_texture_player *texture_player, t_master *master);
+void				pistola_texture_setting(t_texture_player *texture_player,
+						t_master *master);
+
 #endif
