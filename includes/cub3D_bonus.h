@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/02 08:52:36 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/02 12:46:06 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@
 # define EIGHT 56
 # define SZERO 65438
 # define LCTRL 65508
+
+
+# define FIRE 0
+# define WALK 1
+# define STOP 2
+
+// STOP FIRE WALK
 
 typedef struct s_map
 {
