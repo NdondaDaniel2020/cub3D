@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 15:08:27 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/01 15:55:19 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/02 12:47:05 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	set_walking_animation(t_master *master)
 	{
 		if (master->dimension.l != 1)
 		{
-			master->dimension.l = 1;
 			master->dimension.c = 0;
+			master->dimension.l = WALK;
 			master->limit_time_animation = 6;
 		}
 	}
@@ -33,8 +33,8 @@ static void	set_fire_animation(t_master *master)
 	{
 		if (master->dimension.l != 0)
 		{
-			master->dimension.l = 0;
 			master->dimension.c = 0;
+			master->dimension.l = FIRE;
 			master->limit_time_animation = 6;
 			if (master->dimension.m == 3 || master->dimension.m == 4)
 				master->limit_time_animation = 4;
@@ -48,8 +48,8 @@ static void	set_stop_animation(t_master *master)
 		&& !master->keyboard.left && !master->keyboard.right
 		&& !master->keyboard.mouse_left && !master->keyboard.mouse_right)
 	{
-		master->dimension.l = 2;
 		master->dimension.c = 0;
+		master->dimension.l = STOP;
 		master->limit_time_animation = 10;
 	}
 }
