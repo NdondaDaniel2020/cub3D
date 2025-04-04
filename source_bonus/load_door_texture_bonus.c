@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/04 12:48:52 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/04 14:01:49 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_image_quantity_by_door_type(int index)
 	
 }
 
-void	free_all_loaded_door_images(void *mlx, t_data *img, char *path)
+void	free_all_loaded_door_images(void *mlx, t_data *img)
 {
 	int	l;
 	int	c;
@@ -35,9 +35,7 @@ void	free_all_loaded_door_images(void *mlx, t_data *img, char *path)
 		len = get_image_quantity_by_door_type(l);
 		while (c < len)
 		{
-			if (img->door_texture[l][c]
-				&& ft_strncmp(path, img->door_texture_paths[l][c],
-					ft_strlen(path)) != 0)
+			if (img->door_texture[l][c])
 				mlx_destroy_image(mlx, img->door_texture[l][c]);
 			c++;
 		}
@@ -57,8 +55,8 @@ int	load_door_texture_util(void *mlx, t_data *img, int l, int c)
 		&img->door_texture_height[l][c]);	
 	if (!img->door_texture[l][c])
 	{
-		free_all_loaded_door_images(mlx, img, img->door_texture[l][c]);
-		msg = ft_strjoin("image not found", img->door_texture[l][c]);
+		msg = ft_strjoin("image not found ", img->door_texture_paths[l][c]);
+		free_all_loaded_door_images(mlx, img);
 		return (printerror(msg), free(msg), 1);
 	}
 	img->door_texture_addr[l][c] = mlx_get_data_addr(img->door_texture[l][c],
