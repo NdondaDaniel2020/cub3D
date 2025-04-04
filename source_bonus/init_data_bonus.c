@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:47:07 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/29 17:17:58 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/04 08:38:14 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,31 @@ static void	init_player_texture(t_data *data)
 	}
 }
 
+static void	init_door_texture(t_data *data)
+{
+	int	l;
+	int	i;
+
+	l = 0;
+	while (l < 3)
+	{
+		i = 0;
+		while (i < 13)
+		{
+			data->door_texture[l][i] = NULL;
+			data->door_texture_addr[l][i] = NULL;
+			data->door_texture_paths[l][i] = NULL;
+			data->door_texture_width[l][i] = 0;
+			data->door_texture_height[l][i] = 0;
+			data->door_texture_endian[l][i] = 0;
+			data->door_texture_line_length[l][i] = 0;
+			data->door_texture_bits_per_pixel[l][i] = 0;
+			i++;
+		}
+		l++;
+	}
+}
+
 void	init_data_struct(t_data *data)
 {
 	if (!data)
@@ -71,4 +96,5 @@ void	init_data_struct(t_data *data)
 	data->endian = 0;
 	init_texture(data);
 	init_player_texture(data);
+	init_door_texture(data);
 }
