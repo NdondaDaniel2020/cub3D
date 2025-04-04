@@ -6,14 +6,14 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/29 17:17:11 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/04 11:00:08 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
 
-void	error_message_player_image_not_found(void *mlx,
-	t_data *img, t_3d dim, char *path)
+void	free_all_loaded_player_images(void *mlx, t_data *img,
+	t_3d dim, char *path)
 {
 	while (dim.m >= 0)
 	{
@@ -36,14 +36,13 @@ void	error_message_player_image_not_found(void *mlx,
 		}
 		dim.m--;
 	}
-	dim.c = 0;
-	while (dim.c < 4)
-		mlx_destroy_image(mlx, img->textures[dim.c++]);
+	free_textures(mlx, img);
 }
 
 int	load_player_texture_util(void *mlx, t_data *img, t_3d dim)
 {
 	char	*path;
+	char	*msg;
 
 	path = ft_strjoin("textures/player/",
 			img->player_texture_paths[dim.m][dim.l][dim.c]);
@@ -52,9 +51,10 @@ int	load_player_texture_util(void *mlx, t_data *img, t_3d dim)
 			&img->player_texture_height[dim.m][dim.l][dim.c]);
 	if (!img->player_texture[dim.m][dim.l][dim.c])
 	{
-		error_message_player_image_not_found(mlx, img, dim,
+		free_all_loaded_player_images(mlx, img, dim,
 			img->player_texture_paths[dim.m][dim.l][dim.c]);
-		return (printerror(path), free(path), 1);
+		msg = ft_strjoin("image not found", path);
+		return (printerror(msg), free(msg), free(path), 1);
 	}
 	img->player_texture_addr[dim.m][dim.l][dim.c] = mlx_get_data_addr(
 			img->player_texture[dim.m][dim.l][dim.c],
