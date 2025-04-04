@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/02 12:46:06 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/04 12:54:10 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,15 @@ typedef struct s_data
 	int				player_texture_endian[5][3][13];
 	int				player_texture_line_length[5][3][13];
 	int				player_texture_bits_per_pixel[5][3][13];
+
+	void			*door_texture[3][13];
+	char			*door_texture_addr[3][13];
+	char			*door_texture_paths[3][13];
+	int				door_texture_width[3][13];
+	int				door_texture_height[3][13];
+	int				door_texture_endian[3][13];
+	int				door_texture_line_length[3][13];
+	int				door_texture_bits_per_pixel[3][13];
 }					t_data;
 
 typedef struct s_minilib
@@ -293,6 +302,7 @@ int					check_door(char **campus);
 int					key_release(int keycode, t_master *master);
 int					key_hook(int keycode, t_master *master);
 int					key_exit(t_master *master);
+int					key_exit_2(t_master *master);
 int					mousemove(int x, int y, t_master *master);
 
 // FREEZE
@@ -300,8 +310,8 @@ void				ft_free_stack(t_map *map);
 void				ft_free_master(t_master *master);
 int					ft_freematriz(char **mat);
 void				clear(t_data *data);
-int					free_textures(t_master *master);
-int					free_player_texture(t_master *master);
+int					free_textures(void *mlx, t_data *img);
+int					free_player_texture(void *mlx,t_data *img);
 
 // SET SMALL AREA VALUE
 int					get_height_player_line(t_master *master);
@@ -350,5 +360,15 @@ void				escopeta_dupla_texture_setting(
 						t_texture_player *texture_player, t_master *master);
 void				pistola_texture_setting(t_texture_player *texture_player,
 						t_master *master);
+
+
+// DRAW DOOR
+
+char				**grade_de_cela(void);
+char				**porta_de_dilatacao(void);
+char				**porta_de_madeira(void);
+int					load_door_texture(void *mlx, t_data *img);
+void				free_door_texture(void *mlx, t_data *img);
+int					get_image_quantity_by_door_type(int index);
 
 #endif
