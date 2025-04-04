@@ -6,7 +6,7 @@
 #    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/04/01 15:46:40 by nmatondo         ###   ########.fr        #
+#    Updated: 2025/04/04 12:50:10 by nmatondo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,12 @@ OBJ=$(addprefix $(OBJ_D)/, $(FILES:.c=.o))
 
 BFILES= check_map_bonus.c get_next_line_utils_bonus.c check_walls_bonus.c gets_bonus.c \
 controls_bonus.c main_bonus.c dda_bonus.c render_bonus.c draw_bonus.c utils2_bonus.c \
-extra_bonus.c utils_bonus.c freeze_bonus.c utils_check.c get_next_line_bonus.c door_bonus.c \
+extra_bonus.c utils_bonus.c freeze_1_bonus.c freeze_2_bonus.c utils_check.c get_next_line_bonus.c \
 mouse_event_bonus.c set_small_map_area_value_bouns.c draw_straight_line_bonus.c \
 draw_small_map_bonus.c hooks_bonus.c draw_player_bonus.c load_player_texture_bonus.c \
-player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c draw_crosshair.c \
-player_animation.c player_texture_configuration.c
+player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c draw_crosshair_bonus.c \
+player_animation_bonus.c player_texture_configuration_bonus.c door_image_path_bonus.c \
+load_door_texture_bonus.c key_exit_bounus.c door_bonus.c
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
 
