@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:34:47 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/01 15:54:49 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/04 09:51:10 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,7 @@ static int	key_weapon(int keycode, t_master *master)
 int	key_hook(int keycode, t_master *master)
 {
 	if (keycode == ESC)
-	{
-		return (free_textures(master), free_player_texture(master),
-			mlx_destroy_image(master->render.mlx, master->img.img),
-			mlx_destroy_window(master->render.mlx, master->render.win),
-			mlx_destroy_display(master->render.mlx), free(master->render.mlx),
-			ft_free_master(master), exit(0), 0);
-	}
+		return (key_exit_2(master), 0);
 	if (keycode == RRIGHT)
 		master->keyboard.r_right = true;
 	if (keycode == RUP)
