@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:51:14 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/02 08:45:50 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:23:34 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	draw_texture(int hitSide, t_intvector *pos, t_data *img,
 		my_mlx_pixel_put(img, pos->x, pos->y++, texture.color);
 	}
 	draw_floor(pos, img, master);
+
 }
 
 void	draw_floor(t_intvector *pos, t_data *img, t_master *master)

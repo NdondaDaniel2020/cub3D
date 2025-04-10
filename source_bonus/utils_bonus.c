@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/31 15:26:22 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:59:04 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	initializedefault(t_master *master)
 	master->we = NULL;
 	master->ea = NULL;
 	master->no = NULL;
+	master->index_door = 0;
 	master->campus = NULL;
 	master->keyboard = (t_keyboard){false, false, false, false, false, false,
 		false, false, false, false};
