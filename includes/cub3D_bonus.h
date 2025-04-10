@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/04 12:54:10 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:58:30 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,12 @@ typedef struct s_minilib
 	int				wallheight;
 	double			perpendiculardist;
 	t_vector		raydir;
+
+	
+	bool			is_door;
+	int				door_height;
+	t_intvector		door_map_pos;
+	double			perpendicular_dist_door;
 }					t_minilib;
 
 typedef struct s_3d
@@ -180,6 +186,7 @@ typedef struct s_master
 	t_intvector		wallmappos;
 	int				view_high;
 	t_3d			dimension;
+	int				index_door;
 	int				time_animation;
 	int				limit_time_animation;
 }					t_master;
@@ -361,7 +368,6 @@ void				escopeta_dupla_texture_setting(
 void				pistola_texture_setting(t_texture_player *texture_player,
 						t_master *master);
 
-
 // DRAW DOOR
 
 char				**grade_de_cela(void);
@@ -371,4 +377,17 @@ int					load_door_texture(void *mlx, t_data *img);
 void				free_door_texture(void *mlx, t_data *img);
 int					get_image_quantity_by_door_type(int index);
 
+void				draw_door(int hitSide, t_intvector *pos, t_data *img,
+						t_master *master);
+void				door_dda(t_master *master, int *hitSide, t_intvector *step,
+						t_intvector *wallMapPos);
+void				set_door_height(t_minilib *render, int *hitside,
+						t_intvector door_map_pos, t_intvector step);
+
+void				wall_and_door_dda(t_master *master, int *hitSide,
+						t_intvector *step);
+void				set_wall_and_door_height(t_master *master,
+						t_minilib *render, int hitside, t_intvector step);
+void				draw_texture_and_door(int hitSide, t_intvector *pos,
+						t_data *img, t_master *master);
 #endif
