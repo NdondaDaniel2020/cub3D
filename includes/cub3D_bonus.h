@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/09 14:58:30 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:32:37 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,9 @@ typedef struct s_master
 	int				index_door;
 	int				time_animation;
 	int				limit_time_animation;
+
+	int				wall_hitside;
+	int				door_hitside;
 }					t_master;
 
 typedef struct s_texture
@@ -251,7 +254,7 @@ t_master			*get_master(t_map *map);
 int					getcolor(char *str, t_master *mastr);
 void				renderization(t_minilib *render, t_master *master,
 						t_data *img);
-void				draw_texture(int hitSide, t_intvector *pos, t_data *img,
+void				draw_texture(t_intvector *pos, t_data *img,
 						t_master *master);
 void				clear(t_data *data);
 t_minilib			set_cardial(t_master *master);
@@ -377,17 +380,15 @@ int					load_door_texture(void *mlx, t_data *img);
 void				free_door_texture(void *mlx, t_data *img);
 int					get_image_quantity_by_door_type(int index);
 
-void				draw_door(int hitSide, t_intvector *pos, t_data *img,
-						t_master *master);
+void				draw_door(t_intvector *pos, t_data *img, t_master *master);
 void				door_dda(t_master *master, int *hitSide, t_intvector *step,
 						t_intvector *wallMapPos);
 void				set_door_height(t_minilib *render, int *hitside,
 						t_intvector door_map_pos, t_intvector step);
 
-void				wall_and_door_dda(t_master *master, int *hitSide,
-						t_intvector *step);
+void				wall_and_door_dda(t_master *master, t_intvector *step);
 void				set_wall_and_door_height(t_master *master,
-						t_minilib *render, int hitside, t_intvector step);
-void				draw_texture_and_door(int hitSide, t_intvector *pos,
-						t_data *img, t_master *master);
+						t_minilib *render, t_intvector step);
+void				draw_texture_and_door(t_intvector *pos, t_data *img,
+						t_master *master);
 #endif
