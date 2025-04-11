@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:47:43 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/10 15:45:06 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/11 10:45:25 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	set_wall_and_door_height(t_master *master, t_minilib *render,
 	int hitside, t_intvector step)
 {
 	setwallheight(render, hitside, master->wallmappos, step);
-	// set_door_height(render, &hitside, master->render.door_map_pos, step);
+	set_door_height(render, &hitside, master->render.door_map_pos, step);
 }
 
 void	draw_texture_and_door(int hitSide, t_intvector *pos,
 	t_data *img, t_master *master)
 {
 	draw_texture(hitSide, pos, img, master);
-	// draw_door(hitSide, pos, img, master);
+	draw_door(hitSide, pos, img, master);
 }
