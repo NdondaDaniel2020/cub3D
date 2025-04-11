@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:32:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/10 15:23:42 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/11 10:45:35 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,28 +99,80 @@ int	get_x_coordinate_door_texture(int index, int hitSide,
 	return (texx);
 }
 
+
 void	draw_door(int hitSide, t_intvector *pos, t_data *img, t_master *master)
 {
 	int			start_door;
 	int			end_door;
+	int			start;
+	int			end;
 	t_texture	texture_door;
+	t_texture	texture;
 
+	(void)start;
+	(void)end;
 	if (master->render.is_door)
 	{
+		// door //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		start_door = get_draw_start_position(master->render.door_height, master);
 		end_door = get_draw_end_position(master->render.door_height, master);
+		// door //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// wall //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		start = get_draw_start_position(master->render.wallheight, master);
+		end = get_draw_end_position(master->render.wallheight, master);
+		// wall //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+		// door //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		texture_door.index = 0;
 		master->index_door = 0;
 		texture_door.x = get_x_coordinate_door_texture(texture_door.index, hitSide, master, img);
 		texture_door.step = 1.0 * img->door_texture_height[master->index_door][texture_door.index] / master->render.door_height;
 		texture_door.pos = ((start_door - master->view_high) - SCREEN_HEIGHT / 2 + master->render.door_height / 2) * texture_door.step;
+		// door //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// wall //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		texture.index = get_texture_index(hitSide, master->render.raydir);
+		texture.x = get_x_coordinate_texture(texture.index, hitSide, master, img);
+		texture.step = 1.0 * img->tex_height[texture.index] / master->render.wallheight;
+		texture.pos = ((start - master->view_high) - SCREEN_HEIGHT / 2 + master->render.wallheight / 2) * texture.step;	
+		// wall //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		
+
 		pos->y = start_door;
 		while (pos->y < end_door)
 		{
+		// door //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			texture_door.y = (int)texture_door.pos % (img->door_texture_height[master->index_door][texture_door.index] - 1);
 			texture_door.pos += texture_door.step;
 			texture_door.color = get_door_color(master, &texture_door, img);
-			my_mlx_pixel_put(img, pos->x, pos->y++, texture_door.color);
+		// door //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// wall //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
+			texture.y = (int)texture.pos % (img->tex_height[texture.index] - 1);
+			texture.pos += texture.step;
+			texture.color = get_color(hitSide, &texture, img);
+		// wall //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// my_mlx_pixel_put(img, pos->x, pos->y++, texture_door.color);
+			if ((texture_door.color & 0xFF000000) == 0)
+				my_mlx_pixel_put(img, pos->x, pos->y++, texture_door.color);
+			else
+			{
+				if (pos->y < start)
+					my_mlx_pixel_put(img, pos->x, pos->y++, master->c);
+				else if (pos->y > end)
+					my_mlx_pixel_put(img, pos->x, pos->y++, master->f);
+				else
+					my_mlx_pixel_put(img, pos->x, pos->y++, texture.color);
+			}
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}
 	}
 }
