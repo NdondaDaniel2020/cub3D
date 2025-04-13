@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/11 14:32:37 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/12 14:15:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,6 @@ typedef struct s_minilib
 	double			perpendiculardist;
 	t_vector		raydir;
 
-	
 	bool			is_door;
 	int				door_height;
 	t_intvector		door_map_pos;
@@ -186,10 +185,11 @@ typedef struct s_master
 	t_intvector		wallmappos;
 	int				view_high;
 	t_3d			dimension;
-	int				index_door;
 	int				time_animation;
 	int				limit_time_animation;
 
+	int				index_door;
+	int				type_weapon;
 	int				wall_hitside;
 	int				door_hitside;
 }					t_master;
@@ -245,6 +245,17 @@ typedef struct s_texture_player
 	int		src_x;
 	int		src_y;
 }			t_texture_player;
+
+typedef struct s_draw_door
+{
+	int			start_door;
+	int			end_door;
+	int			start_wall;
+	int			end_wall;
+	t_texture	texture_door;
+	t_texture	texture_wall;
+}				t_draw_door;
+
 
 typedef char	*t_texture_paths[6][3][14];
 
