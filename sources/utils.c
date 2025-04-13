@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/15 06:52:35 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:11:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,9 @@ int	initializedefault(t_master *master)
 	master->campus = NULL;
 	master->keyboard = (t_keyboard){false, false, false, false, false, false,
 		false, false};
+	master->index_door = 0;
+	master->type_weapon = 0;
+	master->wall_hitside = 0;
+	master->door_hitside = 0;
 	return (0);
 }
