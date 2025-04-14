@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/14 14:23:41 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:47:07 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,7 +348,8 @@ void				adjust_initial_area_values(t_master *master, t_area *area,
 						t_area *extra);
 void				adjust_final_area_values(t_master *master, t_area *area,
 						t_area *extra);
-
+void				draw_map_util(t_master *master, t_vector pos, int i1, int i2);
+						
 // DRAW SMALL MAP
 void				init_bresenham(t_bresenham *bresenham);
 void				draw_big_pixel(t_master *master, int size,
@@ -409,4 +410,5 @@ void				draw_texture_and_door(t_intvector *pos, t_data *img,
 
 int					get_image_quantity_by_door_type(int index);
 bool				player_near_the_door(t_master *master);
+// void	draw_map_util(t_master *master, t_vector pos, int i1, int i2)
 #endif

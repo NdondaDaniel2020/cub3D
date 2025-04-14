@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:10:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/03/27 11:22:11 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:44:34 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ static void	draw_map(t_master *master, t_area *area)
 		{
 			pos.x = aux.x * PIXEL_SIZE;
 			pos.y = aux.y * PIXEL_SIZE;
-			if (master->campus[i1][i2] == '1')
-				draw_big_pixel(master, PIXEL_SIZE, pos, 0x52be80);
-			else if (master->campus[i1][i2] != '1')
-				draw_big_pixel(master, PIXEL_SIZE, pos, 0x3c3c3c);
+			draw_map_util(master, pos, i1, i2);
 			i2++;
 			aux.x++;
 		}
