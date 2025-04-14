@@ -14,7 +14,8 @@
 
 static void	is_door(t_master *master, bool *hit, t_intvector *door_map_pos)
 {
-	if (master->campus[(*door_map_pos).x][(*door_map_pos).y] == 'D')
+	if (master->campus[(*door_map_pos).x][(*door_map_pos).y] == 'D'
+		|| master->campus[(*door_map_pos).x][(*door_map_pos).y] == 'd')
 	{	
 		master->render.is_door = true;
 		*hit = true;
