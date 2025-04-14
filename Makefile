@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/04/11 20:41:13 by marvin           ###   ########.fr        #
+#    Updated: 2025/04/14 14:42:07 by nmatondo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ draw_small_map_bonus.c hooks_bonus.c draw_player_bonus.c load_player_texture_bon
 player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c draw_crosshair_bonus.c \
 player_animation_bonus.c player_texture_configuration_bonus.c door_image_path_bonus.c \
 load_door_texture_bonus.c key_exit_bounus.c door_bonus.c render_door_bonus.c render_util_bonus.c \
-render_door_util_bonus.c
+render_door_util_bonus.c draw_small_map_util_bonus.c 
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
 

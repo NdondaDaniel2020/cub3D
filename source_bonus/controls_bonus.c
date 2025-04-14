@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/14 14:29:35 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:31:54 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ bool	player_near_the_door(t_master *master)
 
 int	controls(void *vars)
 {
-	int len;
+	// int len;
 	t_master	*master;
 
 	master = (t_master *)vars;
-	player_animation(master);	
+	player_animation(master);
 	
 
 	// if (master->keyboard.open_door)
