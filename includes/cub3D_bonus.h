@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/12 14:15:31 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/14 14:23:41 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@
 # define WALK 1
 # define STOP 2
 
+# define OPENDOR 101
 // STOP FIRE WALK
 
 typedef struct s_map
@@ -97,6 +98,7 @@ typedef struct s_keyboard
 	bool			left;
 	bool			down;
 	bool			up;
+	bool			open_door;
 	bool			r_right;
 	bool			r_left;
 	bool			r_down;
@@ -189,9 +191,11 @@ typedef struct s_master
 	int				limit_time_animation;
 
 	int				index_door;
-	int				type_weapon;
+	int				type_door;
 	int				wall_hitside;
 	int				door_hitside;
+	int				door_time_animation;
+	int				door_limit_time_animation;
 }					t_master;
 
 typedef struct s_texture
@@ -402,4 +406,7 @@ void				set_wall_and_door_height(t_master *master,
 						t_minilib *render, t_intvector step);
 void				draw_texture_and_door(t_intvector *pos, t_data *img,
 						t_master *master);
+
+int					get_image_quantity_by_door_type(int index);
+bool				player_near_the_door(t_master *master);
 #endif
