@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/04 14:01:49 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:47:19 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	get_image_quantity_by_door_type(int index)
 	if (index == 1)
 		return (10);
 	return (8);
-	
 }
 
 void	free_all_loaded_door_images(void *mlx, t_data *img)
