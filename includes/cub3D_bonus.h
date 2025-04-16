@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/14 14:47:07 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:13:21 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_keyboard
 	bool			down;
 	bool			up;
 	bool			open_door;
+	bool			close_door;
 	bool			r_right;
 	bool			r_left;
 	bool			r_down;
@@ -161,6 +162,7 @@ typedef struct s_minilib
 	bool			is_door;
 	int				door_height;
 	t_intvector		door_map_pos;
+	char			door_object_touched;
 	double			perpendicular_dist_door;
 }					t_minilib;
 
@@ -196,6 +198,9 @@ typedef struct s_master
 	int				door_hitside;
 	int				door_time_animation;
 	int				door_limit_time_animation;
+	t_intvector		focused_open_door;
+	t_intvector		focused_close_door;
+	int				wait_to_close_the_door;
 }					t_master;
 
 typedef struct s_texture
@@ -410,5 +415,26 @@ void				draw_texture_and_door(t_intvector *pos, t_data *img,
 
 int					get_image_quantity_by_door_type(int index);
 bool				player_near_the_door(t_master *master);
-// void	draw_map_util(t_master *master, t_vector pos, int i1, int i2)
+
+char				*door_one_character_list(void);
+char				*door_two_character_list(void);
+char				*door_three_character_list(void);
+int					get_image_index_by_character_type(t_master *master);
+bool				door_found(t_master *master, t_intvector pos);
+
+void				animation_open_the_door(t_master *master);
+void				animation_close_the_door(t_master *master);
+
+bool				valid_character_pass(char chr);
+t_intvector			get_pos_door(t_master *master);
+
+bool				four_doors(t_master *master);
+bool				three_doors(t_master *master);
+bool				two_doors(t_master *master);
+bool				more_than_one_door(t_master *master);
+t_intvector			get_the_position_of_the_door_that_is_in_front_of_the_player(
+						t_master *master);
+t_intvector			get_the_position_of_the_door_around_the_player(
+						t_master *master);
+
 #endif

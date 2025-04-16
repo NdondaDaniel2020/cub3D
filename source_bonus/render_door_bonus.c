@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:32:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/14 14:26:57 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:53:46 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,8 @@ void	draw_door(t_intvector *pos, t_data *img, t_master *master)
 
     if (master->render.is_door)
     {
-		master->type_door = 1;
-		if (master->door_hitside)
-			master->type_door = 0;
+		master->type_door = 0;
+		master->index_door = get_image_index_by_character_type(master);
 		draw_door_texture_in_draw_door(pos, img, master, &draw);
 		draw_wall_texture_in_draw_door(pos, img, master, &draw);
     }
