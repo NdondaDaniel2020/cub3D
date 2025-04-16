@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/16 07:25:40 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:28:22 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,20 @@ void	move_x(t_master *master)
 	{
 		dir = (t_vector){rd->dir.y, -rd->dir.x};
 		if (valid_character_pass(master->campus[(int)(rd->pos.x + dir.x
-			* (SPEED + 0.1))][(int)(rd->pos.y)]))
+					* (SPEED + 0.1))][(int)(rd->pos.y)]))
 			rd->pos.x += dir.x * SPEED;
 		if (valid_character_pass(master->campus[(int)(rd->pos.x
-			)][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
+				)][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
 			rd->pos.y += dir.y * SPEED;
 	}
 	if (master->keyboard.left)
 	{
 		dir = (t_vector){-rd->dir.y, rd->dir.x};
 		if (valid_character_pass(master->campus[(int)(rd->pos.x + dir.x
-			* (SPEED + 0.1))][(int)(rd->pos.y)]))
+					* (SPEED + 0.1))][(int)(rd->pos.y)]))
 			rd->pos.x += dir.x * SPEED;
 		if (valid_character_pass(master->campus[(int)(rd->pos.x
-			)][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
+				)][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
 			rd->pos.y += dir.y * SPEED;
 	}
 }
@@ -64,7 +64,7 @@ void	move_y(t_master *master)
 	{
 		dir = (t_vector){rd->dir.x, rd->dir.y};
 		if (valid_character_pass(master->campus[(int)(rd->pos.x + dir.x
-			* (SPEED + 0.1))][(int)(rd->pos.y)]))
+					* (SPEED + 0.1))][(int)(rd->pos.y)]))
 			rd->pos.x += dir.x * SPEED;
 		if (valid_character_pass(master->campus[(int)(rd->pos.x)
 			][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
@@ -74,7 +74,7 @@ void	move_y(t_master *master)
 	{
 		dir = (t_vector){-rd->dir.x, -rd->dir.y};
 		if (valid_character_pass(master->campus[(int)(rd->pos.x
-			+ dir.x * (SPEED + 0.1))][(int)(rd->pos.y)]))
+					+ dir.x * (SPEED + 0.1))][(int)(rd->pos.y)]))
 			rd->pos.x += dir.x * SPEED;
 		if (valid_character_pass(master->campus[(int)(rd->pos.x)
 			][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))

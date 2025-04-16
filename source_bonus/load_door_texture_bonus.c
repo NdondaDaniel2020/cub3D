@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/14 11:47:19 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:50:02 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	load_door_texture_util(void *mlx, t_data *img, int l, int c)
 	char	*msg;
 
 	img->door_texture[l][c] = mlx_xpm_file_to_image(mlx,
-		img->door_texture_paths[l][c],
-		&img->door_texture_width[l][c],
-		&img->door_texture_height[l][c]);	
+			img->door_texture_paths[l][c],
+			&img->door_texture_width[l][c],
+			&img->door_texture_height[l][c]);
 	if (!img->door_texture[l][c])
 	{
 		msg = ft_strjoin("image not found ", img->door_texture_paths[l][c]);
@@ -59,9 +59,9 @@ int	load_door_texture_util(void *mlx, t_data *img, int l, int c)
 		return (printerror(msg), free(msg), 1);
 	}
 	img->door_texture_addr[l][c] = mlx_get_data_addr(img->door_texture[l][c],
-		&img->door_texture_bits_per_pixel[l][c],
-		&img->door_texture_line_length[l][c],
-		&img->door_texture_endian[l][c]);
+			&img->door_texture_bits_per_pixel[l][c],
+			&img->door_texture_line_length[l][c],
+			&img->door_texture_endian[l][c]);
 	return (0);
 }
 

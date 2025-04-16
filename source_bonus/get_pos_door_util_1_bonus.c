@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_pos_door_util_1.c                              :+:      :+:    :+:   */
+/*   get_pos_door_util_1_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:03:30 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/16 12:12:06 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:32:26 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 bool	four_doors(t_master *master)
 {
 	if (master->campus[(int)master->render.pos.x + 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x - 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-			[(int)master->render.pos.y + 1] == 'D'
+		[(int)master->render.pos.y + 1] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-			[(int)master->render.pos.y - 1] == 'D')
+		[(int)master->render.pos.y - 1] == 'D')
 		return (true);
 	return (false);
 }
@@ -29,22 +29,22 @@ bool	four_doors(t_master *master)
 static bool	three_doors_2(t_master *master)
 {
 	if (master->campus[(int)master->render.pos.x + 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x - 1]
-				[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y + 1] != 'D'
+		[(int)master->render.pos.y + 1] != 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y - 1] == 'D')
+		[(int)master->render.pos.y - 1] == 'D')
 		return (true);
 	if (master->campus[(int)master->render.pos.x + 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x - 1]
-				[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y + 1] == 'D'
+		[(int)master->render.pos.y + 1] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y - 1] != 'D')
+		[(int)master->render.pos.y - 1] != 'D')
 		return (true);
 	return (false);
 }
@@ -52,22 +52,22 @@ static bool	three_doors_2(t_master *master)
 bool	three_doors(t_master *master)
 {
 	if (master->campus[(int)master->render.pos.x + 1]
-			[(int)master->render.pos.y] != 'D'
+		[(int)master->render.pos.y] != 'D'
 		&& master->campus[(int)master->render.pos.x - 1]
-				[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y + 1] == 'D'
+		[(int)master->render.pos.y + 1] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y - 1] == 'D')
+		[(int)master->render.pos.y - 1] == 'D')
 		return (true);
 	if (master->campus[(int)master->render.pos.x + 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x - 1]
-				[(int)master->render.pos.y] != 'D'
+		[(int)master->render.pos.y] != 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y + 1] == 'D'
+		[(int)master->render.pos.y + 1] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y - 1] == 'D')
+		[(int)master->render.pos.y - 1] == 'D')
 		return (true);
 	return (three_doors_2(master));
 }
@@ -75,19 +75,19 @@ bool	three_doors(t_master *master)
 static bool	two_doors_2(t_master *master)
 {
 	if (master->campus[(int)master->render.pos.x - 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y + 1] == 'D')
+		[(int)master->render.pos.y + 1] == 'D')
 		return (true);
 	if (master->campus[(int)master->render.pos.x + 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y - 1] == 'D')
+		[(int)master->render.pos.y - 1] == 'D')
 		return (true);
 	if (master->campus[(int)master->render.pos.x + 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y + 1] == 'D')
+		[(int)master->render.pos.y + 1] == 'D')
 		return (true);
 	return (false);
 }
@@ -95,19 +95,19 @@ static bool	two_doors_2(t_master *master)
 bool	two_doors(t_master *master)
 {
 	if (master->campus[(int)master->render.pos.x + 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x - 1]
-				[(int)master->render.pos.y] == 'D')
+		[(int)master->render.pos.y] == 'D')
 		return (true);
 	if (master->campus[(int)master->render.pos.x]
-			[(int)master->render.pos.y + 1] == 'D'
+		[(int)master->render.pos.y + 1] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y - 1] == 'D')
+		[(int)master->render.pos.y - 1] == 'D')
 		return (true);
 	if (master->campus[(int)master->render.pos.x - 1]
-			[(int)master->render.pos.y] == 'D'
+		[(int)master->render.pos.y] == 'D'
 		&& master->campus[(int)master->render.pos.x]
-				[(int)master->render.pos.y - 1] == 'D')
+		[(int)master->render.pos.y - 1] == 'D')
 		return (true);
 	return (two_doors_2(master));
 }

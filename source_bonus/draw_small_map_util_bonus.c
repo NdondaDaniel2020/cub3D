@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:10:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/15 09:58:56 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:34:56 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_map_util(t_master *master, t_vector pos, int i1, int i2)
 			|| master->campus[i1][i2] == 'h' || master->campus[i1][i2] == 'J'
 			|| master->campus[i1][i2] == 'j' || master->campus[i1][i2] == 'K'
 			|| master->campus[i1][i2] == 'k')
-		draw_big_pixel(master, PIXEL_SIZE, pos, 0xecb4335);		
+		draw_big_pixel(master, PIXEL_SIZE, pos, 0xecb4335);
 	else if (master->campus[i1][i2] == 'd')
 		draw_big_pixel(master, PIXEL_SIZE, pos, 0x2471a3);
 	else if (master->campus[i1][i2] != '1')

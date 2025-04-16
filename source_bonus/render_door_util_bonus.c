@@ -33,7 +33,7 @@ bool	door_found(t_master *master, t_intvector pos)
 bool	valid_character_pass(char chr)
 {
 	if (chr != '1' && chr != 'D' && chr != 'F' && chr != 'G'
-			&& chr != 'H' && chr != 'J' && chr != 'K')
+		&& chr != 'H' && chr != 'J' && chr != 'K')
 		return (true);
 	return (false);
 }
@@ -42,8 +42,8 @@ static void	is_door(t_master *master, bool *hit, t_intvector *door_map_pos)
 {
 	if (door_found(master, (t_intvector)(*door_map_pos)))
 	{
-		master->render.door_object_touched =
-			master->campus[(*door_map_pos).x][(*door_map_pos).y];
+		master->render.door_object_touched
+			= master->campus[(*door_map_pos).x][(*door_map_pos).y];
 		master->render.is_door = true;
 		*hit = true;
 	}
@@ -85,9 +85,9 @@ void	set_door_height(t_minilib *render, int *hitside,
 {
 	if (*hitside == 0)
 		render->perpendicular_dist_door = fabs((door_map_pos.x - render->pos.x
-			+ ((1 - step.x) / 2.0)) / render->raydir.x);		
+					+ ((1 - step.x) / 2.0)) / render->raydir.x);
 	else
 		render->perpendicular_dist_door = fabs((door_map_pos.y - render->pos.y
-			+ ((1 - step.y) / 2.0)) / render->raydir.y);
+					+ ((1 - step.y) / 2.0)) / render->raydir.y);
 	render->door_height = SCREEN_HEIGHT / render->perpendicular_dist_door;
 }

@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:32:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/11 14:24:46 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:33:56 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	renderization(t_minilib *render, t_master *master, t_data *img)
 		render->mappos = (t_intvector){(int)floor(render->pos.x),
 			(int)floor(render->pos.y)};
 		render->disttoside = set_disttoside(&step, render->raydir,
-			render, render->mappos);
+				render, render->mappos);
 		wall_and_door_dda(master, &step);
 		set_wall_and_door_height(master, render, step);
 		draw_texture_and_door(&pos, img, master);
