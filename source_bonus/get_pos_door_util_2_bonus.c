@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_pos_door_util_2.c                              :+:      :+:    :+:   */
+/*   get_pos_door_util_2_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:03:30 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/16 12:11:46 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:37:47 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	more_than_one_door(t_master *master)
 	return (false);
 }
 
-static  t_intvector	north_south_door(t_master *master)
+static t_intvector	north_south_door(t_master *master)
 {
 	if (master->render.raydir.y > 0)
 	{
@@ -54,7 +54,7 @@ static t_intvector	east_west_door(t_master *master)
 		if (master->campus[(int)master->render.pos.x + 1]
 			[(int)master->render.pos.y] == 'D')
 			return ((t_intvector){(int)master->render.pos.x + 1,
-					(int)master->render.pos.y});
+				(int)master->render.pos.y});
 	}
 	else
 	{
@@ -66,7 +66,8 @@ static t_intvector	east_west_door(t_master *master)
 	return ((t_intvector){-1, -1});
 }
 
-t_intvector	get_the_position_of_the_door_that_is_in_front_of_the_player(t_master *master)
+t_intvector	get_the_position_of_the_door_that_is_in_front_of_the_player(
+	t_master *master)
 {
 	t_intvector	pos;
 

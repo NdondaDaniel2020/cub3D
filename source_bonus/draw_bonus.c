@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:51:14 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/12 13:53:09 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:47:25 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	draw_texture(t_intvector *pos, t_data *img, t_master *master)
 	end = get_draw_end_position(master->render.wallheight, master);
 	draw_ceiling(start, pos, img, master);
 	texture.index = get_texture_index(master->wall_hitside,
-		master->render.raydir);
+			master->render.raydir);
 	texture.x = get_x_coordinate_texture(texture.index,
-		master->wall_hitside, master, img);
+			master->wall_hitside, master, img);
 	texture.step = 1.0 * img->tex_height[texture.index]
 		/ master->render.wallheight;
 	texture.pos = ((start - master->view_high) - SCREEN_HEIGHT / 2

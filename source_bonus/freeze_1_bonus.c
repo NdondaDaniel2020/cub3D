@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:20:22 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/04 12:53:45 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:47:58 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	free_textures(void *mlx, t_data *img)
 	return (0);
 }
 
-int	free_player_texture(void *mlx,t_data *img)
+int	free_player_texture(void *mlx, t_data *img)
 {
 	int		len;
 	t_3d	dim;

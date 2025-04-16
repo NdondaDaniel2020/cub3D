@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   door_animation.c                                   :+:      :+:    :+:   */
+/*   door_animation_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:03:30 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/16 10:09:03 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:36:58 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ char	get_next_image_state(t_master *master, t_intvector focused_door)
 	while (list[index])
 	{
 		if (list[index] == master->campus[focused_door.x][focused_door.y])
-			break;
+			break ;
 		index++;
 	}
 	return (list[index + 1]);
-	
 }
 
 char	get_back_image_state(t_master *master, t_intvector focused_door)
@@ -49,11 +48,10 @@ char	get_back_image_state(t_master *master, t_intvector focused_door)
 	while (index > -1 && list[index])
 	{
 		if (list[index] == master->campus[focused_door.x][focused_door.y])
-			break;
+			break ;
 		index--;
 	}
 	return (list[index - 1]);
-	
 }
 
 static void	reset_status_animation_open_the_door(t_master *master)
@@ -77,11 +75,13 @@ void	animation_open_the_door(t_master *master)
 		if (master->door_time_animation >= master->door_limit_time_animation)
 		{			
 			pos = get_pos_door(master);
-			if (master->focused_open_door.x == -1 && master->focused_open_door.y == -1)
+			if (master->focused_open_door.x == -1
+				&& master->focused_open_door.y == -1)
 				master->focused_open_door = pos;
 			chr = get_next_image_state(master, master->focused_open_door);
 			if (chr)
-				master->campus[master->focused_open_door.x][master->focused_open_door.y] = chr;
+				master->campus[master->focused_open_door.x]
+				[master->focused_open_door.y] = chr;
 			else
 				reset_status_animation_open_the_door(master);
 			master->door_time_animation = 0;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_door_image_index.c                             :+:      :+:    :+:   */
+/*   get_door_image_index_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:50:40 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/15 12:49:55 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:33:19 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,33 @@
 
 bool	player_near_the_door(t_master *master)
 {
-	if (master->campus[(int)master->render.pos.x + 1][(int)master->render.pos.y] == 'D')
+	if (master->campus[(int)master->render.pos.x + 1]
+		[(int)master->render.pos.y] == 'D')
 		return (true);
-	if (master->campus[(int)master->render.pos.x - 1][(int)master->render.pos.y] == 'D')
+	if (master->campus[(int)master->render.pos.x - 1]
+		[(int)master->render.pos.y] == 'D')
 		return (true);
-	if (master->campus[(int)master->render.pos.x][(int)master->render.pos.y + 1] == 'D')
+	if (master->campus[(int)master->render.pos.x]
+		[(int)master->render.pos.y + 1] == 'D')
 		return (true);
-	if (master->campus[(int)master->render.pos.x][(int)master->render.pos.y - 1] == 'D')
+	if (master->campus[(int)master->render.pos.x]
+		[(int)master->render.pos.y - 1] == 'D')
 		return (true);
 	return (false);
 }
 
 char	*door_one_character_list(void)
 {
-	static char	character[] = {'D', 'F', 'G', 'H', 'J', 'K', 'k', 'j', 'h', 'g', 'f', 'd', '\0'};
+	static char	character[] = {'D', 'F', 'G', 'H', 'J', 'K', 'k',
+		'j', 'h', 'g', 'f', 'd', '\0'};
 
 	return (character);
 }
 
 char	*door_two_character_list(void)
 {
-	static char	character[] = {'D', 'F', 'G', 'H', 'J', 'j', 'h', 'g', 'f', 'd', '\0'};
+	static char	character[] = {'D', 'F', 'G', 'H', 'J',
+		'j', 'h', 'g', 'f', 'd', '\0'};
 
 	return (character);
 }

@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/16 12:13:21 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:23:45 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@
 # define EIGHT 56
 # define SZERO 65438
 # define LCTRL 65508
-
 
 # define FIRE 0
 # define WALK 1
@@ -265,7 +264,6 @@ typedef struct s_draw_door
 	t_texture	texture_wall;
 }				t_draw_door;
 
-
 typedef char	*t_texture_paths[6][3][14];
 
 // FUNCTIONS
@@ -341,7 +339,7 @@ void				ft_free_master(t_master *master);
 int					ft_freematriz(char **mat);
 void				clear(t_data *data);
 int					free_textures(void *mlx, t_data *img);
-int					free_player_texture(void *mlx,t_data *img);
+int					free_player_texture(void *mlx, t_data *img);
 
 // SET SMALL AREA VALUE
 int					get_height_player_line(t_master *master);
@@ -353,8 +351,9 @@ void				adjust_initial_area_values(t_master *master, t_area *area,
 						t_area *extra);
 void				adjust_final_area_values(t_master *master, t_area *area,
 						t_area *extra);
-void				draw_map_util(t_master *master, t_vector pos, int i1, int i2);
-						
+void				draw_map_util(t_master *master, t_vector pos,
+						int i1, int i2);
+
 // DRAW SMALL MAP
 void				init_bresenham(t_bresenham *bresenham);
 void				draw_big_pixel(t_master *master, int size,
