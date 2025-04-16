@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/14 14:23:13 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:24:10 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,15 @@ int	initializedefault(t_master *master)
 	master->index_door = 0;
 	master->campus = NULL;
 	master->keyboard = (t_keyboard){false, false, false, false, false, false,
-		false, false, false, false, false};
+		false, false, false, false, false, false};
 	master->view_high = 0;
 	master->dimension = (t_3d){0, 2, 0};
 	master->time_animation = 0;
 	master->limit_time_animation = 10;
 	master->door_time_animation = 0;
 	master->door_limit_time_animation = 0;
+	master->focused_open_door = (t_intvector){-1, -1};
+	master->focused_close_door = (t_intvector){-1, -1};
+	master->wait_to_close_the_door = 0;
 	return (0);
 }

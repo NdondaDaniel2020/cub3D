@@ -12,11 +12,38 @@
 
 #include "../includes/cub3D_bonus.h"
 
+bool	door_found(t_master *master, t_intvector pos)
+{
+	if (master->campus[pos.x][pos.y] == 'D'
+		|| master->campus[pos.x][pos.y] == 'd'
+		|| master->campus[pos.x][pos.y] == 'F'
+		|| master->campus[pos.x][pos.y] == 'f'
+		|| master->campus[pos.x][pos.y] == 'G'
+		|| master->campus[pos.x][pos.y] == 'g'
+		|| master->campus[pos.x][pos.y] == 'H'
+		|| master->campus[pos.x][pos.y] == 'h'
+		|| master->campus[pos.x][pos.y] == 'J'
+		|| master->campus[pos.x][pos.y] == 'j'
+		|| master->campus[pos.x][pos.y] == 'K'
+		|| master->campus[pos.x][pos.y] == 'k')
+		return (true);
+	return (false);
+}
+
+bool	valid_character_pass(char chr)
+{
+	if (chr != '1' && chr != 'D' && chr != 'F' && chr != 'G'
+			&& chr != 'H' && chr != 'J' && chr != 'K')
+		return (true);
+	return (false);
+}
+
 static void	is_door(t_master *master, bool *hit, t_intvector *door_map_pos)
 {
-	if (master->campus[(*door_map_pos).x][(*door_map_pos).y] == 'D'
-		|| master->campus[(*door_map_pos).x][(*door_map_pos).y] == 'd')
-	{	
+	if (door_found(master, (t_intvector)(*door_map_pos)))
+	{
+		master->render.door_object_touched =
+			master->campus[(*door_map_pos).x][(*door_map_pos).y];
 		master->render.is_door = true;
 		*hit = true;
 	}
