@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:51:02 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/07 15:15:55 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:30:10 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ int	getcolor(char *str, t_master *master)
 	return (-1);
 }
 
-void	dda(t_master *master, int *hitSide, t_intvector *step,
-		t_intvector *wallMapPos)
+void	dda(t_master *master, t_intvector *step, t_intvector *wallMapPos)
 {
 	bool		hit;
 	t_vector	ddalinesize;
@@ -84,13 +83,13 @@ void	dda(t_master *master, int *hitSide, t_intvector *step,
 		{
 			(*wallMapPos).x += step->x;
 			ddalinesize.x += master->render.deltadist.x;
-			*hitSide = 0;
+			master->wall_hitside = 0;
 		}
 		else
 		{
 			(*wallMapPos).y += step->y;
 			ddalinesize.y += master->render.deltadist.y;
-			*hitSide = 1;
+			master->wall_hitside = 1;
 		}
 		if (master->campus[(*wallMapPos).x][(*wallMapPos).y] == '1')
 			hit = true;
