@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/15 14:24:10 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:29:09 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,8 @@ int	initializedefault(t_master *master)
 	master->focused_open_door = (t_intvector){-1, -1};
 	master->focused_close_door = (t_intvector){-1, -1};
 	master->wait_to_close_the_door = 0;
+
+	master->wall_hitside = 0;
+	master->door_hitside = 0;
 	return (0);
 }
