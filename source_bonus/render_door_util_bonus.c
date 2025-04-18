@@ -40,12 +40,21 @@ bool	valid_character_pass(char chr)
 
 static void	is_door(t_master *master, bool *hit, t_intvector *door_map_pos)
 {
+	t_door_data	*data;
+
 	if (door_found(master, (t_intvector)(*door_map_pos)))
 	{
-		master->render.door_object_touched
-			= master->campus[(*door_map_pos).x][(*door_map_pos).y];
-		master->render.is_door = true;
-		*hit = true;
+		if (master->data_root_door == NULL)
+		{
+			master->render.door_object_touched = master->campus
+				[(*door_map_pos).x][(*door_map_pos).y];
+			master->render.is_door = true;
+		}
+		data = (t_door_data *)malloc(sizeof(t_door_data) * 1);
+		init_door_data(data);
+		data->door_hitside = master->door_hitside;
+		data->door_map_pos = *door_map_pos;
+		ft_lstadd_front(&master->data_root_door, ft_lstnew((void *)data));
 	}
 	if (master->campus[(*door_map_pos).x][(*door_map_pos).y] == '1')
 		*hit = true;
@@ -56,8 +65,7 @@ void	door_dda(t_master *master, t_intvector *step, t_intvector *door_map_pos)
 	bool		hit;
 	t_vector	ddalinesize;
 
-	ddalinesize = (t_vector){master->render.disttoside.x,
-		master->render.disttoside.y};
+	ddalinesize = (t_vector){master->render.disttoside.x, master->render.disttoside.y};
 	*door_map_pos = master->render.mappos;
 	master->render.is_door = false;
 	hit = false;
@@ -81,9 +89,24 @@ void	door_dda(t_master *master, t_intvector *step, t_intvector *door_map_pos)
 
 void	set_door_height(t_minilib *render, t_master *master, t_intvector step)
 {
-	if (master->door_hitside == 0)
-		render->perpendicular_dist_door = fabs((master->render.door_map_pos.x - render->pos.x + ((1 - step.x) / 2.0)) / render->raydir.x);
-	else
-		render->perpendicular_dist_door = fabs((master->render.door_map_pos.y - render->pos.y + ((1 - step.y) / 2.0)) / render->raydir.y);
-	render->door_height = SCREEN_HEIGHT / render->perpendicular_dist_door;
+	int			len;
+	t_door_data	*data;
+
+	len = ft_lstsize(master->data_root_door);
+	if (len > 0)
+	{
+		master->data_door = master->data_root_door;
+		while (master->data_door != NULL)
+		{
+			data = (t_door_data *)master->data_door->content;
+			if (data->door_hitside == 0)
+				data->perpendicular_dist_door = fabs((data->door_map_pos.x
+					- render->pos.x + ((1 - step.x) / 2.0)) / render->raydir.x);
+			else
+				data->perpendicular_dist_door = fabs((data->door_map_pos.y
+					- render->pos.y + ((1 - step.y) / 2.0)) / render->raydir.y);
+			data->door_height = SCREEN_HEIGHT / data->perpendicular_dist_door;
+			master->data_door = master->data_door->next;
+		}
+	}
 }

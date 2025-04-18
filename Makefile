@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/04/16 13:20:31 by nmatondo         ###   ########.fr        #
+#    Updated: 2025/04/18 16:38:00 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,17 +50,19 @@ player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c draw_
 player_animation_bonus.c player_texture_configuration_bonus.c door_image_path_bonus.c \
 load_door_texture_bonus.c key_exit_bounus.c door_bonus.c render_door_bonus.c render_util_bonus.c \
 render_door_util_bonus.c draw_small_map_util_bonus.c get_door_image_index_bonus.c door_animation_bonus.c \
-get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c
+get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c utils3_bonus.c
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
 
-all: MLX LIBFT $(NAME)
+all: LIBFT LIBFTB MLX $(NAME)
 
 MLX:
 	make -C $(MLXPATH)
 LIBFT:
 	make -C $(LIBFTPATH)
-
+LIBFTB:
+	make bonus -C $(LIBFTPATH)
+	
 $(NAME): $(OBJ)
 	$(COMPILE) $(FLAGS)  -Iincludes -Imimilibx-linux $(OBJ) -L./$(MLXPATH) -lmlx -L./$(LIBFTPATH) -lft -I$(MLXPATH) -lXext -lX11 -lm -lz -o $(NAME)
 
@@ -69,7 +71,7 @@ $(OBJ_D)/%.o:$(SRC_D)/%.c
 	$(COMPILE) $(FLAGS) $(GAMESET) -c $< -o $@ 
 
 
-bonus: MLX LIBFT $(BNAME)
+bonus: LIBFT LIBFTB MLX $(BNAME)
 
 $(BNAME): $(BOBJ)
 	$(COMPILE) $(FLAGS)  -Iincludes -Imimilibx-linux $(BOBJ) -L./$(MLXPATH) -lmlx -L./$(LIBFTPATH) -lft -I$(MLXPATH) -lXext -lX11 -lm -lz -o $(BNAME)

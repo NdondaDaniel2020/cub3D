@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/17 15:39:52 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/17 23:52:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,6 @@ typedef struct s_minilib
 	int				door_height;
 	t_intvector		door_map_pos;
 	char			door_object_touched;
-	double			perpendicular_dist_door;
 }					t_minilib;
 
 typedef struct s_3d
@@ -200,6 +199,9 @@ typedef struct s_master
 	t_intvector		focused_open_door;
 	t_intvector		focused_close_door;
 	int				wait_to_close_the_door;
+
+	t_list			*data_door;
+	t_list			*data_root_door;
 }					t_master;
 
 typedef struct s_texture
@@ -260,6 +262,14 @@ typedef struct s_draw_door
 	int			end_door;
 	t_texture	texture_door;
 }				t_draw_door;
+
+typedef struct	s_door_data
+{
+	int			door_height;
+	int			door_hitside;
+	t_intvector	door_map_pos;
+	double		perpendicular_dist_door;
+}				t_door_data;
 
 typedef char	*t_texture_paths[6][3][14];
 
@@ -429,4 +439,8 @@ t_intvector			get_the_position_of_the_door_that_is_in_front_of_the_player(
 						t_master *master);
 t_intvector			get_the_position_of_the_door_around_the_player(
 						t_master *master);
+
+void				init_door_data(t_door_data *data);
+void				free_door_data(void *data);
+
 #endif
