@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/17 23:52:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/21 11:22:06 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,7 +263,7 @@ typedef struct s_draw_door
 	t_texture	texture_door;
 }				t_draw_door;
 
-typedef struct	s_door_data
+typedef struct s_door_data
 {
 	int			door_height;
 	int			door_hitside;
@@ -288,7 +288,8 @@ void				dda(t_master *master, t_intvector *step,
 t_vector			set_disttoside(t_intvector *step, t_vector raydir,
 						t_minilib *render, t_intvector mapPos);
 t_vector			setdeltadist(t_vector raydir);
-void				setwallheight(t_minilib *render, t_master *master, t_intvector step);
+void				setwallheight(t_minilib *render, t_master *master,
+						t_intvector step);
 void				rotate(t_master *master);
 void				move_x(t_master *master);
 void				move_y(t_master *master);
@@ -407,8 +408,10 @@ void				free_door_texture(void *mlx, t_data *img);
 int					get_image_quantity_by_door_type(int index);
 
 void				draw_door(t_intvector *pos, t_data *img, t_master *master);
-void				door_dda(t_master *master, t_intvector *step, t_intvector *wallMapPos);
-void				set_door_height(t_minilib *render, t_master *master, t_intvector step);
+void				door_dda(t_master *master, t_intvector *step,
+						t_intvector *wallMapPos);
+void				set_door_height(t_minilib *render, t_master *master,
+						t_intvector step);
 
 void				wall_and_door_dda(t_master *master, t_intvector *step);
 void				set_wall_and_door_height(t_master *master,
