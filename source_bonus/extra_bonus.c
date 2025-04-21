@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:00:21 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/17 15:39:01 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/21 11:06:46 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 void	setwallheight(t_minilib *render, t_master *master, t_intvector step)
 {
 	if (master->wall_hitside == 0)
-		render->perpendiculardist = fabs((master->wallmappos.x - render->pos.x + ((1 - step.x) / 2.0)) / render->raydir.x);
+		render->perpendiculardist = fabs((master->wallmappos.x - render->pos.x
+					+ ((1 - step.x) / 2.0)) / render->raydir.x);
 	else
-		render->perpendiculardist = fabs((master->wallmappos.y - render->pos.y + ((1 - step.y) / 2.0)) / render->raydir.y);
-
+		render->perpendiculardist = fabs((master->wallmappos.y - render->pos.y
+					+ ((1 - step.y) / 2.0)) / render->raydir.y);
 	render->wallheight = SCREEN_HEIGHT / render->perpendiculardist;
 }
 

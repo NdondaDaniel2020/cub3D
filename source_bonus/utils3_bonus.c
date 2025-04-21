@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 17:04:41 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/18 00:19:00 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/21 10:52:48 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_door_data(t_door_data *data)
 
 void	free_door_data(void *data)
 {
-	t_door_data *door_data;
+	t_door_data	*door_data;
 
 	door_data = (t_door_data *)data;
 	free(door_data);
