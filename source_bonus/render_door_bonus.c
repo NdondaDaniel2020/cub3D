@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_door_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:32:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/18 17:06:43 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/21 09:06:59 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void	draw_door(t_intvector *pos, t_data *img, t_master *master)
 			iter++;
 		}
 	}
-	ft_lstclear(&master->data_root_door, free_door_data);
+	if (master->data_root_door != NULL)
+		ft_lstclear(&master->data_root_door, free_door_data);
 	master->data_door = NULL;
 	master->data_root_door = NULL;
 }
