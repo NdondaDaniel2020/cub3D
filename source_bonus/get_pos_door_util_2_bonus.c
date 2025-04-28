@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pos_door_util_2_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:03:30 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/16 13:37:47 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:36:09 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static t_intvector	east_west_door(t_master *master)
 	return ((t_intvector){-1, -1});
 }
 
-t_intvector	get_the_position_of_the_door_that_is_in_front_of_the_player(
+t_intvector	get_pos_door_is_in_front_of_the_player(
 	t_master *master)
 {
 	t_intvector	pos;
@@ -86,7 +86,7 @@ t_intvector	get_the_position_of_the_door_that_is_in_front_of_the_player(
 	return ((t_intvector){-1, -1});
 }
 
-t_intvector	get_the_position_of_the_door_around_the_player(t_master *master)
+t_intvector	get_pos_door_around_the_player(t_master *master)
 {
 	if (master->campus[(int)master->render.pos.x + 1]
 		[(int)master->render.pos.y] == 'D')

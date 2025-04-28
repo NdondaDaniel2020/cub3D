@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/21 11:22:06 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:40:21 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 # define ACTION_TYPES 3
 # define IMAGE_COUNT 14
 # define ONE 49
-# define TWO 50 
+# define TWO 50
 # define THREE 51
 # define FOUR 52
 # define FIVE 53
@@ -90,6 +90,26 @@ typedef struct s_intvector
 	int				x;
 	int				y;
 }					t_intvector;
+
+typedef struct s_floor_vars
+{
+	int				p;
+	t_vector		floor;
+	t_intvector		tex;
+	t_vector		left_ray;
+	t_vector		right_ray;
+	double			camera_factor;
+	double			row_distance;
+}					t_floor_var;
+
+typedef struct s_ceil_var
+{
+	t_intvector		sky;
+	int				color;
+	double			angle;
+	double			v_offset;
+	char			*pixel;
+}					t_ceil_var;
 
 typedef struct s_keyboard
 {
@@ -141,6 +161,24 @@ typedef struct s_data
 	int				door_texture_endian[3][13];
 	int				door_texture_line_length[3][13];
 	int				door_texture_bits_per_pixel[3][13];
+
+	void			*ceil_texture;
+	char			*ceil_texture_addr;
+	char			*ceil_texture_paths;
+	int				ceil_texture_width;
+	int				ceil_texture_height;
+	int				ceil_texture_endian;
+	int				ceil_texture_line_length;
+	int				ceil_texture_bits_per_pixel;
+
+	void			*floor_texture;
+	char			*floor_texture_addr;
+	char			*floor_texture_paths;
+	int				floor_texture_width;
+	int				floor_texture_height;
+	int				floor_texture_endian;
+	int				floor_texture_line_length;
+	int				floor_texture_bits_per_pixel;
 }					t_data;
 
 typedef struct s_minilib
@@ -166,10 +204,10 @@ typedef struct s_minilib
 
 typedef struct s_3d
 {
-	int	m;
-	int	l;
-	int	c;
-}		t_3d;
+	int				m;
+	int				l;
+	int				c;
+}					t_3d;
 
 typedef struct s_master
 {
@@ -244,34 +282,34 @@ typedef struct s_bresenham
 
 typedef struct s_texture_player
 {
-	float	scale;
-	int		color;
-	int		orig_width;
-	int		orig_height;
-	int		new_width;
-	int		new_height;
-	int		start_x;
-	int		start_y;
-	int		src_x;
-	int		src_y;
-}			t_texture_player;
+	float			scale;
+	int				color;
+	int				orig_width;
+	int				orig_height;
+	int				new_width;
+	int				new_height;
+	int				start_x;
+	int				start_y;
+	int				src_x;
+	int				src_y;
+}					t_texture_player;
 
 typedef struct s_draw_door
 {
-	int			start_door;
-	int			end_door;
-	t_texture	texture_door;
-}				t_draw_door;
+	int				start_door;
+	int				end_door;
+	t_texture		texture_door;
+}					t_draw_door;
 
 typedef struct s_door_data
 {
-	int			door_height;
-	int			door_hitside;
-	t_intvector	door_map_pos;
-	double		perpendicular_dist_door;
-}				t_door_data;
+	int				door_height;
+	int				door_hitside;
+	t_intvector		door_map_pos;
+	double			perpendicular_dist_door;
+}					t_door_data;
 
-typedef char	*t_texture_paths[6][3][14];
+typedef char		*t_texture_paths[6][3][14];
 
 // FUNCTIONS
 t_map				*ft_read_file(char *filepath);
@@ -358,13 +396,13 @@ void				adjust_initial_area_values(t_master *master, t_area *area,
 						t_area *extra);
 void				adjust_final_area_values(t_master *master, t_area *area,
 						t_area *extra);
-void				draw_map_util(t_master *master, t_vector pos,
-						int i1, int i2);
+void				draw_map_util(t_master *master, t_vector pos, int i1,
+						int i2);
 
 // DRAW SMALL MAP
 void				init_bresenham(t_bresenham *bresenham);
-void				draw_big_pixel(t_master *master, int size,
-						t_vector pos, int color);
+void				draw_big_pixel(t_master *master, int size, t_vector pos,
+						int color);
 void				draw_positive_straight_line(t_master *master,
 						t_bresenham *bresenham, int size, int color);
 void				draw_negative_straight_line(t_master *master,
@@ -387,14 +425,14 @@ int					load_all_texteres(void *mlx, t_data *img, t_master *master);
 void				draw_crosshair(t_master *master);
 void				player_animation(t_master *master);
 
-void				escopeta_texture_setting(t_texture_player *texture_player,
+void				shotgun_texture_set(t_texture_player *texture_player,
 						t_master *master);
 void				lupara_texture_setting(t_texture_player *texture_player,
 						t_master *master);
 void				mgun_texture_setting(t_texture_player *texture_player,
 						t_master *master);
-void				escopeta_dupla_texture_setting(
-						t_texture_player *texture_player, t_master *master);
+void				shotgun_dub_texture_set(t_texture_player *texture_player,
+						t_master *master);
 void				pistola_texture_setting(t_texture_player *texture_player,
 						t_master *master);
 
@@ -418,6 +456,9 @@ void				set_wall_and_door_height(t_master *master,
 						t_minilib *render, t_intvector step);
 void				draw_texture_and_door(t_intvector *pos, t_data *img,
 						t_master *master);
+void				draw_skybox(int drawStart, t_intvector *pos, t_data *img,
+						t_master *master);
+void				draw_floor(t_intvector *pos, t_data *img, t_master *master);
 
 int					get_image_quantity_by_door_type(int index);
 bool				player_near_the_door(t_master *master);
@@ -438,10 +479,8 @@ bool				four_doors(t_master *master);
 bool				three_doors(t_master *master);
 bool				two_doors(t_master *master);
 bool				more_than_one_door(t_master *master);
-t_intvector			get_the_position_of_the_door_that_is_in_front_of_the_player(
-						t_master *master);
-t_intvector			get_the_position_of_the_door_around_the_player(
-						t_master *master);
+t_intvector			get_pos_door_is_in_front_of_the_player(t_master *master);
+t_intvector			get_pos_door_around_the_player(t_master *master);
 
 void				init_door_data(t_door_data *data);
 void				free_door_data(void *data);
