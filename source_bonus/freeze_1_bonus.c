@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freeze_1_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:20:22 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/16 13:47:58 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:00:43 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	free_textures(void *mlx, t_data *img)
 		mlx_destroy_image(mlx, img->textures[i]);
 		i++;
 	}
+	mlx_destroy_image(mlx, img->floor_texture);
+	mlx_destroy_image(mlx, img->ceil_texture);
 	return (0);
 }
 

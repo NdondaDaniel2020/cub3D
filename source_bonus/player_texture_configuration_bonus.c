@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   player_texture_configuration_bonus.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 15:45:25 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/04 08:03:43 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:40:10 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
 
-void	escopeta_texture_setting(t_texture_player *texture_player,
+void	shotgun_texture_set(t_texture_player *texture_player,
 	t_master *master)
 {
 	texture_player->orig_width = master->img.player_texture_width
@@ -60,7 +60,7 @@ void	mgun_texture_setting(t_texture_player *texture_player,
 	texture_player->start_y = 140;
 }
 
-void	escopeta_dupla_texture_setting(t_texture_player *texture_player,
+void	shotgun_dub_texture_set(t_texture_player *texture_player,
 	t_master *master)
 {
 	texture_player->orig_width = master->img.player_texture_width

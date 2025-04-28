@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/01 15:53:57 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:39:42 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ static void	player_texture_configuration(t_texture_player *texture_player,
 	t_master *master)
 {
 	if (master->dimension.m == 0)
-		escopeta_texture_setting(texture_player, master);
+		shotgun_texture_set(texture_player, master);
 	else if (master->dimension.m == 1)
 		lupara_texture_setting(texture_player, master);
 	else if (master->dimension.m == 2)
 		mgun_texture_setting(texture_player, master);
 	else if (master->dimension.m == 3)
-		escopeta_dupla_texture_setting(texture_player, master);
+		shotgun_dub_texture_set(texture_player, master);
 	else if (master->dimension.m == 4)
 		pistola_texture_setting(texture_player, master);
 }

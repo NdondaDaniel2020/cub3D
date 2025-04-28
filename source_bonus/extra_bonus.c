@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:00:21 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/21 11:06:46 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:20:08 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	msg_error_image_not_found(int i, void *mlx, t_data *img)
 {
 	char	*tmp;
 
-	if (i >= 0 && i < 4)
+	if (i >= 0 && i <= 5)
 	{
 		if (i == 0)
 			tmp = ft_strjoin("Incorrect texture ", "NO, it must be xpm type");
@@ -46,6 +46,10 @@ void	msg_error_image_not_found(int i, void *mlx, t_data *img)
 			tmp = ft_strjoin("Incorrect texture ", "WE, it must be xpm type");
 		if (i == 3)
 			tmp = ft_strjoin("Incorrect texture ", "EA, it must be xpm type");
+		if (i == 4)
+			tmp = ft_strjoin("Incorrect texture ", "Ceil, it must be xpm type");
+		if (i == 5)
+			tmp = ft_strjoin("Incorrect texture ", "Floor,it must be xpm type");
 		printerror(tmp);
 		free(tmp);
 	}

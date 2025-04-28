@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/04/18 16:38:00 by marvin           ###   ########.fr        #
+#    Updated: 2025/04/28 11:14:27 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c draw_
 player_animation_bonus.c player_texture_configuration_bonus.c door_image_path_bonus.c \
 load_door_texture_bonus.c key_exit_bounus.c door_bonus.c render_door_bonus.c render_util_bonus.c \
 render_door_util_bonus.c draw_small_map_util_bonus.c get_door_image_index_bonus.c door_animation_bonus.c \
-get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c utils3_bonus.c
+get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c utils3_bonus.c draw_floor_and_ceil.c
+
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
 
@@ -113,6 +114,14 @@ brun: MLX LIBFT
 	clear
 	./$(BNAME) "test.cub"
 
+lrun: MLX LIBFT
+	$(RM) $(BOBJ)
+	$(RM) $(BOBJ_D)
+	$(RM) $(BNAME)
+	make bonus
+	clear
+	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) "test.cub"
+
 leak: MLX LIBFT
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_D)
@@ -120,6 +129,7 @@ leak: MLX LIBFT
 	make bonus
 	clear
 	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) "test.cub"
+
 
 push: fclean
 	clear
