@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/16 13:28:22 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:41:33 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,58 +26,58 @@ void	rotate_x(t_master *master)
 	}
 }
 
-void	move_x(t_master *master)
+void	move_x(t_master *m)
 {
 	t_vector	dir;
 	t_minilib	*rd;
 
-	rd = &master->render;
-	if (master->keyboard.right)
+	rd = &m->render;
+	if (m->keyboard.right)
 	{
 		dir = (t_vector){rd->dir.y, -rd->dir.x};
-		if (valid_character_pass(master->campus[(int)(rd->pos.x + dir.x
-					* (SPEED + 0.1))][(int)(rd->pos.y)]))
+		if (valid_character_pass(m->campus[(int)(rd->pos.x + dir.x * (SPEED
+						+ 0.1))][(int)(rd->pos.y)], m))
 			rd->pos.x += dir.x * SPEED;
-		if (valid_character_pass(master->campus[(int)(rd->pos.x
-				)][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
+		if (valid_character_pass(m->campus[(int)(rd->pos.x)][(int)(rd->pos.y
+			+ dir.y * (SPEED + 0.1))], m))
 			rd->pos.y += dir.y * SPEED;
 	}
-	if (master->keyboard.left)
+	if (m->keyboard.left)
 	{
 		dir = (t_vector){-rd->dir.y, rd->dir.x};
-		if (valid_character_pass(master->campus[(int)(rd->pos.x + dir.x
-					* (SPEED + 0.1))][(int)(rd->pos.y)]))
+		if (valid_character_pass(m->campus[(int)(rd->pos.x + dir.x * (SPEED
+						+ 0.1))][(int)(rd->pos.y)], m))
 			rd->pos.x += dir.x * SPEED;
-		if (valid_character_pass(master->campus[(int)(rd->pos.x
-				)][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
+		if (valid_character_pass(m->campus[(int)(rd->pos.x)][(int)(rd->pos.y
+			+ dir.y * (SPEED + 0.1))], m))
 			rd->pos.y += dir.y * SPEED;
 	}
 }
 
-void	move_y(t_master *master)
+void	move_y(t_master *m)
 {
 	t_vector	dir;
 	t_minilib	*rd;
 
-	rd = &master->render;
-	if (master->keyboard.up)
+	rd = &m->render;
+	if (m->keyboard.up)
 	{
 		dir = (t_vector){rd->dir.x, rd->dir.y};
-		if (valid_character_pass(master->campus[(int)(rd->pos.x + dir.x
-					* (SPEED + 0.1))][(int)(rd->pos.y)]))
+		if (valid_character_pass(m->campus[(int)(rd->pos.x + dir.x * (SPEED
+						+ 0.1))][(int)(rd->pos.y)], m))
 			rd->pos.x += dir.x * SPEED;
-		if (valid_character_pass(master->campus[(int)(rd->pos.x)
-			][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
+		if (valid_character_pass(m->campus[(int)(rd->pos.x)][(int)(rd->pos.y
+			+ dir.y * (SPEED + 0.1))], m))
 			rd->pos.y += dir.y * SPEED;
 	}
-	if (master->keyboard.down)
+	if (m->keyboard.down)
 	{
 		dir = (t_vector){-rd->dir.x, -rd->dir.y};
-		if (valid_character_pass(master->campus[(int)(rd->pos.x
-					+ dir.x * (SPEED + 0.1))][(int)(rd->pos.y)]))
+		if (valid_character_pass(m->campus[(int)(rd->pos.x + dir.x * (SPEED
+						+ 0.1))][(int)(rd->pos.y)], m))
 			rd->pos.x += dir.x * SPEED;
-		if (valid_character_pass(master->campus[(int)(rd->pos.x)
-			][(int)(rd->pos.y + dir.y * (SPEED + 0.1))]))
+		if (valid_character_pass(m->campus[(int)(rd->pos.x)][(int)(rd->pos.y
+			+ dir.y * (SPEED + 0.1))], m))
 			rd->pos.y += dir.y * SPEED;
 	}
 }
@@ -101,6 +101,7 @@ int	controls(void *vars)
 
 	master = (t_master *)vars;
 	master->render.door_object_touched = '\0';
+	master->rotate_angle++;
 	player_animation(master);
 	move_y(master);
 	move_x(master);

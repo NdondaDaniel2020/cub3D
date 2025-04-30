@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:20:22 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/28 11:00:43 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:57:29 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_free_master(t_master *master)
 		free(master->no);
 	if (master->campus)
 		ft_freematriz(master->campus);
+	clear_sounds(master->sounds, master->bass_active);
 	free(master);
 }
 

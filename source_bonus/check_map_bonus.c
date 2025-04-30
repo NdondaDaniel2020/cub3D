@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/31 10:46:01 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:57:13 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,6 @@ t_master	*get_master(t_map *map)
 	if (check_door(master->campus) && master->wrongmap == 0)
 		return (printerror("Doors must be between walls and inside the map"),
 			master->wrongmap = 1, master);
-	return (master);
+	sound_init(&master->sounds, &master->bass_active);
+	return (master->weapon = 0, set_weapon(master, 0), master);
 }

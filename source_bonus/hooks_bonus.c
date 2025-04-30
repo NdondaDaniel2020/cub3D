@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:34:47 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/14 14:13:56 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:57:34 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	key_weapon(int keycode, t_master *master)
 		master->dimension.m = 4;
 	if (keycode == SZERO && master->dimension.l != 0)
 		master->keyboard.mouse_left = true;
+	set_weapon(master, master->dimension.m);
 	return (0);
 }
 
@@ -85,6 +86,7 @@ int	mouse_press(int button, int x, int y, t_master *master)
 
 int	wait_hooks(t_master *master)
 {
+	play_sound(master->sounds.background, 20);
 	mlx_hook(master->render.win, 2, 1L << 0, key_hook, master);
 	mlx_hook(master->render.win, 3, 1L << 1, key_release, master);
 	mlx_hook(master->render.win, 17, 1L << 1, key_exit, master);

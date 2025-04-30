@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:29:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/31 09:50:09 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:46:38 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	ft_game(t_master *master)
 	render.win = mlx_new_window(render.mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"ODYSSEY 2.0");
 	img.img = mlx_new_image(render.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+			&img.endian);
 	master->render = render;
 	master->img = img;
 	wait_hooks(master);
@@ -88,6 +88,7 @@ int	main(int ac, char *av[])
 			return (1);
 		master = get_master(map);
 		ft_free_stack(map);
+		master->rotate_angle = 0;
 		if (master->wrongmap == 0)
 			return (ft_game(master));
 		else
