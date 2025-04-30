@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_animation_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:03:30 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/16 13:36:58 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:57:09 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	get_back_image_state(t_master *master, t_intvector focused_door)
 	int		index;
 	char	*list;
 
+	play_sound(master->sounds.door_close, 50);
 	if (master->type_door == 0)
 		list = door_one_character_list();
 	else if (master->type_door == 1)
@@ -73,7 +74,8 @@ void	animation_open_the_door(t_master *master)
 	if (master->keyboard.open_door)
 	{
 		if (master->door_time_animation >= master->door_limit_time_animation)
-		{			
+		{	
+			play_sound(master->sounds.door_open, 50);
 			pos = get_pos_door(master);
 			if (master->focused_open_door.x == -1
 				&& master->focused_open_door.y == -1)

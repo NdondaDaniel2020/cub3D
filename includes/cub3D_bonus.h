@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/28 11:40:21 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:43:20 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "get_next_line.h"
+# include <bass.h>
 # include <errno.h>
 # include <math.h>
 # include <stdbool.h>
+# include <stdint.h>
 # include <string.h>
 
+// #  define ROTATE_STEP 0.01
 # if !defined SCREEN_WIDTH
 #  define SCREEN_WIDTH 800
 # endif
@@ -65,12 +68,12 @@
 # define EIGHT 56
 # define SZERO 65438
 # define LCTRL 65508
+# define OPENDOR 101
 
 # define FIRE 0
 # define WALK 1
 # define STOP 2
 
-# define OPENDOR 101
 // STOP FIRE WALK
 
 typedef struct s_map
@@ -209,6 +212,19 @@ typedef struct s_3d
 	int				c;
 }					t_3d;
 
+typedef struct s_sound
+{
+	HSTREAM			background;
+	HSTREAM			run;
+	HSTREAM			pistol;
+	HSTREAM			shotgun;
+	HSTREAM			shotgun_frst;
+	HSTREAM			revolver_3;
+	HSTREAM			revolver;
+	HSTREAM			door_open;
+	HSTREAM			door_close;
+}					t_sound;
+
 typedef struct s_master
 {
 	int				wrongmap;
@@ -240,6 +256,10 @@ typedef struct s_master
 
 	t_list			*data_door;
 	t_list			*data_root_door;
+	double			rotate_angle;
+	BOOL			bass_active;
+	HSTREAM			weapon;
+	t_sound			sounds;
 }					t_master;
 
 typedef struct s_texture
@@ -472,7 +492,7 @@ bool				door_found(t_master *master, t_intvector pos);
 void				animation_open_the_door(t_master *master);
 void				animation_close_the_door(t_master *master);
 
-bool				valid_character_pass(char chr);
+bool				valid_character_pass(char chr, t_master *master);
 t_intvector			get_pos_door(t_master *master);
 
 bool				four_doors(t_master *master);
@@ -484,5 +504,8 @@ t_intvector			get_pos_door_around_the_player(t_master *master);
 
 void				init_door_data(t_door_data *data);
 void				free_door_data(void *data);
-
+int					sound_init(t_sound *sounds, BOOL *bass);
+int					play_sound(HSTREAM sound, int vol);
+int					set_weapon(t_master *master, int index);
+int					clear_sounds(t_sound sounds, BOOL bass);
 #endif

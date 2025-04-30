@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_door_util_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 20:11:30 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/11 20:11:30 by marvin           ###   ########.fr       */
+/*   Created: 2025/04/29 17:43:40 by aquissan          #+#    #+#             */
+/*   Updated: 2025/04/29 17:43:40 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,15 @@ bool	door_found(t_master *master, t_intvector pos)
 	return (false);
 }
 
-bool	valid_character_pass(char chr)
+bool	valid_character_pass(char chr, t_master *master)
 {
-	if (chr != '1' && chr != 'D' && chr != 'F' && chr != 'G'
-		&& chr != 'H' && chr != 'J' && chr != 'K')
+	if (chr != '1' && chr != 'D' && chr != 'F' && chr != 'G' && chr != 'H'
+		&& chr != 'J' && chr != 'K')
+	{
+		(void)master;
+		play_sound(master->sounds.run, 20);
 		return (true);
+	}
 	return (false);
 }
 
@@ -46,8 +50,8 @@ static void	is_door(t_master *master, bool *hit, t_intvector *door_map_pos)
 	{
 		if (master->data_root_door == NULL)
 		{
-			master->render.door_object_touched = master->campus
-			[(*door_map_pos).x][(*door_map_pos).y];
+			master->render.door_object_touched
+				= master->campus[(*door_map_pos).x][(*door_map_pos).y];
 			master->render.is_door = true;
 		}
 		data = (t_door_data *)malloc(sizeof(t_door_data) * 1);
@@ -60,7 +64,8 @@ static void	is_door(t_master *master, bool *hit, t_intvector *door_map_pos)
 		*hit = true;
 }
 
-void	door_dda(t_master *master, t_intvector *step, t_intvector *door_map_pos)
+void	door_dda(t_master *master, t_intvector *step,
+		t_intvector *door_map_pos)
 {
 	bool		hit;
 	t_vector	ddalinesize;

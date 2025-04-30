@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/04/28 11:14:27 by aquissan         ###   ########.fr        #
+#    Updated: 2025/04/30 13:07:26 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ PX ?= 18
 # PX ?= $(shell echo "$(W) * 0.2 / 11" | bc)
 
 GAMESET = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)"
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g 
 COMPILE = cc
 
 # DIRS
@@ -32,6 +32,7 @@ SRC_D=sources
 BSRC_D=source_bonus
 OBJ_D=objects
 BOBJ_D=object_bonus
+BASSPATH = bass
 
 RM=rm -rf 
 Mk=mkdir -p 
@@ -50,7 +51,8 @@ player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c draw_
 player_animation_bonus.c player_texture_configuration_bonus.c door_image_path_bonus.c \
 load_door_texture_bonus.c key_exit_bounus.c door_bonus.c render_door_bonus.c render_util_bonus.c \
 render_door_util_bonus.c draw_small_map_util_bonus.c get_door_image_index_bonus.c door_animation_bonus.c \
-get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c utils3_bonus.c draw_floor_and_ceil.c
+get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c utils3_bonus.c draw_floor_and_ceil.c\
+sound_bonus.c
 
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
@@ -75,12 +77,11 @@ $(OBJ_D)/%.o:$(SRC_D)/%.c
 bonus: LIBFT LIBFTB MLX $(BNAME)
 
 $(BNAME): $(BOBJ)
-	$(COMPILE) $(FLAGS)  -Iincludes -Imimilibx-linux $(BOBJ) -L./$(MLXPATH) -lmlx -L./$(LIBFTPATH) -lft -I$(MLXPATH) -lXext -lX11 -lm -lz -o $(BNAME)
+	$(COMPILE) $(FLAGS) -I$(INC_D) -I$(MLXPATH) -I$(BASSPATH) -o $(BNAME) $(BOBJ) -L./minilibx-linux -lmlx -L./libft -lft -L./$(BASSPATH) -lbass -lXext -lX11 -lm -lz -Wl,-rpath=$(BASSPATH)
 
 $(BOBJ_D)/%.o:$(BSRC_D)/%.c
 	@$(Mk) $(BOBJ_D)
-	$(COMPILE) $(FLAGS) $(GAMESET) -c $< -o $@ 
-
+	$(COMPILE) -I$(BASSPATH) $(FLAGS) $(GAMESET) -c -L./$(BASSPATH) -lbass $< -o $@ -Wl,-rpath=$(BASSPATH)
 
 clean: 
 	make clean -C $(LIBFTPATH)
