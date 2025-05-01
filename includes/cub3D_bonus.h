@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/30 12:43:20 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:56:35 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 #  define SPEED 0.010
 # endif
 # if !defined PIXEL_SIZE
-#  define PIXEL_SIZE 20
+#  define PIXEL_SIZE 10
 # endif
 # define PI 3.14
 # define ROTATE_SPEED 500
