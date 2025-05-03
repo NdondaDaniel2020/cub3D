@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pos_door_util_2_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:03:30 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/28 11:36:09 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:39:27 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ t_intvector	get_pos_door_is_in_front_of_the_player(
 
 	if (master->door_hitside == 1)
 	{
-		pos = north_south_door(master);
+		pos = east_west_door(master);	
 		if (pos.x != -1 && pos.y != -1)
 			return (pos);
 	}
 	else
 	{
-		pos = east_west_door(master);
+		pos = north_south_door(master);
 		if (pos.x != -1 && pos.y != -1)
 			return (pos);
 	}
