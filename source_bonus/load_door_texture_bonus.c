@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_door_texture_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:29:02 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/16 13:50:02 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:11:19 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	load_door_texture(void *mlx, t_data *img)
 		{
 			if (load_door_texture_util(mlx, img, l, c))
 				return (1);
+			loading();
 			c++;
 		}
 		l++;

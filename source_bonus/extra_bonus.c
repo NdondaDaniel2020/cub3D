@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:00:21 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/28 11:20:08 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:27:55 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	load_textures(void *mlx, t_data *img, t_master *master)
 				&img->tex_bits_per_pixel[i], &img->tex_line_length[i],
 				&img->tex_endian[i]);
 		i++;
+		loading();
 	}
 	return (0);
 }

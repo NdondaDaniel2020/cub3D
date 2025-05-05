@@ -6,37 +6,37 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 13:23:59 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/05 13:29:08 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:32:51 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
 
-int	set_preload_image(t_preload *preload, void *mlx)
+int	set_preload_image(t_preload *pl, void *mlx)
 {
 	int	i;
 
 	i = -1;
-	preload->background.img = mlx_xpm_file_to_image(mlx,
-			preload->background.path, &preload->background.width,
-			&preload->background.height);
-	if (!preload->background.img)
+	pl->background.img = mlx_xpm_file_to_image(mlx, pl->background.path,
+			&pl->background.width, &pl->background.height);
+	if (!pl->background.img)
 		return (14);
-	preload->background.addr = mlx_get_data_addr(preload->background.img,
-			&preload->background.bits_per_pixel,
-			&preload->background.line_length, &preload->background.endian);
+	pl->background.addr = mlx_get_data_addr(pl->background.img,
+			&pl->background.bits_per_pixel, &pl->background.line_length,
+			&pl->background.endian);
 	while (++i < 13)
 	{
-		preload->logo[i].img = mlx_xpm_file_to_image(mlx, preload->logo[i].path,
-				&preload->logo[i].width, &preload->logo[i].height);
+		pl->logo[i].img = mlx_xpm_file_to_image(mlx, pl->logo[i].path,
+				&pl->logo[i].width, &pl->logo[i].height);
+		loading();
 	}
 	while (--i >= 0)
 	{
-		if (!preload->logo[i].img)
+		if (!pl->logo[i].img)
 			return (i + 1);
-		preload->logo[i].addr = mlx_get_data_addr(preload->logo[i].img,
-				&preload->logo[i].bits_per_pixel, &preload->logo[i].line_length,
-				&preload->logo[i].endian);
+		pl->logo[i].addr = mlx_get_data_addr(pl->logo[i].img,
+				&pl->logo[i].bits_per_pixel, &pl->logo[i].line_length,
+				&pl->logo[i].endian);
 	}
 	return (0);
 }
@@ -81,4 +81,32 @@ int	set_preload_default(t_preload *preload)
 	preload->img = NULL;
 	preload->background.img = NULL;
 	return (0);
+}
+
+int	loading(void)
+{
+	int			i;
+	int			total;
+	int			perc;
+	static int	texture_step;
+
+	texture_step++;
+	total = 50;
+	perc = (texture_step * total) / QTD_TEXTURE;
+	printf("\r%s[%s", WHITE, RESET);
+	i = 0;
+	while (i < total)
+	{
+		if (i < perc)
+			printf("%s%s%s", GREEN, BLOCK, RESET);
+		else
+			printf("%s%s%s", WHITE, BLOCK, RESET);
+		i++;
+	}
+	printf("%s]%s %d%%%s", WHITE, RESET, (perc * 2), RESET);
+	fflush(stdout);
+	if ((perc * 2) >= 100)
+		printf("\n");
+	usleep(10000);
+	return (perc);
 }

@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 17:10:10 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/05 13:22:56 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:34:21 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	init_preload(t_preload *preload, void *mlx)
 	set_preload_default(preload);
 	set_preload_path(preload);
 	preload->img = mlx_new_image(mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	loading();
 	if (!preload->img)
 		return (free_preload(preload, mlx),
 			printerror("Image preload cannot be created"), 1);
@@ -75,8 +76,7 @@ int	init_preload(t_preload *preload, void *mlx)
 		num = ft_itoa(res);
 		str = ft_strjoin("Invalid texture preload logo number: ", num);
 		printerror(str);
-		free_preload(preload, mlx);
-		return (free(str), free(num), 1);
+		return (free_preload(preload, mlx), free(str), free(num), 1);
 	}
 	return (0);
 }
