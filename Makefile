@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/05/05 17:27:57 by aquissan         ###   ########.fr        #
+#    Updated: 2025/05/05 18:04:50 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,4 +145,3 @@ norm:
 	norminette $(LIBFTPATH) $(SRC_D) $(BSRC_D) $(INC_D)
 
 .PHONY: all re clean fclean
-

@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:34:47 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/05 17:58:36 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:07:06 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	key_hook(int keycode, t_master *master)
 		master->keyboard.up = true;
 	if (keycode == LEFT)
 		master->keyboard.left = true;
-	if ((keycode == OPENDOR || keycode == SPACE) && player_near_the_door(master))
+	if ((keycode == OPENDOR || keycode == SPACE)
+		&& player_near_the_door(master))
 		master->keyboard.open_door = true;
 	if (keycode == ENTER)
 		master->game_started = TRUE;
