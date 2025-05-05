@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/04/30 17:02:17 by aquissan         ###   ########.fr        #
+#    Updated: 2025/05/05 13:24:08 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BNAME = cub3D_bonus
 
 W ?= 1200
 H ?= 800
-S ?= 0.02
+S ?= 0.05
 M ?= "Done"
 PX ?= 14
 
@@ -51,7 +51,7 @@ player_animation_bonus.c player_texture_configuration_bonus.c door_image_path_bo
 load_door_texture_bonus.c key_exit_bounus.c door_bonus.c render_door_bonus.c render_util_bonus.c \
 render_door_util_bonus.c draw_small_map_util_bonus.c get_door_image_index_bonus.c door_animation_bonus.c \
 get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c utils3_bonus.c draw_floor_and_ceil.c\
-sound_bonus.c
+sound_bonus.c preload.c preload_init.c
 
 BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
 BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
