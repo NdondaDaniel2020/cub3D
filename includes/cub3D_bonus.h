@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/05 13:29:57 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:32:37 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 # define GREEN "\033[32m"
 # define YELLOW "\033[33m"
 # define CYAN "\033[36m"
+# define WHITE "\033[37m"
+# define BLOCK "█"
 # define READ O_RDONLY
 # define WRITE O_WRONLY
+# define QTD_TEXTURE 174
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "get_next_line.h"
@@ -184,6 +187,7 @@ typedef struct s_data
 	int				floor_texture_endian;
 	int				floor_texture_line_length;
 	int				floor_texture_bits_per_pixel;
+	int				texture_step;
 }					t_data;
 
 typedef struct s_image
@@ -539,5 +543,6 @@ int					clear_sounds(t_sound sounds, BOOL bass);
 int					free_preload(t_preload *preload, void *mlx);
 int					preload(t_master *master);
 int					set_preload_default(t_preload *preload);
-int					set_preload_image(t_preload *preload, void *mlx);
+int					set_preload_image(t_preload *pl, void *mlx);
+int					loading(void);
 #endif
