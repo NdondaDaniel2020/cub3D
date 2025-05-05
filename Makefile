@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/05/05 13:24:08 by aquissan         ###   ########.fr        #
+#    Updated: 2025/05/05 17:27:57 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,10 @@ M ?= "Done"
 PX ?= 14
 
 GAMESET = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)"
-FLAGS = -Wall -Wextra -Werror -g 
+FLAGS = -Wall -Wextra -Werror 
 COMPILE = cc
+
+MAP = "maps/bridge.cub"
 
 # DIRS
 INC_D = includes
@@ -104,7 +106,7 @@ run: MLX LIBFT
 	$(RM) $(NAME)
 	make
 	clear
-	./$(NAME) "test.cub"
+	./$(NAME) $(MAP)
 
 brun: MLX LIBFT
 	$(RM) $(BOBJ)
@@ -112,7 +114,7 @@ brun: MLX LIBFT
 	$(RM) $(BNAME)
 	make bonus
 	clear
-	./$(BNAME) "test.cub"
+	./$(BNAME) $(MAP)
 
 lrun: MLX LIBFT
 	$(RM) $(BOBJ)
@@ -120,7 +122,7 @@ lrun: MLX LIBFT
 	$(RM) $(BNAME)
 	make bonus
 	clear
-	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) "test.cub"
+	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) $(MAP)
 
 leak: MLX LIBFT
 	$(RM) $(OBJ)
@@ -128,7 +130,7 @@ leak: MLX LIBFT
 	$(RM) $(BNAME)
 	make bonus
 	clear
-	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) "test.cub"
+	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) $(MAP)
 
 
 push: fclean

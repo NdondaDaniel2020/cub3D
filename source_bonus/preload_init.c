@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 13:23:59 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/05 16:32:51 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:21:07 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	loading(void)
 	texture_step++;
 	total = 50;
 	perc = (texture_step * total) / QTD_TEXTURE;
-	printf("\r%s[%s", WHITE, RESET);
+	printf("\r%s--|%s", WHITE, RESET);
 	i = 0;
 	while (i < total)
 	{
@@ -103,7 +103,7 @@ int	loading(void)
 			printf("%s%s%s", WHITE, BLOCK, RESET);
 		i++;
 	}
-	printf("%s]%s %d%%%s", WHITE, RESET, (perc * 2), RESET);
+	printf("%s|-| %d%% |--%s", WHITE, (perc * 2), RESET);
 	fflush(stdout);
 	if ((perc * 2) >= 100)
 		printf("\n");
