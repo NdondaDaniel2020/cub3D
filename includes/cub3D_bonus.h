@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/30 16:56:35 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:31:51 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # include <stdint.h>
 # include <string.h>
 
-// #  define ROTATE_STEP 0.01
 # if !defined SCREEN_WIDTH
 #  define SCREEN_WIDTH 800
 # endif
@@ -69,6 +68,9 @@
 # define SZERO 65438
 # define LCTRL 65508
 # define OPENDOR 101
+# define SPACE 32
+# define ENTER 65293
+# define CTRL 65507
 
 # define FIRE 0
 # define WALK 1
@@ -184,6 +186,30 @@ typedef struct s_data
 	int				floor_texture_bits_per_pixel;
 }					t_data;
 
+typedef struct s_image
+{
+	void			*img;
+	char			*path;
+	char			*addr;
+	int				width;
+	int				height;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}					t_image;
+
+typedef struct s_preload
+{
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+
+	t_image			background;
+	t_image			logo[13];
+}					t_preload;
+
 typedef struct s_minilib
 {
 	void			*mlx;
@@ -260,6 +286,8 @@ typedef struct s_master
 	BOOL			bass_active;
 	HSTREAM			weapon;
 	t_sound			sounds;
+	BOOL			game_started;
+	t_preload		preload;
 }					t_master;
 
 typedef struct s_texture
@@ -508,4 +536,6 @@ int					sound_init(t_sound *sounds, BOOL *bass);
 int					play_sound(HSTREAM sound, int vol);
 int					set_weapon(t_master *master, int index);
 int					clear_sounds(t_sound sounds, BOOL bass);
+int					free_preload(t_preload *preload, void *mlx);
+int					preload(t_master *master);
 #endif

@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:43:01 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/29 17:41:33 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:31:07 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,18 +102,23 @@ int	controls(void *vars)
 	master = (t_master *)vars;
 	master->render.door_object_touched = '\0';
 	master->rotate_angle++;
-	player_animation(master);
-	move_y(master);
-	move_x(master);
-	rotate_x(master);
-	rotate_y(master);
-	renderization(&master->render, master, &master->img);
-	animation_open_the_door(master);
-	animation_close_the_door(master);
-	draw_small_map(master);
-	draw_player(master);
-	draw_crosshair(master);
-	mlx_put_image_to_window(master->render.mlx, master->render.win,
-		master->img.img, 0, 0);
+	if (master->game_started)
+	{
+		player_animation(master);
+		move_y(master);
+		move_x(master);
+		rotate_x(master);
+		rotate_y(master);
+		renderization(&master->render, master, &master->img);
+		animation_open_the_door(master);
+		animation_close_the_door(master);
+		draw_small_map(master);
+		draw_player(master);
+		draw_crosshair(master);
+		mlx_put_image_to_window(master->render.mlx, master->render.win,
+			master->img.img, 0, 0);
+	}
+	else
+		preload(master);
 	return (0);
 }
