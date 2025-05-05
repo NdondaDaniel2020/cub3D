@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_small_map_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:10:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/03 16:43:53 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:17:25 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ static void	draw_small_player_util(t_master *master, int x, int y)
 	pos.x = (x * PIXEL_SIZE) + rest_x;
 	pos.y = (y * PIXEL_SIZE) + rest_y;
 	draw_big_pixel(master, PIXEL_SIZE - 8, pos, 0xFF0000);
-
 	line.x_ini = (x * PIXEL_SIZE) + ((PIXEL_SIZE - 9) / 2) + rest_x;
 	line.y_ini = (y * PIXEL_SIZE) + ((PIXEL_SIZE - 9) / 2) + rest_y;
 	line.x_end = (x * PIXEL_SIZE) + ((PIXEL_SIZE - 9) / 2) + rest_x

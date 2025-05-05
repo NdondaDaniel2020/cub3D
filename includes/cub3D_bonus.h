@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/05 10:31:51 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:29:57 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -538,4 +538,6 @@ int					set_weapon(t_master *master, int index);
 int					clear_sounds(t_sound sounds, BOOL bass);
 int					free_preload(t_preload *preload, void *mlx);
 int					preload(t_master *master);
+int					set_preload_default(t_preload *preload);
+int					set_preload_image(t_preload *preload, void *mlx);
 #endif
