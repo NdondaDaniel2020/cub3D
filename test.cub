@@ -1,6 +1,6 @@
-NO ./textures/comb1/tatame_north_texture.xpm
-SO ./textures/comb1/tatame_south_texture.xpm
-EA ./textures/comb1/tatame_east_texture.xpm
+NO ./textures/comb1/tatame_west_texture.xpm
+SO ./textures/comb1/tatame_west_texture.xpm
+EA ./textures/comb1/tatame_west_texture.xpm
 WE ./textures/comb1/tatame_west_texture.xpm
 
 F 0,0,0 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/21 10:52:19 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/02 14:41:30 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int	initializedefault(t_master *master)
 	master->wait_to_close_the_door = 0;
 	master->data_root_door = NULL;
 	master->data_door = NULL;
+	master->game_started = false;
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:32:11 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/17 23:24:53 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/02 15:02:58 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	renderization(t_minilib *render, t_master *master, t_data *img)
 	t_intvector	step;
 
 	pos.x = -1;
-	clear(img);
+	if (master->game_started)
+		clear(img);
 	while (++pos.x < SCREEN_WIDTH)
 	{
 		multiple = 2 * ((double)pos.x / SCREEN_WIDTH) - 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_exit_bounus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 09:50:57 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/04/04 12:52:54 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/03 19:14:53 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	key_exit(t_master *master)
 {
+	free_preload(&master->preload, master->render.mlx);
 	free_door_texture(master->render.mlx, &master->img);
 	free_textures(master->render.mlx, &master->img);
 	free_player_texture(master->render.mlx, &master->img);
@@ -28,6 +29,7 @@ int	key_exit(t_master *master)
 
 int	key_exit_2(t_master *master)
 {
+	free_preload(&master->preload, master->render.mlx);
 	free_door_texture(master->render.mlx, &master->img);
 	free_textures(master->render.mlx, &master->img);
 	free_player_texture(master->render.mlx, &master->img);
