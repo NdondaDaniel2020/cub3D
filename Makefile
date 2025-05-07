@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
+#    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/05/07 10:27:35 by nmatondo         ###   ########.fr        #
+#    Updated: 2025/05/07 10:35:28 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,7 @@ run: MLX LIBFT
 	$(RM) $(NAME)
 	make
 	clear
-	./$(NAME) ./test.cub
+	./$(NAME) ./maps/test.cub
 
 brun: MLX LIBFT
 	$(RM) $(BOBJ)
