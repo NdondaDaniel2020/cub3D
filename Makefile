@@ -6,7 +6,7 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/05/07 11:14:55 by aquissan         ###   ########.fr        #
+#    Updated: 2025/05/07 18:13:35 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BNAME = cub3D_bonus
 W ?= 1200
 H ?= 800
 S ?= 0.05
-M ?= "Done"
+M ?= "Project_Done"
 PX ?= 14
 
 GAMESET = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)"
