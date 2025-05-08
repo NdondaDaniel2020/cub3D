@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/02 14:41:30 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/08 10:35:23 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ int	initializedefault(t_master *master)
 	master->door_time_animation = 0;
 	master->door_limit_time_animation = 0;
 	master->focused_open_door = (t_intvector){-1, -1};
-	master->focused_close_door = (t_intvector){-1, -1};
 	master->wait_to_close_the_door = 0;
 	master->data_root_door = NULL;
+	master->root_focused_close_door = NULL;
 	master->data_door = NULL;
 	master->game_started = false;
 	return (0);
