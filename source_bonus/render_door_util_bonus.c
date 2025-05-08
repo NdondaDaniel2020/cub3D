@@ -49,11 +49,7 @@ static void	is_door(t_master *master, bool *hit, t_intvector *door_map_pos)
 	if (door_found(master, (t_intvector)(*door_map_pos)))
 	{
 		if (master->data_root_door == NULL)
-		{
-			master->render.door_object_touched
-				= master->campus[(*door_map_pos).x][(*door_map_pos).y];
 			master->render.is_door = true;
-		}
 		data = (t_door_data *)malloc(sizeof(t_door_data) * 1);
 		init_door_data(data);
 		data->door_hitside = master->door_hitside;

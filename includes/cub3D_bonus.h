@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/08 11:57:56 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/08 15:51:45 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,7 +232,6 @@ typedef struct s_minilib
 	bool			is_door;
 	int				door_height;
 	t_intvector		door_map_pos;
-	char			door_object_touched;
 }					t_minilib;
 
 typedef struct s_3d
@@ -400,6 +399,7 @@ int					around_character(char **tab, t_master *master);
 int					is_there_something_wrong(t_master *master, t_map *map);
 int					ft_countmatriz(char **mat);
 int					initializedefault(t_master *master);
+int					initializedefault_2(t_master *master);
 int					ft_countlinecampus(t_map *list);
 void				ft_replacechar(char *str, char to_find, char to_replace);
 int					ft_replacestr(char **str, char *to_replace);
@@ -429,6 +429,7 @@ int					key_hook(int keycode, t_master *master);
 int					key_exit(t_master *master);
 int					key_exit_2(t_master *master);
 int					mousemove(int x, int y, t_master *master);
+void				free_root_focused_close_door(t_master *master);
 
 // FREEZE
 void				ft_free_stack(t_map *map);
