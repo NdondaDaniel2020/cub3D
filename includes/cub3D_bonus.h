@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/05 16:32:37 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/08 10:35:36 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,7 +281,7 @@ typedef struct s_master
 	int				door_time_animation;
 	int				door_limit_time_animation;
 	t_intvector		focused_open_door;
-	t_intvector		focused_close_door;
+	t_list			*root_focused_close_door;
 	int				wait_to_close_the_door;
 
 	t_list			*data_door;
