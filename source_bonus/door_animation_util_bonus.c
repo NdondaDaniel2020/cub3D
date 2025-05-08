@@ -6,11 +6,28 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 10:42:39 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/08 11:20:24 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/08 15:33:17 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
+
+void	free_root_focused_close_door(t_master *master)
+{
+	t_list		*aux;
+	t_intvector	*content;
+
+	while (master->root_focused_close_door != NULL)
+	{
+		content = master->root_focused_close_door->content;
+		aux = master->root_focused_close_door;
+		master->root_focused_close_door
+			= master->root_focused_close_door->next;
+		free(content);
+		free(aux);
+	}
+	master->root_focused_close_door = NULL;
+}
 
 char	get_back_image_state(t_master *master, t_intvector *focused_door)
 {
@@ -55,7 +72,7 @@ void	animation_close_the_door_util(t_master *master,
 			if (ft_lstsize(master->root_focused_close_door) == 0)
 				master->keyboard.close_door = false;
 			else
-				master->wait_to_close_the_door = 80;
+				master->wait_to_close_the_door = 40;
 		}
 		master->door_time_animation = 0;
 	}
