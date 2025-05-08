@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 10:42:39 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/08 10:45:47 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/08 11:20:24 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ char	get_back_image_state(t_master *master, t_intvector *focused_door)
 	return (list[index - 1]);
 }
 
-void	animation_close_the_door_util(t_master *master, t_intvector *focused_close_door)
+void	animation_close_the_door_util(t_master *master,
+	t_intvector *focused_close_door)
 {
 	char		chr;
 	t_list		*aux;
@@ -48,9 +49,10 @@ void	animation_close_the_door_util(t_master *master, t_intvector *focused_close_
 		{
 			free(focused_close_door);
 			aux = master->root_focused_close_door;
-			master->root_focused_close_door = master->root_focused_close_door->next;
+			master->root_focused_close_door
+				= master->root_focused_close_door->next;
 			free(aux);
-			if (ft_lstsize(master->root_focused_close_door) ==  0)
+			if (ft_lstsize(master->root_focused_close_door) == 0)
 				master->keyboard.close_door = false;
 			else
 				master->wait_to_close_the_door = 80;
@@ -63,7 +65,6 @@ void	animation_close_the_door_util(t_master *master, t_intvector *focused_close_
 
 void	animation_close_the_door(t_master *master)
 {
-
 	t_intvector	*focused_close_door;
 
 	if (master->keyboard.close_door && master->wait_to_close_the_door != 0)
@@ -71,11 +72,10 @@ void	animation_close_the_door(t_master *master)
 	if (master->keyboard.close_door
 		&& master->wait_to_close_the_door == 0)
 	{
-		focused_close_door = (t_intvector *)master->root_focused_close_door->content;
+		focused_close_door
+			= (t_intvector *)master->root_focused_close_door->content;
 		if (master->campus[(int)master->render.pos.x][(int)master->render.pos.y]
 			!= master->campus[focused_close_door->x][focused_close_door->y])
 			animation_close_the_door_util(master, focused_close_door);
 	}
 }
-
-

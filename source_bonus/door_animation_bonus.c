@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:03:30 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/08 10:45:42 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/08 11:17:23 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	animation_open_the_door(t_master *master)
 	if (master->keyboard.open_door)
 	{
 		if (master->door_time_animation >= master->door_limit_time_animation)
-		{	
+		{
 			play_sound(master->sounds.door_open, 50);
 			pos = get_pos_door(master);
 			if (master->focused_open_door.x == -1
