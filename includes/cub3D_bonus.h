@@ -6,7 +6,7 @@
 /*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/08 10:35:36 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/08 11:57:56 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -518,7 +518,8 @@ bool				player_near_the_door(t_master *master);
 char				*door_one_character_list(void);
 char				*door_two_character_list(void);
 char				*door_three_character_list(void);
-int					get_image_index_by_character_type(t_master *master);
+int					get_image_index_by_character_type(t_master *master,
+						char chr);
 bool				door_found(t_master *master, t_intvector pos);
 
 void				animation_open_the_door(t_master *master);
