@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sound_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:49:02 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/08 15:38:19 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/09 11:29:03 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ int	play_sound(HSTREAM sound, int vol)
 		volume = 1.0f;
 	if (sound)
 	{
-		(void)volume;
-		// BASS_ChannelSetAttribute(sound, BASS_ATTRIB_VOL, volume);
-		// if (BASS_ChannelIsActive(sound) != BASS_ACTIVE_PLAYING)
-		// 	BASS_ChannelPlay(sound, TRUE);
+		BASS_ChannelSetAttribute(sound, BASS_ATTRIB_VOL, volume);
+		BASS_ChannelPlay(sound, TRUE);
 	}
 	return (0);
 }
@@ -63,7 +61,7 @@ int	sound_init(t_sound *sounds, BOOL *bass)
 			BASS_SAMPLE_LOOP);
 	sounds->run = BASS_StreamCreateFile(FALSE, "./sound/run/run.mp3", 0, 0, 0);
 	sounds->revolver = BASS_StreamCreateFile(FALSE,
-			"./sound/weapon/revovler.mp3", 0, 0, 0);
+			"./sound/weapon/revolver.mp3", 0, 0, 0);
 	sounds->shotgun = BASS_StreamCreateFile(FALSE,
 			"./sound/weapon/shotgun-frst.mp3", 0, 0, 0);
 	sounds->pistol = BASS_StreamCreateFile(FALSE, "./sound/weapon/pistol.mp3",

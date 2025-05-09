@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_animation_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 15:08:27 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/08 15:32:41 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:35:38 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ static void	set_fire_animation(t_master *master)
 			master->dimension.l = FIRE;
 			play_sound(master->weapon, 50);
 			master->limit_time_animation = 3;
-			if (master->dimension.m == 3 || master->dimension.m == 4)
-				master->limit_time_animation = 2;
+			if (master->dimension.m == 3)
+				master->limit_time_animation = 3;
+			if (master->dimension.m == 4)
+				master->limit_time_animation = 3;
 		}
 	}
 }
