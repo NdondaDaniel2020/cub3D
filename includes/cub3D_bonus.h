@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/08 15:51:45 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:03:57 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@
 # define SPACE 32
 # define ENTER 65293
 # define CTRL 65507
-
+# define RESTART 1
+# define NO_RESTART 0
 # define FIRE 0
 # define WALK 1
 # define STOP 2
@@ -539,7 +540,7 @@ t_intvector			get_pos_door_around_the_player(t_master *master);
 void				init_door_data(t_door_data *data);
 void				free_door_data(void *data);
 int					sound_init(t_sound *sounds, BOOL *bass);
-int					play_sound(HSTREAM sound, int vol);
+int					play_sound(HSTREAM sound, int vol, BOOL restart);
 int					set_weapon(t_master *master, int index);
 int					clear_sounds(t_sound sounds, BOOL bass);
 int					free_preload(t_preload *preload, void *mlx);

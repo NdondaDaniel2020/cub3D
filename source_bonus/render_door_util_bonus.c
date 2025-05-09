@@ -36,7 +36,7 @@ bool	valid_character_pass(char chr, t_master *master)
 		&& chr != 'J' && chr != 'K')
 	{
 		(void)master;
-		play_sound(master->sounds.run, 50);
+		play_sound(master->sounds.run, 50, NO_RESTART);
 		return (true);
 	}
 	return (false);
