@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sound_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:49:02 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/09 11:29:03 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:44:26 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	play_sound(HSTREAM sound, int vol)
 	if (sound)
 	{
 		BASS_ChannelSetAttribute(sound, BASS_ATTRIB_VOL, volume);
-		BASS_ChannelPlay(sound, TRUE);
+		if (BASS_ChannelIsActive(sound) != BASS_ACTIVE_PLAYING)
+			BASS_ChannelPlay(sound, TRUE);
 	}
 	return (0);
 }
