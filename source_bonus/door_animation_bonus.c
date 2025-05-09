@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_animation_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:03:30 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/08 15:33:22 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:09:04 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	animation_open_the_door(t_master *master)
 	{
 		if (master->door_time_animation >= master->door_limit_time_animation)
 		{
-			play_sound(master->sounds.door_open, 50);
+			play_sound(master->sounds.door_open, 50, NO_RESTART);
 			pos = get_pos_door(master);
 			if (master->focused_open_door.x == -1
 				&& master->focused_open_door.y == -1)

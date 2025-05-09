@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:34:47 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/08 15:33:08 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:07:31 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	mouse_press(int button, int x, int y, t_master *master)
 
 int	wait_hooks(t_master *master)
 {
-	play_sound(master->sounds.background, 20);
+	play_sound(master->sounds.background, 20, NO_RESTART);
 	mlx_hook(master->render.win, 2, 1L << 0, key_hook, master);
 	mlx_hook(master->render.win, 3, 1L << 1, key_release, master);
 	mlx_hook(master->render.win, 17, 1L << 1, key_exit, master);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_animation_util_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 10:42:39 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/08 15:33:17 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:09:10 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	get_back_image_state(t_master *master, t_intvector *focused_door)
 	int		index;
 	char	*list;
 
-	play_sound(master->sounds.door_close, 50);
+	play_sound(master->sounds.door_close, 50, NO_RESTART);
 	if (master->type_door == 0)
 		list = door_one_character_list();
 	else if (master->type_door == 1)
