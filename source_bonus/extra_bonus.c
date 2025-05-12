@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:00:21 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/05 16:27:55 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/12 13:06:07 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	msg_error_image_not_found(int i, void *mlx, t_data *img)
 			tmp = ft_strjoin("Incorrect texture ", "Ceil, it must be xpm type");
 		if (i == 5)
 			tmp = ft_strjoin("Incorrect texture ", "Floor,it must be xpm type");
+		printf("\n");
 		printerror(tmp);
 		free(tmp);
 	}

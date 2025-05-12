@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preload.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 12:03:40 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/08 15:32:16 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/12 13:13:28 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	set_step(int pre, int limit)
 	}
 	if (pre > 200)
 	{
-		if ((pre % 100) == (8 * (index_texture + 1)))
+		if ((pre % 100) == (2 * (index_texture + 1)))
 			index_texture++;
 		if (index_texture >= limit)
 			index_texture--;
