@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_small_map_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:10:04 by nmatondo          #+#    #+#             */
-/*   Updated: 2025/05/05 13:17:25 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:50:22 by nmatondo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@ static void	draw_map_border(t_master *master, t_area *area)
 
 	pos.x = 1 * PIXEL_SIZE;
 	pos.y = 1 * PIXEL_SIZE;
-	line.y_ini = pos.y - 3;
-	line.x_ini = pos.x - 3;
-	line.y_end = pos.y - 3;
-	line.x_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	line.y_ini = pos.x - 3;
+	line.x_ini = pos.y - 3;
+	line.y_end = pos.x - 3;
+	line.x_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
 	draw_straight_line(master, &line, 3, 0x2471a3);
-	line.y_ini = pos.y - 3;
-	line.x_ini = pos.x - 3;
-	line.y_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
-	line.x_end = pos.x - 3;
+	line.y_ini = pos.x - 3;
+	line.x_ini = pos.y - 3;
+	line.y_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	line.x_end = pos.y - 3;
 	draw_straight_line(master, &line, 3, 0x2471a3);
-	line.y_ini = pos.y - 3;
-	line.x_ini = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
-	line.y_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
-	line.x_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	line.y_ini = pos.x - 3;
+	line.x_ini = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
+	line.y_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	line.x_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
 	draw_straight_line(master, &line, 3, 0x2471a3);
-	line.y_ini = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
-	line.x_ini = pos.x - 3;
-	line.y_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
-	line.x_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	line.y_ini = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	line.x_ini = pos.y - 3;
+	line.y_end = (area->end_x - area->ini_x + 2) * PIXEL_SIZE;
+	line.x_end = (area->end_y - area->ini_y + 2) * PIXEL_SIZE;
 	draw_straight_line(master, &line, 3, 0x2471a3);
 }
 
