@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/09 14:03:57 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:05:32 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,7 +366,7 @@ typedef char		*t_texture_paths[6][3][14];
 // FUNCTIONS
 t_map				*ft_read_file(char *filepath);
 t_master			*get_master(t_map *map);
-int					getcolor(char *str, t_master *mastr);
+int					getcolor(char *str, t_master *master, int type);
 void				renderization(t_minilib *render, t_master *master,
 						t_data *img);
 void				draw_texture(t_intvector *pos, t_data *img,
@@ -403,7 +403,7 @@ int					initializedefault(t_master *master);
 int					initializedefault_2(t_master *master);
 int					ft_countlinecampus(t_map *list);
 void				ft_replacechar(char *str, char to_find, char to_replace);
-int					ft_replacestr(char **str, char *to_replace);
+int					ft_replacestr(char **str, char *to_replace, int *wrong_map);
 int					is_voidline(char *line);
 int					ft_countline(char **map);
 int					count_var(char **map, char var);
