@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/18 06:51:49 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:54:52 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ typedef struct s_texture
 // FUNCTIONS
 t_map				*ft_read_file(char *filepath);
 t_master			*get_master(t_map *map);
-int					getcolor(char *str, t_master *mastr);
+int					getcolor(char *str, t_master *master, int type);
 void				renderization(t_minilib *render, t_master *master,
 						t_data *img);
 void				draw_texture(int hitSide, t_intvector *pos, t_data *img,
@@ -178,7 +178,6 @@ int					ft_countmatriz(char **mat);
 int					initializedefault(t_master *master);
 int					ft_countlinecampus(t_map *list);
 void				ft_replacechar(char *str, char to_find, char to_replace);
-int					ft_replacestr(char **str, char *to_replace);
 int					is_voidline(char *line);
 int					ft_countline(char **map);
 int					count_var(char **map, char var);
@@ -197,7 +196,7 @@ void				draw_ceiling(int drawStart, t_intvector *pos, t_data *img,
 int					get_x_coordinate_texture(int index_img, int hitSide,
 						t_master *master, t_data *img);
 int					wait_hooks(t_master *master);
-
+int					ft_replacestr(char **str, char *to_replace, int *wrong_map);
 // HOOKS
 int					key_release(int keycode, t_master *master);
 int					key_hook(int keycode, t_master *master);
