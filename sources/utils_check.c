@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/13 14:55:23 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:20:52 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,18 @@ int	check_filename(char *filename)
 
 int	check_elements(t_master *master)
 {
-	if (!master->so || !master->no || !master->we || !master->ea)
+	if (master->wrongmap != 1)
 	{
-		printerror("Expected SO, NO, WE and EA fields");
-		master->wrongmap = 1;
-	}
-	else if (master->c == -1 || master->f == -1)
-	{
-		printerror("A valid color was expected for ceil(C) and floor(F)");
-		master->wrongmap = 1;
+		if (!master->so || !master->no || !master->we || !master->ea)
+		{
+			printerror("Expected SO, NO, WE and EA fields");
+			master->wrongmap = 1;
+		}
+		else if (master->c == -1 || master->f == -1)
+		{
+			printerror("A valid color was expected for ceil(C) and floor(F)");
+			master->wrongmap = 1;
+		}
 	}
 	return (0);
 }
@@ -68,9 +71,9 @@ int	check_components(char *line, t_master *master)
 		ft_replacestr(&master->we, ft_strdup(sep[1]), &master->wrongmap);
 	else if ((ft_countmatriz(sep) == 2) && ft_strcmp(sep[0], "EA") == 0)
 		ft_replacestr(&master->ea, ft_strdup(sep[1]), &master->wrongmap);
-	else if ((ft_countmatriz(sep) == 2) && ft_strcmp(sep[0], "C") == 0)
+	else if ((ft_countmatriz(sep) == 2 && !master->wrongmap) && ft_strcmp(sep[0], "C") == 0)
 		master->c = getcolor(sep[1], master, master->c);
-	else if ((ft_countmatriz(sep) == 2) && ft_strcmp(sep[0], "F") == 0)
+	else if ((ft_countmatriz(sep) == 2 && !master->wrongmap) && ft_strcmp(sep[0], "F") == 0)
 		master->f = getcolor(sep[1], master, master->f);
 	else if (ft_countmatriz(sep) > 0)
 	{

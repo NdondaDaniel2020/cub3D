@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:51:02 by aquissan          #+#    #+#             */
-/*   Updated: 2025/04/17 15:30:10 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:01:10 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	correct_color(char *str)
 	return (0);
 }
 
-int	getcolor(char *str, t_master *master)
+int	getcolor(char *str, t_master *master, int type)
 {
 	int		r;
 	int		g;
@@ -48,14 +48,13 @@ int	getcolor(char *str, t_master *master)
 
 	if (correct_color(str) != 0)
 		return (-1);
+	if (type != -1)
+		return (master->wrongmap = 1, printerror("Duplicate color"));
 	if (str)
 	{
 		rgb = ft_split(str, ',');
 		if (ft_countmatriz(rgb) != 3)
-		{
-			master->wrongmap = 1;
-			return (ft_freematriz(rgb), -1);
-		}
+			return (master->wrongmap = 1, ft_freematriz(rgb), -1);
 		r = ft_atoi(rgb[0]);
 		g = ft_atoi(rgb[1]);
 		b = ft_atoi(rgb[2]);
