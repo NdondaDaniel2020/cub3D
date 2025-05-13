@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/07 10:24:29 by nmatondo         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:44:06 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ void	ft_replacechar(char *str, char to_find, char to_replace)
 	}
 }
 
-int	ft_replacestr(char **str, char *to_replace)
+int	ft_replacestr(char **str, char *to_replace, int *wrong_map)
 {
-	if ((str && *str) && to_replace)
+	if ((str && *str))
 	{
+		*wrong_map = 1;
 		free(*str);
-		*str = to_replace;
-		return (0);
+		printerror("Duplicate cardial keys");
+		*str = NULL;
 	}
 	if (to_replace)
 		*str = to_replace;
