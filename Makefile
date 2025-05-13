@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmatondo <nmatondo@student.42.fr>          +#+  +:+       +#+         #
+#    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/05/08 10:43:15 by nmatondo         ###   ########.fr        #
+#    Updated: 2025/05/13 10:56:06 by aquissan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,7 +131,6 @@ leak: MLX LIBFT
 	make bonus
 	clear
 	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) $(MAP)
-
 
 push: fclean
 	clear
