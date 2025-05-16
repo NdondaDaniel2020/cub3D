@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/13 15:20:52 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:53:35 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,14 @@ int	check_components(char *line, t_master *master)
 		ft_replacestr(&master->we, ft_strdup(sep[1]), &master->wrongmap);
 	else if ((ft_countmatriz(sep) == 2) && ft_strcmp(sep[0], "EA") == 0)
 		ft_replacestr(&master->ea, ft_strdup(sep[1]), &master->wrongmap);
-	else if ((ft_countmatriz(sep) == 2 && !master->wrongmap) && ft_strcmp(sep[0], "C") == 0)
+	else if ((ft_countmatriz(sep) == 2 && !master->wrongmap)
+		&& ft_strcmp(sep[0], "C") == 0)
 		master->c = getcolor(sep[1], master, master->c);
-	else if ((ft_countmatriz(sep) == 2 && !master->wrongmap) && ft_strcmp(sep[0], "F") == 0)
+	else if ((ft_countmatriz(sep) == 2 && !master->wrongmap)
+		&& ft_strcmp(sep[0], "F") == 0)
 		master->f = getcolor(sep[1], master, master->f);
 	else if (ft_countmatriz(sep) > 0)
-	{
-		check_elements(master);
-		flag = -1;
-	}
+		return (check_elements(master), ft_freematriz(sep), -1);
 	return (ft_freematriz(sep), flag);
 }
 
