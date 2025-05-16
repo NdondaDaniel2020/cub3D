@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/13 14:54:52 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:05:06 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@
 # define LEFT 97
 # define RIGHT 100
 # define DOWN 115
+
+# define NORTH 0
+# define SOUTH 1
+# define EAST 2
+# define WEST 3
 
 typedef struct s_map
 {
