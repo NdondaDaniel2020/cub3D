@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:20:22 by aquissan          #+#    #+#             */
-/*   Updated: 2025/03/14 12:02:02 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:58:46 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,38 @@ void	ft_free_stack(t_map *map)
 	}
 }
 
-void	ft_free_master(t_master *master)
+void	free_cardials(t_master *master)
 {
 	if (master->so)
+	{
 		free(master->so);
+		master->so = NULL;
+	}
 	if (master->we)
+	{
 		free(master->we);
+		master->we = NULL;
+	}
 	if (master->ea)
+	{
 		free(master->ea);
+		master->ea = NULL;
+	}
 	if (master->no)
+	{
 		free(master->no);
+		master->no = NULL;
+	}
+}
+
+void	ft_free_master(t_master *master)
+{
+	free_cardials(master);
 	if (master->campus)
+	{
 		ft_freematriz(master->campus);
+		master->campus = NULL;
+	}
 	free(master);
 }
 

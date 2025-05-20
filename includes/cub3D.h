@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:55:53 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/16 17:05:06 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:55:35 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,5 +213,6 @@ void				ft_free_master(t_master *master);
 int					ft_freematriz(char **mat);
 void				clear(t_data *data);
 void				free_textures(t_master *master);
+void				free_cardials(t_master *master);
 
 #endif

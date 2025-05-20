@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/16 13:53:35 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:54:35 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	check_elements(t_master *master)
 			printerror("Expected SO, NO, WE and EA fields");
 			master->wrongmap = 1;
 		}
-		else if (master->c == -1 || master->f == -1)
+		else if ((master->c == -1 || master->f == -1) || (master->c == -2
+				|| master->f == -2))
 		{
 			printerror("A valid color was expected for ceil(C) and floor(F)");
 			master->wrongmap = 1;
@@ -57,12 +58,12 @@ int	check_elements(t_master *master)
 
 int	check_components(char *line, t_master *master)
 {
-	int		flag;
 	char	**sep;
 
+	if (master->wrongmap)
+		return (free_cardials(master), -1);
 	ft_replacechar(line, '\n', ' ');
 	sep = ft_split(line, ' ');
-	flag = 0;
 	if (ft_countmatriz(sep) == 2 && ft_strcmp(sep[0], "SO") == 0)
 		ft_replacestr(&master->so, ft_strdup(sep[1]), &master->wrongmap);
 	else if ((ft_countmatriz(sep) == 2) && ft_strcmp(sep[0], "NO") == 0)
@@ -77,9 +78,9 @@ int	check_components(char *line, t_master *master)
 	else if ((ft_countmatriz(sep) == 2 && !master->wrongmap)
 		&& ft_strcmp(sep[0], "F") == 0)
 		master->f = getcolor(sep[1], master, master->f);
-	else if (ft_countmatriz(sep) > 0)
+	else if ((ft_countmatriz(sep) > 0))
 		return (check_elements(master), ft_freematriz(sep), -1);
-	return (ft_freematriz(sep), flag);
+	return (ft_freematriz(sep), 0);
 }
 
 int	is_there_something_wrong(t_master *master, t_map *map)
