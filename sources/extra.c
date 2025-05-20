@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 12:00:21 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/16 17:05:15 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:06:15 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ int	load_textures(void *mlx, t_data *img, t_master *master)
 	int	i;
 
 	i = 0;
-	img->tex_paths[NORTH] = master->no;
-	img->tex_paths[SOUTH] = master->so;
-	img->tex_paths[WEST] = master->we;
-	img->tex_paths[EAST] = master->ea;
+	img->tex_paths[SOUTH] = master->no;
+	img->tex_paths[NORTH] = master->so;
+	img->tex_paths[EAST] = master->we;
+	img->tex_paths[WEST] = master->ea;
 	while (i < 4)
 	{
 		img->textures[i] = mlx_xpm_file_to_image(mlx, img->tex_paths[i],
