@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:51:02 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/13 14:55:43 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:54:00 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	getcolor(char *str, t_master *master, int type)
 	char	**rgb;
 
 	if (correct_color(str) != 0)
-		return (-1);
+		return (-2);
 	if (type != -1)
 		return (master->wrongmap = 1, printerror("Duplicate color"));
 	if (str)
@@ -59,12 +59,12 @@ int	getcolor(char *str, t_master *master, int type)
 		g = ft_atoi(rgb[1]);
 		b = ft_atoi(rgb[2]);
 		if ((r < 0 || r > 255) || (g < 0 || g > 255) || (b < 0 || b > 255))
-			return (ft_freematriz(rgb), -1);
+			return (ft_freematriz(rgb), -2);
 		if (r < 0 || g < 0 || b < 0)
 			master->wrongmap = 1;
 		return (ft_freematriz(rgb), (r << 16 | g << 8 | b));
 	}
-	return (-1);
+	return (-2);
 }
 
 void	dda(t_master *master, int *hitSide, t_intvector *step,

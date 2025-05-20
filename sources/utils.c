@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/13 15:19:23 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:08:52 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	ft_replacestr(char **str, char *to_replace, int *wrong_map)
 		{
 			*wrong_map = 1;
 			free(*str);
+			free(to_replace);
+			to_replace = NULL;
 			printerror("Duplicate cardial point");
 			*str = NULL;
 		}
