@@ -6,7 +6,7 @@
 /*   By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:42:09 by aquissan          #+#    #+#             */
-/*   Updated: 2025/05/20 13:54:35 by aquissan         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:47:49 by aquissan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	check_filename(char *filename)
 		return (-1);
 	}
 	substr = ft_substr(filename, (i - 4), i);
-	if (ft_strcmp(substr, ".cub") != 0)
+	if ((ft_strcmp(substr, ".cub") != 0) || (filename[(ft_strlen(filename)
+				- 5)] == '/'))
 	{
 		tmp = ft_strjoin(filename, " is not a file with a valid map name");
 		printerror(tmp);
