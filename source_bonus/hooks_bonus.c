@@ -50,9 +50,13 @@ int	key_hook(int keycode, t_master *master)
 		master->keyboard.up = true;
 	if (keycode == LEFT)
 		master->keyboard.left = true;
-	if ((keycode == OPENDOR || keycode == SPACE)
-		&& player_near_the_door(master))
+	if (keycode == OPENDOR && player_near_the_door(master))
 		master->keyboard.open_door = true;
+	if (keycode == SPACE && !master->is_jumping)
+	{
+		master->is_jumping = true;
+		master->jump_v = 0.09216;
+	}
 	if (keycode == ENTER)
 		master->game_started = TRUE;
 	return (key_weapon(keycode, master), 0);

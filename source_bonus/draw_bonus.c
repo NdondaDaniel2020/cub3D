@@ -18,6 +18,9 @@ void	draw_texture(t_intvector *pos, t_data *img, t_master *master)
 	int			end;
 	t_texture	texture;
 
+	int			jump_offset;
+
+	jump_offset = master->jump_z * master->render.wallheight;
 	start = get_draw_start_position(master->render.wallheight, master);
 	end = get_draw_end_position(master->render.wallheight, master);
 	draw_skybox(start, pos, img, master);
@@ -27,7 +30,7 @@ void	draw_texture(t_intvector *pos, t_data *img, t_master *master)
 			master, img);
 	texture.step = 1.0 * img->tex_height[texture.index]
 		/ master->render.wallheight;
-	texture.pos = ((start - master->view_high) - SCREEN_HEIGHT / 2
+	texture.pos = ((start - master->view_high - jump_offset) - SCREEN_HEIGHT / 2
 			+ master->render.wallheight / 2) * texture.step;
 	pos->y = start;
 	while (pos->y < end)

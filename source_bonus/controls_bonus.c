@@ -95,6 +95,21 @@ int	rotate_y(t_master *master)
 	return (0);
 }
 
+void	apply_gravity(t_master *master)
+{
+	if (master->is_jumping)
+	{
+		master->jump_z += master->jump_v;
+		master->jump_v -= 0.0139104;
+		if (master->jump_z <= 0.0)
+		{
+			master->jump_z = 0.0;
+			master->is_jumping = false;
+			master->jump_v = 0.0;
+		}
+	}
+}
+
 int	controls(void *vars)
 {
 	t_master	*master;
@@ -108,6 +123,7 @@ int	controls(void *vars)
 		move_x(master);
 		rotate_x(master);
 		rotate_y(master);
+		apply_gravity(master);
 		renderization(&master->render, master, &master->img);
 		animation_open_the_door(master);
 		animation_close_the_door(master);

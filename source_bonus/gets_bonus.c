@@ -54,20 +54,28 @@ unsigned int	get_color(int hitSide, t_texture *texture, t_data *img)
 int	get_draw_start_position(int wallheight, t_master *master)
 {
 	int	drawstart;
+	int	jump_offset;
 
-	drawstart = -wallheight / 2 + (SCREEN_HEIGHT / 2) + master->view_high;
+	jump_offset = master->jump_z * wallheight;
+	drawstart = -wallheight / 2 + (SCREEN_HEIGHT / 2) + master->view_high + jump_offset;
 	if (drawstart < 0)
 		drawstart = 0;
+	if (drawstart > SCREEN_HEIGHT)
+		drawstart = SCREEN_HEIGHT;
 	return (drawstart);
 }
 
 int	get_draw_end_position(int wallheight, t_master *master)
 {
 	int	draw_end;
+	int	jump_offset;
 
-	draw_end = wallheight / 2 + (SCREEN_HEIGHT / 2) + master->view_high;
+	jump_offset = master->jump_z * wallheight;
+	draw_end = wallheight / 2 + (SCREEN_HEIGHT / 2) + master->view_high + jump_offset;
 	if (draw_end > SCREEN_HEIGHT)
 		draw_end = SCREEN_HEIGHT;
+	if (draw_end < 0)
+		draw_end = 0;
 	return (draw_end);
 }
 

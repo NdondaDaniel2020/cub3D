@@ -297,6 +297,9 @@ typedef struct s_master
 	t_sound			sounds;
 	BOOL			game_started;
 	t_preload		preload;
+	double			jump_z;
+	double			jump_v;
+	bool			is_jumping;
 }					t_master;
 
 typedef struct s_texture
