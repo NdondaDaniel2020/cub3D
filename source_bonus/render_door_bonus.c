@@ -98,7 +98,8 @@ void	draw_door(t_intvector *pos, t_data *img, t_master *master)
 			data = (t_door_data *)master->data_door->content;
 			master->index_door = get_image_index_by_character_type(master,
 					master->campus[data->door_map_pos.x][data->door_map_pos.y]);
-			draw_door_texture_in_draw_door(pos, img, master, &draw);
+			if (data->door_height > 0)
+				draw_door_texture_in_draw_door(pos, img, master, &draw);
 			master->data_door = master->data_door->next;
 		}
 	}
