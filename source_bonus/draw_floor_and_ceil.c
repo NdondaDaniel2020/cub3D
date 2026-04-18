@@ -34,7 +34,7 @@ int	get_peripheral_color(t_data *img, t_intvector tex, char peripheral,
 void	calc_pixel(t_floor_var *var, t_intvector *pos, t_master *master,
 		t_data *img)
 {
-	var->row_distance = (0.5 * SCREEN_HEIGHT) / var->p;
+	var->row_distance = ((0.5 + master->jump_z) * SCREEN_HEIGHT) / var->p;
 	var->camera_factor = (double)pos->x / SCREEN_WIDTH;
 	var->floor.x = master->render.pos.x + var->row_distance * (var->left_ray.x
 			+ var->camera_factor * (var->right_ray.x - var->left_ray.x));

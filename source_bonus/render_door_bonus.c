@@ -52,7 +52,10 @@ int	get_x_coordinate_door_texture(int hitSide, t_master *master, t_data *img)
 static double	get_pos_texture_door(
 	t_door_data *data, t_master *master, t_draw_door *draw)
 {
-	return (((draw->start_door - master->view_high) - SCREEN_HEIGHT
+	int	jump_offset;
+
+	jump_offset = master->jump_z * data->door_height;
+	return (((draw->start_door - master->view_high - jump_offset) - SCREEN_HEIGHT
 			/ 2 + data->door_height / 2) * draw->texture_door.step);
 }
 
