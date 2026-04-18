@@ -101,15 +101,29 @@ void	set_door_height(t_minilib *render, t_master *master, t_intvector step)
 		while (master->data_door != NULL)
 		{
 			data = (t_door_data *)master->data_door->content;
+			double exact;
 			if (data->door_hitside == 0)
+			{
 				data->perpendicular_dist_door = fabs((data->door_map_pos.x
 							- render->pos.x + ((1 - step.x) / 2.0))
-						/ render->raydir.x);
+						/ render->raydir.x) + fabs(0.5 / render->raydir.x);
+				exact = render->pos.y + data->perpendicular_dist_door * render->raydir.y;
+				if ((int)floor(exact) != data->door_map_pos.y)
+					data->door_height = 0;
+				else
+					data->door_height = SCREEN_HEIGHT / data->perpendicular_dist_door;
+			}
 			else
+			{
 				data->perpendicular_dist_door = fabs((data->door_map_pos.y
 							- render->pos.y + ((1 - step.y) / 2.0))
-						/ render->raydir.y);
-			data->door_height = SCREEN_HEIGHT / data->perpendicular_dist_door;
+						/ render->raydir.y) + fabs(0.5 / render->raydir.y);
+				exact = render->pos.x + data->perpendicular_dist_door * render->raydir.x;
+				if ((int)floor(exact) != data->door_map_pos.x)
+					data->door_height = 0;
+				else
+					data->door_height = SCREEN_HEIGHT / data->perpendicular_dist_door;
+			}
 			master->data_door = master->data_door->next;
 		}
 	}
