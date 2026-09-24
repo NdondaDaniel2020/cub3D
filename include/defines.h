@@ -49,6 +49,20 @@
 # define ROTATE_SPEED 500
 # define LIMIT_HIGH_VIEW 400
 
+/* Animation Speeds (Tick intervals - lower = faster) */
+# if !defined ANIM_SPEED_FIRE
+#  define ANIM_SPEED_FIRE 2
+# endif
+# if !defined ANIM_SPEED_WALK
+#  define ANIM_SPEED_WALK 4
+# endif
+# if !defined ANIM_SPEED_STOP
+#  define ANIM_SPEED_STOP 8
+# endif
+# if !defined ANIM_SPEED_DOOR
+#  define ANIM_SPEED_DOOR 2
+# endif
+
 /* Linux Keycodes */
 # define ESC 65307
 # define RRIGHT 65363

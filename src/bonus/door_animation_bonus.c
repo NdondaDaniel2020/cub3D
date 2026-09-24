@@ -54,7 +54,7 @@ void	animation_open_the_door(t_master *master)
 	t_intvector	pos;
 
 	if (master->keyboard.open_door)
-		master->door_limit_time_animation = 2;
+		master->door_limit_time_animation = ANIM_SPEED_DOOR;
 	if (master->keyboard.open_door)
 	{
 		if (master->door_time_animation >= master->door_limit_time_animation)

@@ -33,7 +33,7 @@ int	initializedefault_2(t_master *master)
 	master->view_high = 0;
 	master->dimension = (t_3d){0, 2, 0};
 	master->time_animation = 0;
-	master->limit_time_animation = 10;
+	master->limit_time_animation = ANIM_SPEED_STOP;
 	master->door_time_animation = 0;
 	master->door_limit_time_animation = 0;
 	master->focused_open_door = (t_intvector){-1, -1};

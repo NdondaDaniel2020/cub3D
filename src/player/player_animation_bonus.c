@@ -22,7 +22,7 @@ static void	set_walking_animation(t_master *master)
 		{
 			master->dimension.c = 0;
 			master->dimension.l = WALK;
-			master->limit_time_animation = 6;
+			master->limit_time_animation = ANIM_SPEED_WALK;
 		}
 	}
 }
@@ -36,11 +36,11 @@ static void	set_fire_animation(t_master *master)
 			master->dimension.c = 0;
 			master->dimension.l = FIRE;
 			play_sound(master->weapon, 50, RESTART);
-			master->limit_time_animation = 3;
+			master->limit_time_animation = ANIM_SPEED_FIRE;
 			if (master->dimension.m == 3)
-				master->limit_time_animation = 3;
+				master->limit_time_animation = ANIM_SPEED_FIRE;
 			if (master->dimension.m == 4)
-				master->limit_time_animation = 3;
+				master->limit_time_animation = ANIM_SPEED_FIRE;
 		}
 	}
 }
@@ -53,7 +53,7 @@ static void	set_stop_animation(t_master *master)
 	{
 		master->dimension.c = 0;
 		master->dimension.l = STOP;
-		master->limit_time_animation = 10;
+		master->limit_time_animation = ANIM_SPEED_STOP;
 	}
 }
 
