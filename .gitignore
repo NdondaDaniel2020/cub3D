@@ -44,10 +44,22 @@ tags
 .history
 .ionide
 
+libft.a
+cub3D
+cub3D_bonus
+build/*
+!build/.gitkeep
+*.o
+libs/mlx/libX*.so
+libs/mlx/*.o
+libs/mlx/*.a
+libs/libft/*.o
+libs/libft/*.a
 Atest/
 rascunho.c
 rascunho.txt
-textures/player/renomear.sh
 *renomear.sh
 minilibx-linux/
 minilibx-linux/*
+libs/mlx/
+

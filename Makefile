@@ -6,141 +6,126 @@
 #    By: aquissan <aquissan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 17:25:17 by aquissan          #+#    #+#              #
-#    Updated: 2025/05/20 10:22:36 by aquissan         ###   ########.fr        #
+#    Updated: 2026/09/24 17:03:00 by nmatondo       ###   ########.fr          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
-BNAME = cub3D_bonus
+NAME        = cub3D
+BNAME       = cub3D_bonus
 
-W ?= 1200
-H ?= 800
-S ?= 0.05
-M ?= "Project_Done"
-PX ?= 14
+# Game Settings (overridable)
+W          ?= 1200
+H          ?= 800
+S          ?= 0.05
+PX         ?= 14
+GAMESET     = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)"
 
-GAMESET = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)"
-FLAGS = -Wall -Wextra -Werror 
-COMPILE = cc
+# Compiler & Flags
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror -Wno-incompatible-pointer-types
+RM          = rm -rf
+MKDIR       = mkdir -p
 
-MAP = "maps/bridge.cub"
+# Directories
+INC_DIR     = include
+SRC_DIR     = src
+BUILD_DIR   = build
+LIBFT_DIR   = libs/libft
+MLX_DIR     = libs/mlx
+BASS_DIR    = libs/bass
 
-# DIRS
-INC_D = includes
-LIBFTPATH = libft
-MLXPATH = minilibx-linux
-SRC_D=sources
-BSRC_D=source_bonus
-OBJ_D=objects
-BOBJ_D=object_bonus
-BASSPATH = bass
+INCLUDES    = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
+BINCLUDES   = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(BASS_DIR)
 
-RM=rm -rf 
-Mk=mkdir -p 
-FILES= main.c get_next_line.c get_next_line_utils.c check_map.c freeze.c gets.c\
-		utils_check.c utils.c check_walls.c utils2.c render.c controls.c dda.c\
-		extra.c draw.c 
-SRC=$(addprefix $(SRC_D)/, $(FILES))
-OBJ=$(addprefix $(OBJ_D)/, $(FILES:.c=.o))
+# Mandatory Sources
+M_CORE      = main.c controls.c freeze.c extra.c utils.c utils2.c
+M_PARSER    = check_map.c check_walls.c gets.c utils_check.c get_next_line.c get_next_line_utils.c
+M_RAYCASTER = dda.c
+M_RENDER    = render.c draw.c
 
-BFILES= check_map_bonus.c get_next_line_utils_bonus.c check_walls_bonus.c gets_bonus.c \
-controls_bonus.c main_bonus.c dda_bonus.c render_bonus.c draw_bonus.c utils2_bonus.c \
-extra_bonus.c utils_bonus.c freeze_1_bonus.c freeze_2_bonus.c utils_check_bonus.c get_next_line_bonus.c \
-mouse_event_bonus.c set_small_map_area_value_bouns.c draw_straight_line_bonus.c \
-draw_small_map_bonus.c hooks_bonus.c draw_player_bonus.c load_player_texture_bonus.c \
-player_image_path_bonus.c player_image_path_util_bonus.c init_data_bonus.c draw_crosshair_bonus.c \
-player_animation_bonus.c player_texture_configuration_bonus.c door_image_path_bonus.c \
-load_door_texture_bonus.c key_exit_bounus.c door_bonus.c render_door_bonus.c render_util_bonus.c \
-render_door_util_bonus.c draw_small_map_util_bonus.c get_door_image_index_bonus.c door_animation_bonus.c \
-get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c utils3_bonus.c draw_floor_and_ceil.c\
-sound_bonus.c preload.c preload_init.c door_animation_util_bonus.c
+M_SRCS      = $(addprefix $(SRC_DIR)/core/, $(M_CORE)) \
+              $(addprefix $(SRC_DIR)/parser/, $(M_PARSER)) \
+              $(addprefix $(SRC_DIR)/raycaster/, $(M_RAYCASTER)) \
+              $(addprefix $(SRC_DIR)/render/, $(M_RENDER))
 
-BSRC=$(addprefix $(BSRC_D)/, $(BFILES))
-BOBJ=$(addprefix $(BOBJ_D)/, $(BFILES:.c=.o))
+M_OBJS      = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/mandatory/%.o, $(M_SRCS))
 
-all: LIBFT LIBFTB MLX $(NAME)
+# Bonus Sources
+B_CORE      = main_bonus.c init_data_bonus.c hooks_bonus.c controls_bonus.c key_exit_bounus.c \
+              preload.c preload_init.c extra_bonus.c freeze_1_bonus.c freeze_2_bonus.c \
+              utils_bonus.c utils2_bonus.c utils3_bonus.c
+B_PARSER    = check_map_bonus.c check_walls_bonus.c gets_bonus.c utils_check_bonus.c \
+              get_next_line_bonus.c get_next_line_utils_bonus.c
+B_RAYCASTER = dda_bonus.c
+B_RENDER    = render_bonus.c render_util_bonus.c draw_bonus.c draw_floor_and_ceil.c \
+              draw_crosshair_bonus.c draw_straight_line_bonus.c draw_small_map_bonus.c \
+              draw_small_map_util_bonus.c set_small_map_area_value_bouns.c
+B_PLAYER    = draw_player_bonus.c mouse_event_bonus.c player_animation_bonus.c \
+              load_player_texture_bonus.c player_texture_configuration_bonus.c \
+              player_image_path_bonus.c player_image_path_util_bonus.c
+B_BONUS     = sound_bonus.c door_bonus.c door_animation_bonus.c door_animation_util_bonus.c \
+              door_image_path_bonus.c load_door_texture_bonus.c get_door_image_index_bonus.c \
+              get_pos_door_bonus.c get_pos_door_util_1_bonus.c get_pos_door_util_2_bonus.c \
+              render_door_bonus.c render_door_util_bonus.c
 
-MLX:
-	make -C $(MLXPATH)
-LIBFT:
-	make -C $(LIBFTPATH)
-LIBFTB:
-	make bonus -C $(LIBFTPATH)
-	
-$(NAME): $(OBJ)
-	$(COMPILE) $(FLAGS)  -Iincludes -Imimilibx-linux $(OBJ) -L./$(MLXPATH) -lmlx -L./$(LIBFTPATH) -lft -I$(MLXPATH) -lXext -lX11 -lm -lz -o $(NAME)
+B_SRCS      = $(addprefix $(SRC_DIR)/core/, $(B_CORE)) \
+              $(addprefix $(SRC_DIR)/parser/, $(B_PARSER)) \
+              $(addprefix $(SRC_DIR)/raycaster/, $(B_RAYCASTER)) \
+              $(addprefix $(SRC_DIR)/render/, $(B_RENDER)) \
+              $(addprefix $(SRC_DIR)/player/, $(B_PLAYER)) \
+              $(addprefix $(SRC_DIR)/bonus/, $(B_BONUS))
 
-$(OBJ_D)/%.o:$(SRC_D)/%.c
-	@$(Mk) $(OBJ_D)
-	$(COMPILE) $(FLAGS) $(GAMESET) -c $< -o $@ 
+B_OBJS      = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/bonus/%.o, $(B_SRCS))
 
+# Libraries
+LIBFT       = $(LIBFT_DIR)/libft.a
+MLX         = $(MLX_DIR)/libmlx.a
 
-bonus: LIBFT LIBFTB MLX $(BNAME)
+all: $(NAME)
 
-$(BNAME): $(BOBJ)
-	$(COMPILE) $(FLAGS) -I$(INC_D) -I$(MLXPATH) -I$(BASSPATH) -o $(BNAME) $(BOBJ) -L./minilibx-linux -lmlx -L./libft -lft -L./$(BASSPATH) -lbass -lXext -lX11 -lm -lz -Wl,-rpath=$(BASSPATH)
+$(NAME): $(LIBFT) $(MLX) $(M_OBJS)
+	$(CC) $(CFLAGS) $(M_OBJS) -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lXext -lX11 -lm -lz -o $(NAME)
 
-$(BOBJ_D)/%.o:$(BSRC_D)/%.c
-	@$(Mk) $(BOBJ_D)
-	$(COMPILE) -I$(BASSPATH) $(FLAGS) $(GAMESET) -c -L./$(BASSPATH) -lbass $< -o $@ -Wl,-rpath=$(BASSPATH)
+bonus: $(BNAME)
 
-clean: 
-	make clean -C $(LIBFTPATH)
-	make clean -C $(MLXPATH)
-	$(RM) $(OBJ)
-	$(RM) $(BOBJ)
-	$(RM) $(OBJ_D)
-	$(RM) $(BOBJ_D)
+$(BNAME): $(LIBFT) $(MLX) $(B_OBJS)
+	$(CC) $(CFLAGS) $(B_OBJS) -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lft -L$(BASS_DIR) -lbass -L$(MLX_DIR) -lXext -lX11 -lm -lz -Wl,-rpath,$(BASS_DIR) -o $(BNAME)
+
+# Library Compilation Rules
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
+	@make bonus -C $(LIBFT_DIR)
+
+$(MLX):
+	@if [ ! -f $(MLX_DIR)/libmlx.a ]; then make -C $(MLX_DIR); fi
+
+# Object Compilation
+$(BUILD_DIR)/mandatory/%.o: $(SRC_DIR)/%.c
+	@$(MKDIR) $(dir $@)
+	$(CC) $(CFLAGS) $(GAMESET) $(INCLUDES) -c $< -o $@
+
+$(BUILD_DIR)/bonus/%.o: $(SRC_DIR)/%.c
+	@$(MKDIR) $(dir $@)
+	$(CC) $(CFLAGS) $(GAMESET) $(BINCLUDES) -c $< -o $@
+
+clean:
+	@make clean -C $(LIBFT_DIR)
+	@$(RM) $(BUILD_DIR)/mandatory $(BUILD_DIR)/bonus
+	@echo "Cleaned build objects"
 
 fclean: clean
-	make fclean -C $(LIBFTPATH)
-	# make fclean -C $(MLXPATH)
-	$(RM) $(NAME)
-	$(RM) $(BNAME)
+	@make fclean -C $(LIBFT_DIR)
+	@$(RM) $(NAME) $(BNAME)
+	@echo "Cleaned executables"
 
 re: fclean all
 
-run: MLX LIBFT
-	$(RM) $(OBJ)
-	$(RM) $(OBJ_D)
-	$(RM) $(NAME)
-	make
-	clear
-	./$(NAME) ./maps/test.cub
+rebonus: fclean bonus
 
-brun: MLX LIBFT
-	$(RM) $(BOBJ)
-	$(RM) $(BOBJ_D)
-	$(RM) $(BNAME)
-	make bonus
-	clear
-	./$(BNAME) $(MAP)
+run: all
+	./$(NAME) assets/maps/test.cub
 
-lrun: MLX LIBFT
-	$(RM) $(BOBJ)
-	$(RM) $(BOBJ_D)
-	$(RM) $(BNAME)
-	make bonus
-	clear
-	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) $(MAP)
+brun: bonus
+	./$(BNAME) assets/maps/bridge.cub
 
-leak: MLX LIBFT
-	$(RM) $(OBJ)
-	$(RM) $(OBJ_D)
-	$(RM) $(BNAME)
-	make bonus
-	clear
-	valgrind --leak-check=full --show-leak-kinds=all -s ./$(BNAME) $(MAP)
-
-push: fclean
-	clear
-	git status
-	git add .
-	git status
-	git commit -m"$(M)"
-	git push
-
-norm:
-	norminette $(LIBFTPATH) $(SRC_D) $(BSRC_D) $(INC_D)
-
-.PHONY: all re clean fclean
+.PHONY: all bonus clean fclean re rebonus run brun

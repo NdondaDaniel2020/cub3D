@@ -1,58 +1,94 @@
 # Cub3D - Raycaster Engine 🎮
 
-O **cub3D** é um projeto desenvolvido como parte do currículo da Escola 42. Trata-se de um motor de jogo 3D em primeira pessoa inspirado no clássico de 1992 *Wolfenstein 3D*. O projeto utiliza a técnica de **Raycasting** (Projeção de Raios) para criar uma perspetiva tridimensional a partir de um mapa bidimensional, desenvolvido em linguagem C utilizando a biblioteca gráfica **MiniLibX**.
+> **Motor Gráfico 3D Raycasting em C com MiniLibX, Áudio BASS e Combate em Primeira Pessoa**
+
+O **cub3D** é um projeto desenvolvido como parte do currículo da **Escola 42**. Trata-se de um motor de jogo 3D em primeira pessoa inspirado no clássico *Wolfenstein 3D* (1992). O projeto utiliza a técnica de **Raycasting** (Projeção de Raios) via algoritmo **DDA** (*Digital Differential Analysis*) para projetar uma perspetiva tridimensional imersiva a partir de uma grelha bidimensional.
+
+---
+
+## 🌟 Showcase & Portfólio
+
+Este repositório segue o padrão modular do ecossistema de portfólio (`.portfolio/`):
+
+* **Capa em Alta Definição:** [`.portfolio/cover.webp`](.portfolio/cover.webp)
+* **Demonstração em Vídeo:** [`.portfolio/gallery/demo.mp4`](.portfolio/gallery/demo.mp4)
+* **Metadados e Especificações:** [`.portfolio/details.json`](.portfolio/details.json)
 
 ---
 
 ## 🚀 Funcionalidades
 
-Este projeto está estruturado em duas partes: a versão obrigatória (básica) e a versão bónus (com melhorias avançadas).
-
 ### 1. Versão Obrigatória (Mandatory)
-* **Motor Raycasting (DDA):** Implementação eficiente do algoritmo DDA (Digital Differential Analysis) para cálculo das distâncias e colisões dos raios com as paredes.
-* **Texturização Direcional:** Renderização de texturas específicas para as paredes dependendo da orientação geográfica (Norte, Sul, Leste, Oeste).
-* **Cores Customizadas:** Definição livre das cores do teto e do chão através de valores RGB no ficheiro do mapa.
-* **Movimentação do Jogador:** Movimentação em 4 direções (`W`, `A`, `S`, `D`) e rotação da câmera (setas esquerda e direita).
-* **Validação de Mapas:** Parsing rigoroso e verificação de integridade do mapa (`.cub`), garantindo que o jogador esteja cercado por paredes e que os caminhos das texturas e cores sejam válidos.
+* **Motor Raycasting (DDA):** Implementação matemática precisa do algoritmo DDA para cálculo de interseções dos raios com as paredes em tempo real sem distorção olho-de-peixe (*fisheye correction*).
+* **Texturização Direcional:** Renderização e mapeamento de texturas XPM diferenciadas conforme a orientação cardeal da parede (Norte, Sul, Este, Oeste).
+* **Superfícies Coloridas:** Definição livre das cores do teto e do chão através de valores RGB declarados no ficheiro do mapa (`.cub`).
+* **Movimentação do Jogador:** Movimentação em 4 eixos (`W`, `A`, `S`, `D`) e rotação contínua da câmera (setas direcionais).
+* **Parser e Validação Estrita:** Verificação completa da integridade do mapa com algoritmo *flood fill*, garantindo perímetro estanque cercado por paredes, posição inicial única e ficheiros de textura válidos.
 
-### 2. Versão Bónus 🌟
-O projeto vai muito além do básico com as seguintes implementações:
-* **Salto e Gravidade (Jump & Gravity):** Sistema dinâmico que permite ao jogador saltar (`Espaço`). A física de salto e a gravidade afetam diretamente a projeção das paredes, teto, chão e portas, conferindo realismo de altura.
-* **Câmera Livre com Rato (Mouse Look):** Suporte para olhar em todas as direções (esquerda/direita e cima/baixo) simplesmente movendo o rato. A inclinação vertical da câmera altera o horizonte de renderização.
-* **Portas Animadas:** Portas interativas espalhadas pelo mapa que podem ser abertas ou fechadas dinamicamente pressionando a tecla `E` ou `Espaço`. As portas possuem animações de abertura/fecho gerais.
-* **Minimapa 2D Interativo:** Um pequeno mapa no canto do ecrã mostrando o layout do labirinto (paredes, portas) e a posição/direção do jogador em tempo real.
-* **Sistema de Armas e Animações:** 6 tipos de armas diferentes (Pistola, Caçadeira/Shotgun, Revólver, Laser, etc.) com sprites animados completos para quando o jogador está parado (Idle), a correr (Walk) ou a disparar (Fire).
-* **Efeitos de Áudio (BASS Library):** Áudio imersivo que inclui música de fundo contínua (looping), sons de tiros específicos para cada arma, barulho de passos ao correr e som das portas a abrir/fechar.
-* **Variáveis de Compilação Customizáveis:** Resolução do ecrã, velocidade e tamanho dos pixéis definíveis diretamente nos argumentos do `make`.
-
----
-
-## 🛠️ Estrutura do Projeto
-
-A estrutura de ficheiros está organizada da seguinte forma:
-
-* `sources/` - Ficheiros fonte C da versão básica (mandatória).
-* `source_bonus/` - Ficheiros fonte C com a lógica da versão bónus.
-* `includes/` - Cabeçalhos (`cub3D.h` e `cub3D_bonus.h`).
-* `libft/` - Biblioteca auxiliar de funções genéricas em C da 42.
-* `sound/` - Ficheiros de som (.mp3) utilizados para os efeitos sonoros e música de fundo.
-* `textures/` - Pastas contendo os ficheiros de texturas das paredes, teto, chão, portas e animações das armas.
-* `maps/` - Ficheiros de mapa com extensão `.cub` (ex. `bridge.cub`, `test.cub`).
-* `bass/` - A biblioteca e cabeçalhos do BASS audio library.
+### 2. Versão Bónus (Odyssey 2.0) ⚡
+* **Controle Livre pelo Rato (Mouse Look):** Rotação horizontal e inclinação vertical suave da câmera com captura do rato.
+* **Portas Dinâmicas:** Portas deslizantes com verificação de colisão, animação por sprites e efeitos sonoros sincronizados (`E` ou `Espaço`).
+* **Renderização de Teto e Chão Texturizados:** Mapeamento de texturas contínuas por scanline com projeção de perspectiva.
+* **Arsenal de Armas com Ciclos Completos de Sprites:** 5 armas distintas (Escopeta, Lupara, Pistola, Metralhadora, Revólver) com animações fluidas para estados de repouso (Idle), deslocamento (Walk) e disparo (Fire).
+* **Engine de Áudio Integrada (BASS Audio):** Som multicanal imersivo incluindo banda sonora em loop contínuo, passos dinâmicos, disparos de armas e abertura/fecho de portas.
+* **Minimapa 2D Interativo (HUD Radar):** Radar em tempo real no canto da tela exibindo as paredes, portas dinâmicas e o cone de visão do jogador.
+* **Telas de Carregamento e Preload:** Apresentação visual da barra de progresso durante o carregamento assíncrono dos recursos gráficos.
 
 ---
 
-## 💻 Como Compilar e Executar
+## 📁 Estrutura do Projeto
+
+```text
+cub3D/
+├── assets/                         # 📁 Todos os recursos estáticos e dados do jogo
+│   ├── textures/                   # Texturas gráficas (XPM / PNG)
+│   │   ├── walls/                  # Texturas das paredes (brick, stone, tatame...)
+│   │   ├── weapons/                # Sprites das armas (escopeta, lupara, revolver)
+│   │   ├── doors/                  # Animações de portas abrindo/fechando
+│   │   └── ui/                     # Telas de preload, mira (crosshair) e logos
+│   ├── sounds/                     # Áudios e efeitos sonoros (SFX, passos, tiros, BGM)
+│   └── maps/                       # Mapas de fases (.cub)
+│
+├── libs/                           # 📚 Todas as bibliotecas externas e utilitárias
+│   ├── libft/                      # Biblioteca padrão em C da 42
+│   ├── mlx/                        # MiniLibX (Linux/X11)
+│   └── bass/                       # BASS Audio Engine (headers + libbass.so)
+│
+├── include/                        # 📄 Arquivos de cabeçalho (.h)
+│   ├── cub3d.h                     # Header principal
+│   ├── cub3d_bonus.h               # Header das extensões bônus
+│   └── defines.h                   # Constantes de tela, FOV, teclas e velocidade
+│
+├── src/                            # 💻 Código-fonte em C modularizado
+│   ├── core/                       # Inicialização, game loop, hooks e limpeza
+│   ├── parser/                     # Leitura do .cub, validação de paredes e flood fill
+│   ├── raycaster/                  # Algoritmo DDA, projeção de raios e cálculo de distâncias
+│   ├── render/                     # Renderização de paredes, teto, chão e minimapa
+│   ├── player/                     # Movimentação, colisão, física e mira pelo rato (mouse)
+│   └── bonus/                      # Módulos de áudio (BASS), portas dinâmicas e sprites
+│
+├── .portfolio/                     # 🌟 Showcase para o seu Portfólio
+│   ├── cover.webp                  # Capa do jogo em alta definição (1080p)
+│   ├── details.json                # Metadados e highlights de engenharia
+│   └── gallery/                    # Vídeo gameplay (demo.mp4) + capturas WebP
+│
+├── build/                          # ⚙️ Diretório unificado de objetos compilados (.o)
+├── Makefile                        # Build system atualizado e limpo
+└── README.md                       # Documentação técnica com showcase e instruções
+```
+
+---
+
+## 💻 Compilação e Execução
 
 ### Pré-requisitos
-* Sistema Operativo Linux.
-* Bibliotecas de desenvolvimento X11 (`libx11-dev`, `libxext-dev`).
-* MiniLibX de Linux (incluída no subdiretório `minilibx-linux`).
-* Biblioteca BASS instalada/linkada no sistema para o suporte a som (incluída no diretório `bass/`).
+* Sistema Operativo Linux (Ubuntu/Debian)
+* Compilador C (`gcc` ou `clang`) e `make`
+* Bibliotecas X11 do sistema (`libx11`, `libxext`)
 
 ### Compilação
 
-Para compilar a **versão básica**:
+Para compilar a **versão obrigatória**:
 ```bash
 make
 ```
@@ -62,100 +98,52 @@ Para compilar a **versão bónus**:
 make bonus
 ```
 
-#### Parâmetros Customizados no Makefile
-O Makefile permite customizar a largura, altura, velocidade e tamanho de pixel em tempo de compilação:
-* `W` - Largura da janela (Padrão: `1200`)
-* `H` - Altura da janela (Padrão: `800`)
-* `S` - Velocidade de movimentação (Padrão: `0.05`)
-* `PX` - Tamanho do pixel (Padrão: `14`)
-
-Exemplo de compilação customizada para alta resolução:
-```bash
-make bonus W=1920 H=1080 S=0.08
-```
+Os ficheiros objeto (`.o`) são centralizados de forma organizada dentro do diretório `build/`.
 
 ### Execução
 
-Para iniciar o jogo, passe o caminho de um mapa válido `.cub` como argumento:
-
-**Versão Básica:**
 ```bash
-./cub3D maps/test.cub
+# Versão Obrigatória
+./cub3D assets/maps/test.cub
+
+# Versão Bónus (com Áudio BASS e Armas)
+./cub3D_bonus assets/maps/bridge.cub
 ```
 
-**Versão Bónus:**
+Também é possível utilizar os atalhos do Makefile:
 ```bash
-./cub3D_bonus maps/bridge.cub
+make run    # Compila e roda a versão obrigatória
+make brun   # Compila e roda a versão bónus
 ```
 
-#### Atalhos do Makefile (Run)
-Você também pode compilar e executar diretamente usando os comandos do Makefile:
-```bash
-# Executa a versão básica com o mapa test.cub
-make run
+### Parâmetros Customizáveis no Make
 
-# Executa a versão bónus com o mapa bridge.cub
-make brun
+É possível customizar a resolução e velocidade do jogo durante o build:
+```bash
+make bonus W=1280 H=720 S=0.06
 ```
+* `W` - Largura da janela (Window Width)
+* `H` - Altura da janela (Window Height)
+* `S` - Velocidade de deslocação (Speed)
+* `PX` - Tamanho da amostragem em pixéis
 
 ---
 
-## 🎮 Controlos
+## 🎮 Comandos do Jogo
 
-### Versão Básica (Mandatória)
-| Tecla | Ação |
+| Tecla / Ação | Função |
 | :--- | :--- |
-| `W` / `A` / `S` / `D` | Mover para a frente, esquerda, trás e direita |
-| `<-` / `->` (Setas) | Rodar a câmera para a esquerda ou direita |
-| `ESC` | Fechar o jogo |
-
-### Versão Bónus (Adicionais)
-| Tecla / Evento | Ação |
-| :--- | :--- |
-| **Movimento do Rato** | Rotação horizontal e inclinação vertical da câmera |
-| **Clique Esquerdo Rato** | Disparar a arma selecionada |
-| `Espaço` | Saltar (Jump) |
-| `E` ou `Espaço` (perto de portas) | Abrir ou fechar portas |
-| `1` a `6` (Teclado) | Alternar entre os diferentes tipos de armas |
-| `L-CTRL` / `CTRL` | Agachar ou interação adicional |
-
----
-
-## 🗺️ Configuração de Mapas (`.cub`)
-
-Os mapas são configurados utilizando ficheiros de texto plano com a extensão `.cub`. Exemplo de estrutura:
-
-```text
-NO ./textures/comb1/tatame_north_texture.xpm
-SO ./textures/comb1/tatame_south_texture.xpm
-EA ./textures/comb1/tatame_east_texture.xpm
-WE ./textures/comb1/tatame_west_texture.xpm
-
-F 49,45,21
-C 135,206,225
-
-111111111111111111111111
-100000000000000000000001
-101111100111110011111001
-101000100100010010001001
-1010N010010D010010001001
-101111100111110011111001
-100000000000000000000001
-111111111111111111111111
-```
-
-* **`NO`, `SO`, `EA`, `WE`:** Caminhos relativos para as texturas das paredes Norte, Sul, Leste e Oeste, respetivamente.
-* **`F` / `C`:** Cor do chão (Floor) e teto (Ceiling) em formato RGB separados por vírgula.
-* **Grelha de Mapa:**
-  * `1` - Parede
-  * `0` - Espaço vazio
-  * `D` - Porta (apenas no Bónus)
-  * `N`, `S`, `E`, `W` - Posição inicial do jogador e a sua respetiva orientação de partida.
+| `W` / `A` / `S` / `D` | Mover para a Frente / Esquerda / Trás / Direita |
+| `Setas ← / →` | Rodar a câmera para a esquerda / direita |
+| `Rato (Mouse)` | Mira livre e rotação da câmera (Bónus) |
+| `Botão Esquerdo` | Disparar a arma selecionada (Bónus) |
+| `1` até `5` | Trocar de arma no arsenal (Bónus) |
+| `E` ou `Espaço` | Abrir / Fechar portas interativas (Bónus) |
+| `ESC` ou `Cruz [X]` | Sair do jogo com libertação limpa de memória |
 
 ---
 
 ## 👥 Autores
 
-Este projeto foi desenvolvido e enriquecido por:
-* **Angelo Quissanga** (`aquissan`)
-* **Nd Daniel** (`NdondaDaniel2020`)
+* **Ndonda Daniel** ([@NdondaDaniel2020](https://github.com/NdondaDaniel2020))
+* **Aquissan** ([@aquissan](https://github.com/aquissan))

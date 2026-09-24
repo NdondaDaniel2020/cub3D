@@ -1,0 +1,66 @@
+{
+  "id": "cub3d",
+  "name": "cub3D",
+  "tagline": {
+    "pt": "Motor Gráfico 3D Raycasting em C com MiniLibX, Áudio BASS e Combate em Primeira Pessoa",
+    "en": "Raycasting 3D Graphics Engine in C with MiniLibX, BASS Audio, and First-Person Combat"
+  },
+  "category": "gamedev",
+  "featured": true,
+  "architecture_type": "Software Raycasting Engine (DDA Algorithm) in C",
+  "about": {
+    "pt": "O cub3D é um motor gráfico 3D em primeira pessoa desenvolvido em C com a MiniLibX, inspirado no clássico Wolfenstein 3D. O projeto implementa um raycaster completo utilizando o algoritmo DDA (Digital Differential Analysis) para calcular interseções de raios com paredes em tempo real, mapeamento de texturas com cálculo de coordenadas UV, projeção de perspectiva com correção de distorção olho-de-peixe, e um sistema de minimapa em tempo real. A versão expandida inclui animações completas de armas, portas dinâmicas com colisão e transições de abertura/fecho, renderização de chão e teto com texturização contínua, mira interativa pelo mouse e áudio espacial imersivo integrado à engine de áudio BASS.",
+    "en": "cub3D is a first-person 3D raycasting engine developed in C with MiniLibX, inspired by the classic Wolfenstein 3D. The project implements a complete software raycaster using the DDA (Digital Differential Analysis) algorithm to compute ray-wall intersections in real time, texture mapping with UV coordinate calculation, perspective projection with fisheye distortion correction, and a real-time minimap. The bonus expansion features full weapon animation cycles, dynamic sliding/swinging doors, texture-mapped floor and ceiling casting, interactive mouse-look aiming, and an immersive multi-channel sound engine powered by the BASS audio library."
+  },
+  "highlights": [
+    "Motor de Raycasting em software baseado no algoritmo DDA (Digital Differential Analysis)",
+    "Mapeamento e amostragem de texturas XPM com correção de distorção olho-de-peixe (fisheye)",
+    "Renderização de chão e teto com mapeamento de textura contínuo por scanline",
+    "Portas dinâmicas com verificação de colisão, animação por frames e SFX de abertura/fecho",
+    "Sistema de combate em primeira pessoa com 5 armas e ciclos completos de animação (idle, walk, shoot)",
+    "Minimapa HUD em tempo real com radar, cone de visão do jogador e posições das portas",
+    "Integração com BASS Audio Engine para áudio multicanal (música de fundo, passos, tiros, portas)",
+    "Controle suave de câmera com mira responsiva pelo mouse e rotação fluida",
+    "Parser e validador estrito de mapas .cub com flood-fill para garantia de perímetro fechado",
+    "Arquitetura C modularizada com separação limpa de core, parser, raycaster, render, player e bonus"
+  ],
+  "technologies": [
+    "C",
+    "Raycasting (DDA)",
+    "MiniLibX",
+    "X11",
+    "BASS Audio",
+    "Makefile",
+    "Linux"
+  ],
+  "media": {
+    "cover": "cover.webp",
+    "gallery": [
+      {
+        "type": "video",
+        "src": "gallery/demo.mp4",
+        "caption": "Showcase do Motor Gráfico: Raycasting DDA, Animações e Áudio BASS"
+      },
+      {
+        "type": "image",
+        "src": "gallery/01-title-screen.webp",
+        "caption": "Tela de Apresentação e Preload de Texturas do cub3D (Odyssey 2.0)"
+      },
+      {
+        "type": "image",
+        "src": "gallery/02-weapons-arsenal.webp",
+        "caption": "Arsenal de Armas com Ciclos Completos de Animação (Parado, Andar, Disparar)"
+      },
+      {
+        "type": "image",
+        "src": "gallery/03-door-animations.webp",
+        "caption": "Portas Dinâmicas com Transição de Abertura/Fecho e Colisão"
+      },
+      {
+        "type": "image",
+        "src": "gallery/04-environment-textures.webp",
+        "caption": "Amostragem e Mapeamento de Texturas XPM para Paredes e Superfícies"
+      }
+    ]
+  }
+}
