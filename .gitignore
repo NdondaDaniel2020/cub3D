@@ -63,3 +63,5 @@ minilibx-linux/
 minilibx-linux/*
 libs/mlx/
 
+# Portfolio raw captures
+.portfolio/raw-captures/

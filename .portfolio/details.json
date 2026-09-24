@@ -39,7 +39,7 @@
       {
         "type": "video",
         "src": "gallery/demo.mp4",
-        "caption": "Showcase do Motor Gráfico: Raycasting DDA, Animações e Áudio BASS"
+        "caption": "Showcase Completo do Motor Gráfico: Raycasting DDA, Animações e Áudio BASS"
       },
       {
         "type": "image",
@@ -48,8 +48,28 @@
       },
       {
         "type": "image",
-        "src": "gallery/02-weapons-arsenal.webp",
-        "caption": "Arsenal de Armas com Ciclos Completos de Animação (Parado, Andar, Disparar)"
+        "src": "gallery/02-weapons-arsenal-01.webp",
+        "caption": "Arma 1: Faca de Combate com Animação Fluida"
+      },
+      {
+        "type": "image",
+        "src": "gallery/02-weapons-arsenal-02.webp",
+        "caption": "Arma 2: Pistola Semi-Automática com Recuo e Efeitos Sonoros"
+      },
+      {
+        "type": "image",
+        "src": "gallery/02-weapons-arsenal-03.webp",
+        "caption": "Arma 3: Escopeta Lupara de Dois Canos"
+      },
+      {
+        "type": "image",
+        "src": "gallery/02-weapons-arsenal-04.webp",
+        "caption": "Arma 4: Metralhadora Automática de Cadência Rápida"
+      },
+      {
+        "type": "image",
+        "src": "gallery/02-weapons-arsenal-05.webp",
+        "caption": "Arma 5: Lança-Foguetes / Arma Pesada"
       },
       {
         "type": "image",
@@ -60,6 +80,38 @@
         "type": "image",
         "src": "gallery/04-environment-textures.webp",
         "caption": "Amostragem e Mapeamento de Texturas XPM para Paredes e Superfícies"
+      }
+    ],
+    "videos": [
+      {
+        "id": "demo-showcase",
+        "file": "01-demo-showcase.mp4",
+        "title": "Showcase Completo de Gameplay (Modo Bónus)",
+        "description": "Demonstração completa do motor gráfico com raycasting DDA, arsenal com 5 armas, portas animadas, minimapa em tempo real e áudio espacial BASS.",
+        "category": "gamedev",
+        "duration": "82s",
+        "size_mb": 19.03,
+        "src": "videos/01-demo-showcase.mp4"
+      },
+      {
+        "id": "mandatory-raycaster",
+        "file": "02-mandatory-raycaster.mp4",
+        "title": "Motor de Raycasting Obrigatório",
+        "description": "Execução da versão base do cub3D com renderização de paredes texturizadas, movimentação livre pelo labirinto e minimapa.",
+        "category": "graphics",
+        "duration": "23s",
+        "size_mb": 2.84,
+        "src": "videos/02-mandatory-raycaster.mp4"
+      },
+      {
+        "id": "door-animations",
+        "file": "03-door-animations.mp4",
+        "title": "Mecânica de Portas Dinâmicas e Interação",
+        "description": "Interação com portas no cenário: colisão, verificação de proximidade, animação progressiva de abertura e efeitos de som de tranca.",
+        "category": "gamedev",
+        "duration": "10s",
+        "size_mb": 1.76,
+        "src": "videos/03-door-animations.mp4"
       }
     ]
   }

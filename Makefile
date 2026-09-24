@@ -16,12 +16,12 @@ BNAME       = cub3D_bonus
 # Game Settings & Animation Speeds (overridable)
 W          ?= 1200
 H          ?= 800
-S          ?= 0.05
+S          ?= 0.15
 PX         ?= 14
-ANIM_FIRE  ?= 2
+ANIM_FIRE  ?= 0
 ANIM_WALK  ?= 4
 ANIM_STOP  ?= 8
-ANIM_DOOR  ?= 2
+ANIM_DOOR  ?= 0
 GAMESET     = -DSCREEN_WIDTH=$(W) -DSCREEN_HEIGHT=$(H) -DSPEED="$(S)" -DPIXEL_SIZE="$(PX)" \
               -DANIM_SPEED_FIRE=$(ANIM_FIRE) -DANIM_SPEED_WALK=$(ANIM_WALK) \
               -DANIM_SPEED_STOP=$(ANIM_STOP) -DANIM_SPEED_DOOR=$(ANIM_DOOR)
